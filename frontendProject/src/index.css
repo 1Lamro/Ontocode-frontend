@@ -1,5 +1,7 @@
 body {
   margin: auto;
   display: flex;
-  place-items: center;
+  justify-content: center;
+  background-color: #FFF0E5;
+  min-height: 100vh;
 }
