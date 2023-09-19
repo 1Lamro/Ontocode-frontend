@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { authSignUp } from "../../../features/applicationSlice";
 import { AppDispatch } from "../../../app/store";
 import { Link, useNavigate } from "react-router-dom";
-import styles from "./Sign.module.css";
+import styles from "./SignIn&SignUp.module.css";
 
 const SignUp = () => {
   const [login, setLogin] = useState("");
