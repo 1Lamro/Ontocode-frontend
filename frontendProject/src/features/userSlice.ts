@@ -42,7 +42,7 @@ export const addCarToUser = createAsyncThunk(
 export const oneUser = createAsyncThunk(
   "user/fetchUser",
   async (id) => {
-    const res = await fetch(`http://localhost:4444/user/${id}`);
+    const res = await fetch(`http://localhost:3333/user/${id}`);
     const todo = await res.json();
     return todo;
   }
@@ -52,7 +52,7 @@ export const deleteUser = createAsyncThunk(
   "user/delete",
   async (id, { rejectWithValue }) => {
     try {
-      await fetch(`http://localhost:4444/user/${id}`, {
+      await fetch(`http://localhost:3333/user/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

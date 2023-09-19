@@ -42,6 +42,7 @@ const Profile = () => {
   return (
     <div className={styles.container}>
       <h2 className={styles.headerText}>Ваш Личный кабинет</h2>
+        <img src={user.avatar} alt="Ваша аватарка"/>
       <div className={styles.card}>
         <div className={styles.block}>
           <p className={styles.name}>Никнейм: {user.login}</p>
@@ -49,11 +50,13 @@ const Profile = () => {
         <div className={styles.block}>
           <p className={styles.name}>Ваш Email: {user.email}</p>
         </div>
+        <div className={styles.block}>
+          <p className={styles.name}>Ваша Роль: {user.role}</p>
+        </div>
+        <div className={styles.block}>
+          <p className={styles.name}>Ваш Опыт: {user.progress}</p>
+        </div>
         <button onClick={() => handleDelete(user._id)} className={styles.deletedUserButton}>Удалить пользователя</button>
-      </div>
-
-      <div>
-        {user.carInRent}
       </div>
     </div>
   );
