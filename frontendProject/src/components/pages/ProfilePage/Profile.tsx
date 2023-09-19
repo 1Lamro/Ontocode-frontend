@@ -4,6 +4,7 @@ import { AppDispatch, RootState } from '../../../app/store';
 import { deleteUser, oneUser } from '../../../features/userSlice';
 import { useNavigate } from 'react-router-dom';
 import styles from './Profile.module.css'
+import { Link } from 'react-router-dom';
 
 
 const Profile = () => {
