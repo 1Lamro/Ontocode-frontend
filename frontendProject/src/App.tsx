@@ -6,14 +6,14 @@ import Header from './components/Header/Header'
 function App() {
 
   return (
-    <>
+    <div>
       <div className={styles.app}>
         <Header />
           <Routes>
             <Route path='/Price' element={<PricePage />} />
           </Routes>
       </div>
-    </>
+    </div>
   )
 }
 
