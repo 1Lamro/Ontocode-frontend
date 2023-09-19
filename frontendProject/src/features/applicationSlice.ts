@@ -5,7 +5,9 @@ type User = {
   login: string;
   password: string;
   email: string;
-  
+  role: string
+  avatar: string
+  progress: string
 };
 
 type RegistrState = {
@@ -29,14 +31,14 @@ const initialState: RegistrState = {
 
 export const authSignUp = createAsyncThunk<string | number, User>(
   "auth/signup",
-  async ({ login, password, email }, thunkAPI) => {
+  async ({ login, password, email, avatar, role, progress }, thunkAPI) => {
     try {
       const res = await fetch("http://localhost:4444/registration", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ login, password, email }),
+        body: JSON.stringify({ login, password, email, avatar, role, progress }),
       });
       const json = await res.json();
 
@@ -79,7 +81,35 @@ export const applicationSlice = createSlice({
     initialState,
     reducers: {},
     extraReducers: (builder) => {
-        
+        builder
+        .addCase(authSignUp.pending, (state) => {
+          state.signingUp = true;
+          state.error = null;
+          state.loading = true
+        })
+        .addCase(authSignUp.rejected, (state, action) => {
+          state.signingUp = false;
+          state.error = action.payload;
+          state.loading = false
+        })
+        .addCase(authSignUp.fulfilled, (state) => {   
+          state.signingUp = false;
+          state.error = null;
+          state.loading = false
+        })
+        .addCase(authSignIn.pending, (state) => {
+          state.signingIn = true;
+          state.error = null;
+        })
+        .addCase(authSignIn.rejected, (state, action) => {
+          state.signingIn = false;
+          state.error = action.payload;
+        })
+        .addCase(authSignIn.fulfilled, (state, action) => {
+          state.signingIn = false;
+          state.error = action.payload
+          state.token = action.payload.token;
+        });
   },
 })
 
