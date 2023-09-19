@@ -1,0 +1,45 @@
+.headerContainer {
+    min-width: 300px;
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+}
+
+.navigation p, .zero, .loginButton{
+    text-decoration: none;
+    color: black;
+}
+
+.logo {
+    height: 40px;
+    width: 100px;
+}
+
+.zero {
+    display: flex;
+}
+
+.loginButton {
+    text-align: center;
+}
+
+.loginContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search {
+    height: 24px;
+    margin-right: 20px;
+}
