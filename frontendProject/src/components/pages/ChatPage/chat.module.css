@@ -1,0 +1,160 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerB .container > * {
+    margin-bottom: 10px;
+}
+
+.chats {
+    font-size: 13px;
+}
+
+.senderName {
+    text-align: right;
+}
+
+.messageRecipient {
+    background-color: #f9efec;
+    width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.messageSender {
+    background-color: rgb(194, 243, 194);
+    max-width: 300px;
+    padding: 10px;
+    border-radius:10px;
+    margin-left: auto;
+    font-size: 15px;
+}
+
+.containerB {
+    height: 80vh;
+    background-color: #fff;
+    padding: 20px;
+    overflow: scroll;
+}
+
+
+
+.header {
+    margin-bottom: 30px;
+}
+
+.headerB {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 20px;
+    border-bottom: 1px solid #bfbdbd;
+}
+
+.btn {
+    padding: 10px;
+    width: 150px;
+    border: none;
+    outline: none;
+    background-color: #d1512d;
+    cursor: pointer;
+    color: #eae3d2
+
+}
+
+.userInput {
+    padding: 10px;
+    width: 50%;
+}
+
+.homeBtn {
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #607eaa;
+    color: #f9f5eb;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.chat {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center
+}
+
+.main {
+    flex: 2;
+}
+
+.sidebar {
+    height: 100%;
+    background-color: #ffffff;
+    flex: 0.2;
+    padding: 20px;
+    border-right: 1px solid #bfbdbd;
+}
+
+.headerS {
+    margin: 30px 0 20px 0;
+    font-size: 25px;
+}
+
+.users {
+    margin-bottom: 10px;
+    color: #607eaa;
+    font-size: 14px;
+    list-style: none;
+}
+
+.user > li {
+    margin-bottom: 20px;
+    cursor: pointer
+}
+
+.messageBlock {
+    padding: 20px;
+    height: 10vh;
+}
+
+.form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.userMessage {
+    width: 80%;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+    padding: 15px;
+}
+
+.btnM {
+    width: 150px;
+    background-color: green;
+    border: none;
+    outline: none;
+    padding: 10px;
+    color: #eae3d2;
+    cursor: pointer;
+
+}
+
+.btnM:hover {
+    background-color: rgb(129, 201, 129)
+}
