@@ -6,7 +6,7 @@ import { priceSlice } from "../features/priceSlice";
 export const store = configureStore({
     reducer: {
         application: applicationSlice,
-        user: userSlice
+        user: userSlice,
         price: priceSlice.reducer
     }
 })
