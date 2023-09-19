@@ -40,7 +40,7 @@ const SignIn = () => {
           <input
             type="text"
             value={email}
-            placeholder="Логин..."
+            placeholder="Email..."
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
