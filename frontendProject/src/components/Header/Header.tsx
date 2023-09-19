@@ -5,7 +5,7 @@ const Header = () => {
         <div>
             <div><img src="" alt="" /></div>
             <nav>
-                123 
+               
             </nav>
         </div>
     );
