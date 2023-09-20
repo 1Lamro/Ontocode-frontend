@@ -41,10 +41,14 @@ export const addCarToUser = createAsyncThunk(
 
 export const oneUser = createAsyncThunk(
   "user/fetchUser",
-  async (id) => {
-    const res = await fetch(`http://localhost:3333/profile/${id}`);
-    const user = await res.json();
-    return user;
+  async (id, { rejectWithValue }) => {
+    try {
+      const res = await fetch(`http://localhost:3333/profile/${id}`);
+      const user = await res.json();
+      return user;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
   }
 );
 
@@ -52,6 +56,7 @@ export const deleteUser = createAsyncThunk(
   "user/delete",
   async (id, { rejectWithValue }) => {
     try {
+      console.log(id)
       await fetch(`http://localhost:3333/profile/${id}`, {
         method: "DELETE",
         headers: {
@@ -76,7 +81,7 @@ export const userSlice = createSlice({
         state.loading = true;
       })
       .addCase(oneUser.rejected, (state, action) => {
-        state.error = action.payload;
+        state.error = action.payload.message;
         state.loading = false;
       })
       .addCase(oneUser.fulfilled, (state, action) => {
