@@ -18,16 +18,19 @@ function App() {
     <div>
       <div className={styles.app}>
         <Header />
-        <Routes>
-          <Route path='/chat' element={<Chat socket={socket}/>} />
-          <Route path='/chatForm' element={<ChatForm socket={socket}/>} />
-          <Route path='/' element={<Home/>}/>
-          <Route path='/Price' element={<PricePage />} />
-          <Route path='/SignUp' element={<SignUp />} />
-          <Route path='/SignIn' element={<SignIn />} />
-          <Route path='/Profile' element={<Profile />} />
-          {/* <Route path='/video' Component={VideoPlayer}></Route> */}
-        </Routes>
+        <div className={styles.body}>
+          <Routes>
+            <Route path='/chat' element={<Chat socket={socket}/>} />
+            <Route path='/chatForm' element={<ChatForm socket={socket}/>} />
+            <Route path='/' element={<Home />} />
+            <Route path='/Price' element={<PricePage />} />
+            <Route path='/SignUp' element={<SignUp />} />
+            <Route path='/SignIn' element={<SignIn />} />
+            <Route path='/Profile' element={<Profile />} />
+            <Route path='/courses' element={<Course />} />
+            {/* <Route path='/video' Component={VideoPlayer}></Route> */}
+          </Routes>
+        </div>
       </div>
     </div>
   )
