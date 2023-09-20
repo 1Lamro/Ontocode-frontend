@@ -9,6 +9,7 @@ import SignIn from './components/pages/SignIn&SignUpPage/SignIn'
 import Profile from './components/pages/ProfilePage/Profile'
 import socketIO from 'socket.io-client';
 import ChatForm from './components/pages/ChatPage/ChatForm'
+import CompanyPage from './components/pages/CompanyPage/Company'
 
 const socket = socketIO.connect('http://localhost:3333')
 
@@ -19,6 +20,7 @@ function App() {
       <div className={styles.app}>
         <Header />
         <Routes>
+          <Route path ='/team' element={<CompanyPage />}/>
           <Route path='/chat' element={<Chat socket={socket}/>} />
           <Route path='/chatForm' element={<ChatForm socket={socket}/>} />
           <Route path='/' element={<Home/>}/>
