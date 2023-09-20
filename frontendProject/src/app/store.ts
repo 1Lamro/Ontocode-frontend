@@ -2,12 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import applicationSlice from "../features/applicationSlice";
 import userSlice from "../features/userSlice";
 import { priceSlice } from "../features/priceSlice";
+import imagesSlice from "../features/imagesSlice";
 
 export const store = configureStore({
     reducer: {
         application: applicationSlice,
         user: userSlice,
-        price: priceSlice.reducer
+        price: priceSlice.reducer,
+        image: imagesSlice
     }
 })
 

@@ -17,7 +17,7 @@ const SignIn = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  const handleSignUp = (e: React.FormEvent): void => {
+  const handleSignIn = (e: React.FormEvent): void => {
     e.preventDefault()
     dispatch(authSignIn({ _id: "", password, email}));
 
@@ -35,7 +35,7 @@ const SignIn = () => {
     <div className={styles.author}>
       <div className={styles.authorinput}>
         {error && <div className={styles.error}>Неверный email или пароль</div>}
-        <form className={styles.form} onSubmit={handleSignUp}>
+        <form className={styles.form} onSubmit={handleSignIn}>
           <h2 id={styles.h2}>Авторизация</h2>
           <input
             type="text"
