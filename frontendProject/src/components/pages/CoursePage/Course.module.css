@@ -1,0 +1,24 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 20px;
+  justify-items: center;
+}
+
+.courseBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  border: 1px solid black;
+  transition: 0.2s;
+}
+
+.courseBlock:hover {
+  transform: translate(5px, -5px);
+  box-shadow: -5px 5px;
+  transition: 0.2s;
+}

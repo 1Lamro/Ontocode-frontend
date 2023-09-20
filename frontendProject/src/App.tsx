@@ -7,6 +7,7 @@ import Home from './components/pages/HomePage/Home'
 import SignUp from './components/pages/SignIn&SignUpPage/SignUp'
 import SignIn from './components/pages/SignIn&SignUpPage/SignIn'
 import Profile from './components/pages/ProfilePage/Profile'
+import Course from './components/pages/CoursePage/Course'
 
 function App() {
 
@@ -14,15 +15,18 @@ function App() {
     <div>
       <div className={styles.app}>
         <Header />
-        <Routes>
-          <Route path='/chat' element={<Chat />} />
-          <Route path='/' element={<Home/>}/>
-          <Route path='/Price' element={<PricePage />} />
-          <Route path='/SignUp' element={<SignUp />} />
-          <Route path='/SignIn' element={<SignIn />} />
-          <Route path='/Profile' element={<Profile />} />
-          {/* <Route path='/video' Component={VideoPlayer}></Route> */}
-        </Routes>
+        <div className={styles.body}>
+          <Routes>
+            <Route path='/chat' element={<Chat />} />
+            <Route path='/' element={<Home />} />
+            <Route path='/Price' element={<PricePage />} />
+            <Route path='/SignUp' element={<SignUp />} />
+            <Route path='/SignIn' element={<SignIn />} />
+            <Route path='/Profile' element={<Profile />} />
+            <Route path='/courses' element={<Course />} />
+            {/* <Route path='/video' Component={VideoPlayer}></Route> */}
+          </Routes>
+        </div>
       </div>
     </div>
   )

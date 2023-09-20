@@ -91,7 +91,7 @@ export const priceSlice = createSlice({
         );
       })
       .addCase(addComment.fulfilled, (state, action) => {
-        state.comment.push(action.payload[0]);
+        state.comment.unshift(action.payload[0]);
        
       });
   },

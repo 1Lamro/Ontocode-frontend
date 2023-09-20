@@ -31,14 +31,14 @@ const initialState: RegistrState = {
 
 export const authSignUp = createAsyncThunk<string | number, User>(
   "auth/signup",
-  async ({ login, password, email, avatar, role, progress }, thunkAPI) => {
+  async ({ login, password, email}, thunkAPI) => {
     try {
       const res = await fetch("http://localhost:3333/registration", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ login, password, email, avatar, role, progress }),
+        body: JSON.stringify({ login, password, email}),
       });
       const json = await res.json();
 
