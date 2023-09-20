@@ -10,6 +10,7 @@ const ChatForm = ({ socket }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         localStorage.setItem('user', user);
+        socket.emit('newUser', {user, soketID: socket.id})
         navigate('/chat')
     }
 
