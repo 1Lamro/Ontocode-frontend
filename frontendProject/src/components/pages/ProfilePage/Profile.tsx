@@ -12,7 +12,7 @@ const Profile = () => {
   const dispatch = useDispatch<AppDispatch>()
   const token = useSelector((state: RootState) => state.application.token)
   const navigate = useNavigate()
-
+  console.log(user)
 
   useEffect(() => {
     function parseJWT(token: string) {
@@ -56,6 +56,9 @@ const Profile = () => {
         </div>
         <div className={styles.block}>
           <p className={styles.name}>Ваш Опыт: {user.progress}</p>
+        </div>
+        <div>
+          <Link to='/images'><p>Добавить фотографию</p></Link>
         </div>
         <button onClick={() => handleDelete(user._id)} className={styles.deletedUserButton}>Удалить пользователя</button>
       </div>
