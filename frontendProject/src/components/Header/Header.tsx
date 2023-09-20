@@ -28,7 +28,7 @@ const Header = () => {
         <Link to='/' ><img src={logo} alt="logo" className={styles.logo} /></Link>
         <Link to='/courses' className={styles.zero}><p>Courses</p><img src={triangle} alt="" /></Link>
         <Link to='/price' className={styles.zero}><p>Pricing</p><img src={triangle} alt="" /></Link>
-        <Link to='/for-teams' className={styles.zero}><p>For Teams</p><img src={triangle} alt="" /></Link>
+        <Link to='/team' className={styles.zero}><p>For Teams</p><img src={triangle} alt="" /></Link>
       </nav>
       {token ? (
         <div>
