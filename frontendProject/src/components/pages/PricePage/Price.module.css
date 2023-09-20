@@ -6,7 +6,7 @@
 
 .allCards {
   display: flex;
-  padding: 24px 0px 0px 136px;
+  padding: 24px 0px 0px 30px;
   justify-content: center;
   align-items: flex-start;
   gap: 24px;

@@ -8,7 +8,7 @@ import { RootState } from "../../../app/store";
 // import Spinner from '../pages/CatalogPage/Spinner';
 
 const SignIn = () => {
-  const [login, setLogin] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const token = useSelector((state: RootState) => state.application.token);
   const signin = useSelector((state: RootState) => state.application.signingIn);
@@ -19,7 +19,7 @@ const SignIn = () => {
 
   const handleSignUp = (e: React.FormEvent): void => {
     e.preventDefault()
-    dispatch(authSignIn({ _id: "", password, login, email: "" }));
+    dispatch(authSignIn({ _id: "", password, email}));
 
   };
 //   if (signin === true) {
@@ -34,14 +34,14 @@ const SignIn = () => {
   return (
     <div className={styles.author}>
       <div className={styles.authorinput}>
-        {error && <div className={styles.error}>Неверный логин или пароль</div>}
+        {error && <div className={styles.error}>Неверный email или пароль</div>}
         <form className={styles.form} onSubmit={handleSignUp}>
           <h2 id={styles.h2}>Авторизация</h2>
           <input
             type="text"
-            value={login}
-            placeholder="Логин..."
-            onChange={(e) => setLogin(e.target.value)}
+            value={email}
+            placeholder="Email..."
+            onChange={(e) => setEmail(e.target.value)}
           />
           <input
             type="password"

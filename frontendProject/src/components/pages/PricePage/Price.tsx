@@ -1,35 +1,65 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styles from "./Price.module.css";
-import { fetchComment, deletedComment, addComment } from "../../../features/priceSlice";
-import {useDispatch, useSelector} from "react-redux";
+import {
+  fetchComment,
+  deletedComment,
+  addComment,
+} from "../../../features/priceSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../app/store";
 // import { useParams } from "react-router-dom";
 
 const PricePage = () => {
-const dispatch = useDispatch<AppDispatch>()
-const handleOnChangeTextArea = (text: string) => {
-    setComment(text)
-}
+  const dispatch = useDispatch<AppDispatch>();
+  const comments = useSelector((state: RootState) => state.price.comment);
+  const token = useSelector((state: RootState) => state.application.token);
+  const [comment, setComment] = useState("");
+  const handleOnChangeTextArea = (text: string) => {
+    setComment(text);
+  };
 
-const handleSendComment = (comment: string) => {
-    dispatch(addComment({comment }))
-    setComment("")
-}
+  function parseJWT(tokenUser) {
+    if (typeof tokenUser !== "string") {
+      // Обработка ошибки или возврат значения по умолчанию
+      return null;
+    }
+    const base64Url = tokenUser.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split("")
+        .map(function (c) {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
+    return JSON.parse(jsonPayload);
+  }
+  const ownid = parseJWT(token);
 
-const handleDeleteComment = (id: string) => {
-    dispatch(deletedComment(id))
-}
+  const handleSendComment = (comment: string) => {
+    if (!token) {
+      alert("Вы не авторизованы");
+    } else {
 
-// const { taskId } = useParams()
-React.useEffect(() => {
+      dispatch(addComment({ comment, userId: ownid.userId }));
+    }
+    setComment("");
+  };
+
+  const handleDeleteComment = (id: string, user: string) => {
+    comments.map((item) => {
+      if (ownid.userId === user) {
+        dispatch(deletedComment(id));
+      }
+    });
+  };
+
+
+  React.useEffect(() => {
     dispatch(fetchComment());
   }, [dispatch]);
 
-
-    const comments = useSelector((state:RootState) => state.price.comment)
-    console.log(comments);
-    
-    const [comment, setComment] = useState("")
   return (
     <div className={styles.input}>
       <div className={styles.allCards}>
@@ -127,32 +157,50 @@ React.useEffect(() => {
           </div>
           <div className={styles.footerBlock3}>
             <div className={styles.footerBlock4}>
-              <div className={styles.footerBlock5}><button>Try Pro for free</button></div>
+              <div className={styles.footerBlock5}>
+                <button>Try Pro for free</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <textarea
-      name=""
-      value={comment}
-      onChange={(e) => handleOnChangeTextArea(e.target.value)}
-      id={styles.textarea}
-      cols="30"
-      rows="5"
-      >
+        name=""
+        value={comment}
+        onChange={(e) => handleOnChangeTextArea(e.target.value)}
+        id={styles.textarea}
+        cols="30"
+        rows="5"
+      ></textarea>
+      <button disabled={!comment} onClick={() => handleSendComment(comment)}>
+        add
+      </button>
+      <div>
+        {comments.map((item, index) => {
+           const isCurrentUserComment = item.user?._id === ownid.userId;
+           
+          return (
+            <div key={index}>
+              <div>{item.user?.username}</div>
+              <div>
+                {item.text}
+{isCurrentUserComment &&(
 
-      </textarea>
-    <button disabled={!comment} onClick={() => handleSendComment(comment)}>add</button>
-    <div>{comments.map((item) => {
-        return(
-            <div>
-            <div>{item.text}</div>
-            <button onClick={() => {
-                handleDeleteComment(item._id)
-            }}>x</button>
+                <button
+                  onClick={() => {
+                    handleDeleteComment(item._id, item.user?._id);
+                    console.log(item._id, item.user?._id);
+                    
+                  }}
+                >
+                  x
+                </button>
+)}
+              </div>
             </div>
-        )
-    })}</div>
+          );
+        })}
+      </div>
     </div>
   );
 };

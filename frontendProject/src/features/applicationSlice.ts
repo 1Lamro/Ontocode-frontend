@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 type User = {
   _id: string;
-  login: string;
+  username: string;
   password: string;
   email: string;
   role: string
@@ -31,14 +31,14 @@ const initialState: RegistrState = {
 
 export const authSignUp = createAsyncThunk<string | number, User>(
   "auth/signup",
-  async ({ login, password, email}, thunkAPI) => {
+  async ({ username, password, email }, thunkAPI) => {
     try {
       const res = await fetch("http://localhost:3333/registration", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ login, password, email}),
+        body: JSON.stringify({ username, password, email}),
       });
       const json = await res.json();
 
@@ -55,14 +55,14 @@ export const authSignUp = createAsyncThunk<string | number, User>(
 
 export const authSignIn = createAsyncThunk<string | number, User>(
   "auth/signin",
-  async ({ login, password }, thunkAPI) => {
+  async ({ email, password }, thunkAPI) => {
     try {
       const res = await fetch("http://localhost:3333/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ login, password }),
+        body: JSON.stringify({ email, password }),
       });
       const token = await res.json();
       if (token.error) {
