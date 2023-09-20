@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './chat.module.css'
 
@@ -10,7 +10,7 @@ const ChatForm = ({ socket }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         localStorage.setItem('user', user);
-        socket.emit('newUser', {user, soketID: socket.id})
+        socket.emit('newUser', { user, soketID: socket.id })
         navigate('/chat')
     }
 

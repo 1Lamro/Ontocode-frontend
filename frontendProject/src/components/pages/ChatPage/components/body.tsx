@@ -14,10 +14,10 @@ const body = ({ messages, status, socket }) => {
     }
 
     useEffect(() => {
-        if(isLeaving) {
+        if (isLeaving) {
             socket.emit('leaveChat')
         }
-    },[isLeaving, socket])
+    }, [isLeaving, socket])
 
     return (
         <div>
@@ -25,7 +25,7 @@ const body = ({ messages, status, socket }) => {
                 <header className={styles.headerB}>
                     <button className={styles.btn} onClick={handleLeave}>Покинуть чат</button>
                 </header>
-                
+
                 <div className={styles.containerB}>
                     {
                         messages.map((element: {
