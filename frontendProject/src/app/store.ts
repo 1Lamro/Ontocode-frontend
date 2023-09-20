@@ -10,7 +10,7 @@ export const store = configureStore({
     reducer: {
         application: applicationSlice,
         user: userSlice,
-        image: imagesSlice
+        image: imagesSlice,
         price: priceSlice,
         course: courseSlice
     }

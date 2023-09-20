@@ -10,6 +10,7 @@ import Profile from './components/pages/ProfilePage/Profile'
 import Images from './components/pages/imgPage/Images'
 import socketIO from 'socket.io-client';
 import ChatForm from './components/pages/ChatPage/ChatForm'
+import Course from './components/pages/CoursePage/Course'
 
 const socket = socketIO.connect('http://localhost:3333')
 
