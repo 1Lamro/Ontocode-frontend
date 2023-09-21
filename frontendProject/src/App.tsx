@@ -10,11 +10,19 @@ import Profile from './components/pages/ProfilePage/Profile'
 import Images from './components/pages/imgPage/Images'
 import socketIO from 'socket.io-client';
 import ChatForm from './components/pages/ChatPage/ChatForm'
+import { useSelector } from 'react-redux'
+import { RootState } from './app/store'
 
 const socket = socketIO.connect('http://localhost:3333')
 
 
 function App() {
+
+  const loading = useSelector((state: RootState) => state.application.loading) //взял лоадинг из слайса
+
+  if (loading) {
+    return 'loading...'
+  } // функция для прогрузки лоадинга при пендинге
 
   return (
     <div>
@@ -30,7 +38,7 @@ function App() {
             <Route path='/SignIn' element={<SignIn />} />
             <Route path='/Profile' element={<Profile />} />
             <Route path='/images' element={<Images/>} />
-            <Route path='/courses' element={<Course />} />
+            {/* <Route path='/courses' element={<Course />} /> */}
             {/* <Route path='/video' Component={VideoPlayer}></Route> */}
           </Routes>
         </div>
