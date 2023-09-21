@@ -16,6 +16,10 @@ const Profile = () => {
 
   useEffect(() => {
     function parseJWT(token: string) {
+      if (typeof token !== "string") {
+        // Обработка ошибки или возврат значения по умолчанию
+        return null;
+      }
       const base64Url = token.split(".")[1];
       const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
       const jsonPayload = decodeURIComponent(
