@@ -25,20 +25,6 @@ const userState: userInfoState = {
   token: localStorage.getItem("token"),
 };
 
-export const addCarToUser = createAsyncThunk(
-  'user/addCarToUser',
-  async ({ userId, carId }, { rejectWithValue }) => {
-    try {
-      const response = await axios.patch(`/user/${userId}`, {
-        carId: carId,
-      });
-      return response.data; // Если сервер возвращает какие-то данные после успешной операции
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
-  }
-);
-
 export const oneUser = createAsyncThunk(
   "user/fetchUser",
   async (id, { rejectWithValue }) => {
@@ -100,19 +86,6 @@ export const userSlice = createSlice({
       .addCase(deleteUser.fulfilled, (state, action) => {
         state.users = state.users.filter((item) => item._id !== action.payload);
         state.error = null;
-        state.loading = false;
-      })
-      .addCase(addCarToUser.pending, (state) => {
-        state.error = null;
-        state.loading = true;
-      })
-      .addCase(addCarToUser.fulfilled, (state, action) => {
-        state.error = null;
-        state.users = action.payload;
-        state.loading = false;
-      })
-      .addCase(addCarToUser.rejected, (state, action) => {
-        state.error = action.payload;
         state.loading = false;
       })
   },
