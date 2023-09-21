@@ -1,14 +1,19 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { RootState } from "../app/store";
+//import axios from "axios";
 
 type User = {
   _id?: string;
   username: string;
   password: string;
   email: string;
-  role: string
-  avatar: string
-  progress: string
+  role: string;
+  avatar: string;
+  userId: string;
+  progress: string;
+  basicCourse: boolean;
+  plusCourse: boolean;
+  proCourse: boolean;
 };
 
 type userInfoState = {
@@ -24,6 +29,45 @@ const userState: userInfoState = {
   loading: false,
   token: localStorage.getItem("token"),
 };
+
+
+// export const addCarToUser = createAsyncThunk(
+//   "user/addCarToUser",
+//   async ({ userId, carId }, { rejectWithValue }) => {
+//     try {
+//       const response = await axios.patch(`/user/${userId}`, {
+//         carId: carId,
+//       });
+//       return response.data; // Если сервер возвращает какие-то данные после успешной операции
+//     } catch (error) {
+//       return rejectWithValue(error.response.data);
+//     }
+//   }
+// );
+
+export const oneUser = createAsyncThunk("user/fetchUser", async (id) => {
+  const res = await fetch(`http://localhost:3333/profile/${id}`);
+  const user = await res.json();
+  return user;
+});
+
+export const buyCourse = createAsyncThunk(
+  "user/buyCourse",
+  async ({ userId, courseType }, { rejectWithValue, getState }) => {
+    try {
+      const res = await fetch(`http://localhost:3333/course/${userId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${getState().application.token}`,
+        },
+        body: JSON.stringify({
+          [courseType]: true,
+        }),
+      });
+      return res.json();
+    } catch (err) {
+      return rejectWithValue(err);
 
 export const oneUser = createAsyncThunk(
   "user/fetchUser",
@@ -88,6 +132,18 @@ export const userSlice = createSlice({
         state.error = null;
         state.loading = false;
       })
+      .addCase(buyCourse.fulfilled, (state, action) => {
+        // Обновите состояние пользователя после успешной покупки курса
+        state.users = action.payload;
+      })
+      .addMatcher(
+        (action) =>
+          action.type.endsWith("/rejected"),
+        (state, action) => {
+          state.error = action.payload;
+          state.loading = false;
+        }
+      )
   },
 });
 

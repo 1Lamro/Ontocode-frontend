@@ -30,7 +30,6 @@ const Profile = () => {
   const userCard = parseJWT(token)
 
   useEffect(() => {
-    
     dispatch(oneUser(userCard.userId))
   }, [])
 
