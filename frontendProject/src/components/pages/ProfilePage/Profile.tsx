@@ -8,32 +8,29 @@ import { Link } from 'react-router-dom';
 
 
 const Profile = () => {
-  const user = useSelector((state: RootState) => state.user.users); // Получаем информацию о пользователе из Redux
   const dispatch = useDispatch<AppDispatch>()
+  const user = useSelector((state: RootState) => state.user.users); // Получаем информацию о пользователе из Redux
   const token = useSelector((state: RootState) => state.application.token)
   const navigate = useNavigate()
-  console.log(user)
+  
+
+  function parseJWT(token: string) {
+    const base64Url = token.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split("")
+        .map(function (c) {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
+    return JSON.parse(jsonPayload)
+  }
+  const userCard = parseJWT(token)
 
   useEffect(() => {
-    function parseJWT(token: string) {
-      if (typeof token !== "string") {
-        // Обработка ошибки или возврат значения по умолчанию
-        return null;
-      }
-      const base64Url = token.split(".")[1];
-      const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-      const jsonPayload = decodeURIComponent(
-        atob(base64)
-          .split("")
-          .map(function (c) {
-            return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-          })
-          .join("")
-      );
-      return JSON.parse(jsonPayload).id
-    }
-    const id = parseJWT(token)
-    dispatch(oneUser(id))
+    dispatch(oneUser(userCard.userId))
   }, [])
 
   const handleDelete = (id: string) => {
@@ -47,7 +44,7 @@ const Profile = () => {
   return (
     <div className={styles.container}>
       <h2 className={styles.headerText}>Ваш Личный кабинет</h2>
-        <img src={user.avatar} alt="Ваша аватарка"/>
+      <img src={user.avatar} alt="Ваша аватарка" />
       <div className={styles.card}>
         <div className={styles.block}>
           <p className={styles.name}>Никнейм: {user.login}</p>
