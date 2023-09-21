@@ -5,13 +5,15 @@ const messageBlock = ({socket}) => {
 
     const [message, setMessage] = useState('')
 
+    const isTyping = () => socket.emit('typing', `${localStorage.getItem('user', )} is typing`)
+
     const handleSend = (e) => {
         e.preventDefault();
         if(message.trim() && localStorage.getItem('user')) {
             socket.emit('message', {
                 text: message,
                 name: localStorage.getItem('user'),
-                id: `${socket.io}`,
+                id: `${socket.id}-${Math.random()}`,
                 socketID: socket.id
             })
         }
@@ -25,6 +27,7 @@ const messageBlock = ({socket}) => {
                     className={styles.userMessage}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
+                    onKeyDown={isTyping}
                      />
                 <button className={styles.btnM}>Cказать</button>
             </form>

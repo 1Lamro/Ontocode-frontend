@@ -1,15 +1,24 @@
-import React from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import styles from '../chat.module.css'
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const body = () => {
-    
+const body = ({ messages, status, socket }) => {
+
+    const [isLeaving, setIsLeaving] = useState(false);
     const navigate = useNavigate();
 
     const handleLeave = () => {
         localStorage.removeItem('user')
+        setIsLeaving(true)
         navigate('/chatForm')
     }
+
+    useEffect(() => {
+        if (isLeaving) {
+            socket.emit('leaveChat')
+        }
+    }, [isLeaving, socket])
+
     return (
         <div>
             <>
@@ -18,22 +27,33 @@ const body = () => {
                 </header>
 
                 <div className={styles.containerB}>
-                    <div className={styles.chats}>
-                        <p className={styles.senderName}>Вы</p>
-                        <div className={styles.messageSender}>
-                            <p>Hello</p>
-                        </div>
+                    {
+                        messages.map((element: {
+                            [x: string]: ReactNode; name: string | null;
+                        }) => {
+                            return (
+                                element.name === localStorage.getItem('user') ? (
+                                    <div className={styles.chats} key={element.id}>
+                                        <p className={styles.senderName}>Вы</p>
+                                        <div className={styles.messageSender}>
+                                            <p>{element.text}</p>
+                                        </div>
+                                    </div>
+                                ) : (
+                                    <div className={styles.chats} key={element.id}>
+                                        <p>{element.name}</p>
+                                        <div className={styles.messageRecipient}>
+                                            <p>{element.text}</p>
+                                        </div>
+                                    </div>
+                                )
+                            )
+                        })
+                    }
+                    <div className={styles.status}>
+                        <p>{status}</p>
                     </div>
-
-                    <div className={styles.chats}>
-                        <p>Вы</p>
-                        <div className={styles.messageRecipient}>
-                            <p>Hello</p>
-                        </div>
-                    </div>
-
                 </div>
-
             </>
         </div>
     );

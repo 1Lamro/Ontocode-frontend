@@ -12,6 +12,8 @@ import socketIO from 'socket.io-client';
 import ChatForm from './components/pages/ChatPage/ChatForm'
 import { useSelector } from 'react-redux'
 import { RootState } from './app/store'
+import CompanyPage from './components/pages/CompanyPage/Company'
+import Course from './components/pages/CoursePage/Course'
 
 const socket = socketIO.connect('http://localhost:3333')
 
@@ -31,6 +33,7 @@ function App() {
         <div className={styles.body}>
           <Routes>
             <Route path='/chat' element={<Chat socket={socket}/>} />
+            <Route path ='/team' element={<CompanyPage />}/>
             <Route path='/chatForm' element={<ChatForm socket={socket}/>} />
             <Route path='/' element={<Home />} />
             <Route path='/Price' element={<PricePage />} />
