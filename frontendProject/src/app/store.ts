@@ -4,6 +4,7 @@ import userSlice from "../features/userSlice";
 import  priceSlice  from "../features/priceSlice";
 import imagesSlice from "../features/imagesSlice";
 import courseSlice from "../features/courseSlice";
+import  chatSlise  from "../features/chatSlice";
 
 
 export const store = configureStore({
@@ -12,7 +13,8 @@ export const store = configureStore({
         user: userSlice,
         image: imagesSlice,
         price: priceSlice,
-        course: courseSlice
+        course: courseSlice,
+        chat: chatSlise
     }
 })
 

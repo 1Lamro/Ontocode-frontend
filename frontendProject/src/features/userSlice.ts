@@ -71,18 +71,19 @@ export const buyCourse = createAsyncThunk(
     }
   }
 )
-// export const oneUser = createAsyncThunk(
-//   "user/fetchUser",
-//   async (id, { rejectWithValue }) => {
-//     try {
-//       const res = await fetch(`http://localhost:3333/profile/${id}`);
-//       const user = await res.json();
-//       return user;
-//     } catch (error) {
-//       return rejectWithValue(error.response.data);
-//     }
-//   }
-// );
+
+export const allUsers = createAsyncThunk(
+  "users/fetchUsers",
+  async (_, thunkAPI) => {
+    try {
+      const res = await fetch("http://localhost:3333/users");
+      const users = await res.json();
+      return users;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
 
 export const deleteUser = createAsyncThunk(
   "user/delete",
@@ -117,6 +118,7 @@ export const userSlice = createSlice({
         state.loading = false;
       })
       .addCase(oneUser.fulfilled, (state, action) => {
+        console.log(action.payload)
         state.error = null;
         state.users = action.payload;
         state.loading = false;
@@ -132,6 +134,20 @@ export const userSlice = createSlice({
       .addCase(deleteUser.fulfilled, (state, action) => {
         state.users = state.users.filter((item) => item._id !== action.payload);
         state.error = null;
+        state.loading = false;
+      })
+      .addCase(allUsers.pending, (state) => {
+        state.error = null;
+        state.loading = true;
+      })
+      .addCase(allUsers.rejected, (state, action) => {
+        state.error = action.payload.message;
+        state.loading = false;
+      })
+      .addCase(allUsers.fulfilled, (state, action) => {
+        // console.log(action.payload)
+        state.error = null;
+        state.users = action.payload;
         state.loading = false;
       })
       .addCase(buyCourse.fulfilled, (state, action) => {
