@@ -7,6 +7,9 @@ import {
 } from "../../../features/priceSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../app/store";
+import RentForm from "../payCurs/payCurs";
+
+
 // import { useParams } from "react-router-dom";
 
 const PricePage = () => {
@@ -14,6 +17,34 @@ const PricePage = () => {
   const comments = useSelector((state: RootState) => state.price.comment);
   const token = useSelector((state: RootState) => state.application.token);
   const [comment, setComment] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    city: "",
+    rentalDate: "",
+    phoneNumber: "",
+    paymentMethod: "",
+  });
+  const openModal = () => {
+    if(token) {
+      setIsModalOpen(true);
+    }else {
+      alert('Сначала авторизируйтесь!')
+    }
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+  const handleInputChange =(fieldsFilled, setFieldsFilled) => (e: React.FormEvent) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+    setFieldsFilled({
+      ...fieldsFilled,
+      [name]: !!value, // Поле заполнено, если его значение не пустое
+    });
+  };
   const handleOnChangeTextArea = (text: string) => {
     setComment(text);
   };
@@ -79,7 +110,13 @@ const PricePage = () => {
             </div>
           </div>
           <div className={styles.footer}>
-            <div className={styles.footerText}>Sign up</div>
+            <button onClick={openModal} className={styles.footerText}>Sign up</button>
+            <RentForm
+            isOpen={isModalOpen}
+            closeModal={closeModal}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
           </div>
         </div>
         <div className={styles.secondCard}>
@@ -118,7 +155,14 @@ const PricePage = () => {
           </div>
           <div className={styles.footerBlock}>
             <div className={styles.footerBlock1}>
-              <div className={styles.footerBlock2}>Try Plus for free</div>
+              <button onClick={openModal} className={styles.footerBlock2}>Try Plus for free</button>
+              <RentForm
+            isOpen={isModalOpen}
+            closeModal={closeModal}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
+        
             </div>
           </div>
         </div>
@@ -158,7 +202,13 @@ const PricePage = () => {
           <div className={styles.footerBlock3}>
             <div className={styles.footerBlock4}>
               <div className={styles.footerBlock5}>
-                <button>Try Pro for free</button>
+                <button onClick={openModal}>Try Pro for free</button>
+                <RentForm
+            isOpen={isModalOpen}
+            closeModal={closeModal}
+            formData={formData}
+            handleInputChange={handleInputChange}
+          />
               </div>
             </div>
           </div>
