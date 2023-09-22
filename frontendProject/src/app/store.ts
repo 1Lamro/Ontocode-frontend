@@ -4,6 +4,7 @@ import userSlice from "../features/userSlice";
 import imagesSlice from "../features/imagesSlice";
 import priceSlice from "../features/priceSlice";
 import courseSlice from "../features/courseSlice";
+import  chatSlise  from "../features/chatSlice";
 
 export const store = configureStore({
     reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
         user: userSlice,
         image: imagesSlice,
         price: priceSlice,
-        course: courseSlice
+        course: courseSlice,
+        chat: chatSlise
     }
 })
 
