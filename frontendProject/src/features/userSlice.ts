@@ -2,13 +2,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../app/store";
 //import axios from "axios";
 
-type User = {
+interface User {
   _id?: string;
+  avatar: string;
   username: string;
   password: string;
   email: string;
   role: string;
-  avatar: string;
   userId: string;
   progress: string;
   basicCourse: boolean;
@@ -68,19 +68,21 @@ export const buyCourse = createAsyncThunk(
       return res.json();
     } catch (err) {
       return rejectWithValue(err);
-
-export const oneUser = createAsyncThunk(
-  "user/fetchUser",
-  async (id, { rejectWithValue }) => {
-    try {
-      const res = await fetch(`http://localhost:3333/profile/${id}`);
-      const user = await res.json();
-      return user;
-    } catch (error) {
-      return rejectWithValue(error.response.data);
     }
   }
-);
+)
+// export const oneUser = createAsyncThunk(
+//   "user/fetchUser",
+//   async (id, { rejectWithValue }) => {
+//     try {
+//       const res = await fetch(`http://localhost:3333/profile/${id}`);
+//       const user = await res.json();
+//       return user;
+//     } catch (error) {
+//       return rejectWithValue(error.response.data);
+//     }
+//   }
+// );
 
 export const deleteUser = createAsyncThunk(
   "user/delete",
