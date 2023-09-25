@@ -31,7 +31,7 @@ const Profile = () => {
 
   useEffect(() => {
     dispatch(oneUser(userCard.userId))
-  }, [])
+  }, [dispatch])
 
   const handleDelete = (id: string) => {
     dispatch(deleteUser(id))

@@ -82,8 +82,20 @@ export const allUsers = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
-  }
-);
+  })
+
+// export const oneUser = createAsyncThunk(
+//   "user/fetchUser",
+//   async (id, { rejectWithValue }) => {
+//     try {
+//       const res = await fetch(`http://localhost:3333/profile/${id}`);
+//       const user = await res.json();
+//       return user;
+//     } catch (error) {
+//       return rejectWithValue(error.response.data);
+//     }
+//   }
+// );
 
 export const deleteUser = createAsyncThunk(
   "user/delete",
@@ -154,14 +166,14 @@ export const userSlice = createSlice({
         // Обновите состояние пользователя после успешной покупки курса
         state.users = action.payload;
       })
-      .addMatcher(
-        (action) =>
-          action.type.endsWith("/rejected"),
-        (state, action) => {
-          state.error = action.payload;
-          state.loading = false;
-        }
-      )
+      // .addMatcher(
+      //   (action) =>
+      //     action.type.endsWith("/rejected"),
+      //   (state, action) => {
+      //     state.error = action.payload;
+      //     state.loading = false;
+      //   }
+      // )
   },
 });
 
