@@ -2,13 +2,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../app/store";
 //import axios from "axios";
 
-type User = {
+interface User {
   _id?: string;
+  avatar: string;
   username: string;
   password: string;
   email: string;
   role: string;
-  avatar: string;
   userId: string;
   progress: string;
   basicCourse: boolean;
@@ -69,6 +69,19 @@ export const buyCourse = createAsyncThunk(
     } catch (err) {
       return rejectWithValue(err);
     }
+  }
+)
+
+export const allUsers = createAsyncThunk(
+  "users/fetchUsers",
+  async (_, thunkAPI) => {
+    try {
+      const res = await fetch("http://localhost:3333/users");
+      const users = await res.json();
+      return users;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   })
 
 // export const oneUser = createAsyncThunk(
@@ -117,6 +130,7 @@ export const userSlice = createSlice({
         state.loading = false;
       })
       .addCase(oneUser.fulfilled, (state, action) => {
+        console.log(action.payload)
         state.error = null;
         state.users = action.payload;
         state.loading = false;
@@ -132,6 +146,20 @@ export const userSlice = createSlice({
       .addCase(deleteUser.fulfilled, (state, action) => {
         state.users = state.users.filter((item) => item._id !== action.payload);
         state.error = null;
+        state.loading = false;
+      })
+      .addCase(allUsers.pending, (state) => {
+        state.error = null;
+        state.loading = true;
+      })
+      .addCase(allUsers.rejected, (state, action) => {
+        state.error = action.payload.message;
+        state.loading = false;
+      })
+      .addCase(allUsers.fulfilled, (state, action) => {
+        // console.log(action.payload)
+        state.error = null;
+        state.users = action.payload;
         state.loading = false;
       })
       .addCase(buyCourse.fulfilled, (state, action) => {
