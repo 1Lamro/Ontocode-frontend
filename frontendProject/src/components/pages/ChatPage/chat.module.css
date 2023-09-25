@@ -20,6 +20,7 @@
 }
 
 .messageRecipient {
+    box-sizing: border-box;
     background-color: #f9efec;
     width: 300px;
     padding: 10px;
@@ -28,6 +29,7 @@
 }
 
 .messageSender {
+    box-sizing: border-box;
     background-color: rgb(194, 243, 194);
     max-width: 300px;
     padding: 10px;
@@ -37,10 +39,11 @@
 }
 
 .containerB {
+    box-sizing: border-box;
     height: 80vh;
     background-color: #fff;
     padding: 20px;
-    overflow: scroll;
+    overflow-y: auto ;
 }
 
 
@@ -50,6 +53,7 @@
 }
 
 .headerB {
+    box-sizing: border-box;
     height: 10vh;
     display: flex;
     align-items: center;
@@ -59,6 +63,7 @@
 }
 
 .btn {
+    box-sizing: border-box;
     padding: 10px;
     width: 150px;
     border: none;
@@ -70,11 +75,13 @@
 }
 
 .userInput {
+    box-sizing: border-box;
     padding: 10px;
     width: 50%;
 }
 
 .homeBtn {
+    box-sizing: border-box;
     width: 200px;
     padding: 10px;
     font-size: 16px;
@@ -98,6 +105,7 @@
 }
 
 .sidebar {
+    box-sizing: border-box;
     height: 100%;
     background-color: #ffffff;
     flex: 0.2;
@@ -123,6 +131,7 @@
 }
 
 .messageBlock {
+    box-sizing: border-box;
     padding: 20px;
     height: 10vh;
 }
@@ -136,6 +145,7 @@
 }
 
 .userMessage {
+    box-sizing: border-box;
     width: 80%;
     height: 100%;
     border-radius: 10px;
@@ -145,6 +155,7 @@
 }
 
 .btnM {
+    box-sizing: border-box;
     width: 150px;
     background-color: green;
     border: none;
@@ -157,4 +168,11 @@
 
 .btnM:hover {
     background-color: rgb(129, 201, 129)
+}
+
+.status {
+    position: absolute;
+    font-size: 13px;
+    font-style: italic;
+    bottom: 1px;
 }

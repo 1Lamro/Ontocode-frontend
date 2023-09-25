@@ -107,6 +107,7 @@
   font-weight: 700;
   line-height: 24px; /* 171.429% */
   background-color: white;
+  cursor: pointer;
 }
 .header1 {
   display: flex;
@@ -301,6 +302,8 @@
   line-height: 24px; /* 160% */
   max-height: 28px;
   background-color: white;
+  border: none;
+  cursor: pointer;
 }
 
 .secondCard {
@@ -379,6 +382,7 @@
   line-height: 24px; /* 160% */
   max-height: 28px;
   background: #3a10e5;
+ 
 }
 
 .footerBlock5 button {

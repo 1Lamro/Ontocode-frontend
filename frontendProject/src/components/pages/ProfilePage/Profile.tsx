@@ -30,9 +30,8 @@ const Profile = () => {
   const userCard = parseJWT(token)
 
   useEffect(() => {
-    
     dispatch(oneUser(userCard.userId))
-  }, [])
+  }, [dispatch])
 
   const handleDelete = (id: string) => {
     dispatch(deleteUser(id))
@@ -45,7 +44,7 @@ const Profile = () => {
   return (
     <div className={styles.container}>
       <h2 className={styles.headerText}>Ваш Личный кабинет</h2>
-      <img src={user.avatar} alt="Ваша аватарка" />
+      <img src={`http://localhost:3333/images/avatar.png`} alt="Ваша аватарка" />
       <div className={styles.card}>
         <div className={styles.block}>
           <p className={styles.name}>Никнейм: {user.login}</p>

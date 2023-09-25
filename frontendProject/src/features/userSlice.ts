@@ -1,14 +1,19 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { RootState } from "../app/store";
+//import axios from "axios";
 
-type User = {
+interface User {
   _id?: string;
+  avatar: string;
   username: string;
   password: string;
   email: string;
-  role: string
-  avatar: string
-  progress: string
+  role: string;
+  userId: string;
+  progress: string;
+  basicCourse: boolean;
+  plusCourse: boolean;
+  proCourse: boolean;
 };
 
 type userInfoState = {
@@ -25,32 +30,72 @@ const userState: userInfoState = {
   token: localStorage.getItem("token"),
 };
 
-export const addCarToUser = createAsyncThunk(
-  'user/addCarToUser',
-  async ({ userId, carId }, { rejectWithValue }) => {
-    try {
-      const response = await axios.patch(`/user/${userId}`, {
-        carId: carId,
-      });
-      return response.data; // Если сервер возвращает какие-то данные после успешной операции
-    } catch (error) {
-      return rejectWithValue(error.response.data);
-    }
-  }
-);
 
-export const oneUser = createAsyncThunk(
-  "user/fetchUser",
-  async (id, { rejectWithValue }) => {
+// export const addCarToUser = createAsyncThunk(
+//   "user/addCarToUser",
+//   async ({ userId, carId }, { rejectWithValue }) => {
+//     try {
+//       const response = await axios.patch(`/user/${userId}`, {
+//         carId: carId,
+//       });
+//       return response.data; // Если сервер возвращает какие-то данные после успешной операции
+//     } catch (error) {
+//       return rejectWithValue(error.response.data);
+//     }
+//   }
+// );
+
+export const oneUser = createAsyncThunk("user/fetchUser", async (id) => {
+  const res = await fetch(`http://localhost:3333/profile/${id}`);
+  const user = await res.json();
+  return user;
+});
+
+export const buyCourse = createAsyncThunk(
+  "user/buyCourse",
+  async ({ userId, courseType }, { rejectWithValue, getState }) => {
     try {
-      const res = await fetch(`http://localhost:3333/profile/${id}`);
-      const user = await res.json();
-      return user;
-    } catch (error) {
-      return rejectWithValue(error.response.data);
+      const res = await fetch(`http://localhost:3333/course/${userId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${getState().application.token}`,
+        },
+        body: JSON.stringify({
+          [courseType]: true,
+        }),
+      });
+      return res.json();
+    } catch (err) {
+      return rejectWithValue(err);
     }
   }
-);
+)
+
+export const allUsers = createAsyncThunk(
+  "users/fetchUsers",
+  async (_, thunkAPI) => {
+    try {
+      const res = await fetch("http://localhost:3333/users");
+      const users = await res.json();
+      return users;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  })
+
+// export const oneUser = createAsyncThunk(
+//   "user/fetchUser",
+//   async (id, { rejectWithValue }) => {
+//     try {
+//       const res = await fetch(`http://localhost:3333/profile/${id}`);
+//       const user = await res.json();
+//       return user;
+//     } catch (error) {
+//       return rejectWithValue(error.response.data);
+//     }
+//   }
+// );
 
 export const deleteUser = createAsyncThunk(
   "user/delete",
@@ -85,6 +130,7 @@ export const userSlice = createSlice({
         state.loading = false;
       })
       .addCase(oneUser.fulfilled, (state, action) => {
+        console.log(action.payload)
         state.error = null;
         state.users = action.payload;
         state.loading = false;
@@ -102,19 +148,32 @@ export const userSlice = createSlice({
         state.error = null;
         state.loading = false;
       })
-      .addCase(addCarToUser.pending, (state) => {
+      .addCase(allUsers.pending, (state) => {
         state.error = null;
         state.loading = true;
       })
-      .addCase(addCarToUser.fulfilled, (state, action) => {
+      .addCase(allUsers.rejected, (state, action) => {
+        state.error = action.payload.message;
+        state.loading = false;
+      })
+      .addCase(allUsers.fulfilled, (state, action) => {
+        // console.log(action.payload)
         state.error = null;
         state.users = action.payload;
         state.loading = false;
       })
-      .addCase(addCarToUser.rejected, (state, action) => {
-        state.error = action.payload;
-        state.loading = false;
+      .addCase(buyCourse.fulfilled, (state, action) => {
+        // Обновите состояние пользователя после успешной покупки курса
+        state.users = action.payload;
       })
+      // .addMatcher(
+      //   (action) =>
+      //     action.type.endsWith("/rejected"),
+      //   (state, action) => {
+      //     state.error = action.payload;
+      //     state.loading = false;
+      //   }
+      // )
   },
 });
 

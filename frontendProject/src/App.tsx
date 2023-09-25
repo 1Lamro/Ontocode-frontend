@@ -10,6 +10,8 @@ import Profile from './components/pages/ProfilePage/Profile'
 import Images from './components/pages/imgPage/Images'
 import socketIO from 'socket.io-client';
 import ChatForm from './components/pages/ChatPage/ChatForm'
+import { useSelector } from 'react-redux'
+import { RootState } from './app/store'
 import CompanyPage from './components/pages/CompanyPage/Company'
 import Course from './components/pages/CoursePage/Course'
 import HTML from './components/pages/CoursePage/lang/HTML/HTML'
@@ -19,6 +21,12 @@ const socket = socketIO.connect('http://localhost:3333')
 
 
 function App() {
+
+  const loading = useSelector((state: RootState) => state.application.loading) //взял лоадинг из слайса
+
+  if (loading) {
+    return 'loading...'
+  } // функция для прогрузки лоадинга при пендинге
 
   return (
     <div>
