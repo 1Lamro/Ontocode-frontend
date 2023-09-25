@@ -39,7 +39,7 @@ const Header = () => {
       ) : (
         <div className={styles.loginContainer}>
           <div>
-            <Link to="/chatForm"><img src={chat} alt="" /></Link>
+            <Link to="/chat"><img src={chat} alt="" /></Link>
           </div>
           <img src={search} className={styles.search} />
           <Link to='/SignUp' className={styles.loginButton}><p>Log In</p></Link>
