@@ -1,59 +1,55 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
-export const initialState = {
-  images: [],
-  oneImages: [],
+type User = {
+  _id: string;
+  username: string;
+  password: string;
+  email: string;
+  role: string
+  avatar: string
+  progress: string
 };
 
-export const allImages = createAsyncThunk(
-  "all/images",
-  async (_, thunkAPI) => {
-    try {
-      const res = await fetch("http://localhost:3333/allimages", {
-        method: "GET",
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
-        },
-      });
-      const data = await res.json();
-      return data;
-    } catch (error) {
-      thunkAPI.rejectWithValue(error);
-    }
-  }
-);
+type RegistrState = {
+  users: User[];
+  error: null | unknown | string;
+  token: string | null | number;
+  loading: boolean
+};
 
-export const onePeopleImages = createAsyncThunk(
-  "one/images",
-  async (id, thunkAPI) => {
-    try {
-      const res = await fetch(`http://localhost:3333/onepeopleimage/${id}`);
-      const data = await res.json();
-      return data;
-    } catch (error) {
-      thunkAPI.rejectWithValue(error);
-    }
-  }
-);
 
-export const addImage = createAsyncThunk(
-  "add/image",
-  async ({ image }, thunkAPI)=> {
+const initialState: RegistrState = {
+  users: [],
+  error: null,
+  loading: false,
+  token: localStorage.getItem("token") as string | null
+};
+
+
+export const updateUserData = createAsyncThunk(
+  "user/updateUserData",
+  async ({ id, name, password, image, token }: { id: string; username?: string; avatar?: string; token: string; email: string; password: string }) => {
     try {
-      const formData = new FormData();
-      formData.append("img", image[0]);
-      const res = await fetch("http://localhost:3333/addimage", {
-        method: "PATCH",
-        body: formData,
+      
+      const response = await fetch(`http://localhost:3333/patch/${id}`,  {
+        method: 'PATCH',
         headers: {
-          Authorization: `Bearer ${thunkAPI.getState().application.token}`,
+          'Authorization': `Bearer ${token}`,
+          'Content-type': 'application/json'
         },
+        body: JSON.stringify(
+          {
+            username: name,
+            avatar: image, 
+            password: password
+          },
+        )
       });
-      const data = await res.json();
-      return data;
+      
+      return response.data;
     } catch (error) {
-      thunkAPI.rejectWithValue(error);
+      throw error;
     }
   }
 );
@@ -64,16 +60,10 @@ export const imageSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(allImages.fulfilled, (state, action) => {
-        state.images = action.payload;
+      .addCase(updateUserData.fulfilled, (state, action) => {
+        state.users = action.payload;
       })
-      .addCase(addImage.fulfilled, (state, action) => {
-        state.images = action.payload;
-      })
-      .addCase(onePeopleImages.fulfilled, (state, action) => {
-        state.oneImages = action.payload;
-      });
   },
 });
 
-export default imageSlice.reducer;
+// export default imageSlice.reducer;
