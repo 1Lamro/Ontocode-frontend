@@ -3,6 +3,7 @@ import { RootState } from "../app/store";
 //import axios from "axios";
 
 interface User {
+  push(username: string): any;
   _id?: string;
   avatar: string;
   username: string;

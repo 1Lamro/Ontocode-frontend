@@ -43,12 +43,12 @@ function App() {
             <Route path='/SignUp' element={<SignUp />} />
             <Route path='/SignIn' element={<SignIn />} />
             <Route path='/Profile' element={<Profile />} />
-            <Route path='/images' element={<Images/>} />
+            {/* <Route path='/images' element={<Images/>} /> */}
             <Route path='/courses' element={<Course />} />
             <Route path='/course/:id' element={< HTML/>} />
             <Route path='/course/:id/course' element={< JavaScript/>} />
             {/* <Route path='/video' Component={VideoPlayer}></Route> */}
-            <Route path='/patch/:id' element={<ProfileUpdate/>}/>
+            {/* <Route path='/patch/:id' element={<ProfileUpdate/>}/> */}
           </Routes>
         </div>
       </div>

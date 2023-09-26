@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { JSXElementConstructor, ReactElement, ReactNode, ReactPortal, useEffect, useState } from "react";
 import styles from '../chat.module.css'
 import { useDispatch, useSelector } from "react-redux";
 import { allUsers, oneUser } from "../../../../features/userSlice";
@@ -30,6 +30,9 @@ const sideBar = ({ socket }) => {
         return JSON.parse(jsonPayload);
     }
     const ownid = parseJWT(token);
+    console.log(User);
+    
+
 
 
     useEffect(() => {
@@ -39,21 +42,14 @@ const sideBar = ({ socket }) => {
         socket.on('responseNewUser', (data) => setUsers(data))
     }, [dispatch, socket, users]);
 
-    // const filteredList = users.filter((value, index, self) =>
-    //     index === self.findIndex((t) => (
-    //         t.user === value.user && t.socketID === value.socketID
-    //     ))
-    // )
-
-    // console.log(ownid);
+    const names: (string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined)[] = [];
+    User.map(item => names.push(item.username))
 
 
     return (<div className={styles.sidebar}>
         <h1 className={styles.headerS}>Online</h1>
         <ul className={styles.users}>
-            {token ?
-                User.map(item => ownid.userId === item._id ? <li key={item._id}>{item.username}</li> : <li key={item._id} >Anonim {Math.floor(Math.random() * 90) + 10}</li>) : null}
-
+            {token ? User.map((item, index) => item._id === ownid.userId ? <li key={item._id}>{item.username} <span className={styles.span1}>•</span> </li> : <li>{names[index]}</li>) : null}
         </ul>
     </div>);
 };
