@@ -45,10 +45,14 @@ const userState: userInfoState = {
 //   }
 // );
 
-export const oneUser = createAsyncThunk("user/fetchUser", async (id) => {
-  const res = await fetch(`http://localhost:3333/profile/${id}`);
-  const user = await res.json();
-  return user;
+export const oneUser = createAsyncThunk("user/fetchUser", async (id, thunkAPI) => {
+  try {
+    const res = await fetch(`http://localhost:3333/profile/${id}`);
+    const user = await res.json();
+    return user;  
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error)
+  }
 });
 
 export const buyCourse = createAsyncThunk(
@@ -114,7 +118,7 @@ export const userSlice = createSlice({
         state.loading = true;
       })
       .addCase(oneUser.rejected, (state, action) => {
-        state.error = action.payload.message;
+        state.error = action.payload;
         state.loading = false;
       })
       .addCase(oneUser.fulfilled, (state, action) => {
@@ -141,7 +145,7 @@ export const userSlice = createSlice({
         state.loading = true;
       })
       .addCase(allUsers.rejected, (state, action) => {
-        state.error = action.payload.message;
+        state.error = action.payload;
         state.loading = false;
       })
       .addCase(allUsers.fulfilled, (state, action) => {

@@ -4,15 +4,14 @@ import { AppDispatch, RootState } from '../../../app/store';
 import { deleteUser, oneUser } from '../../../features/userSlice';
 import { useNavigate } from 'react-router-dom';
 import styles from './Profile.module.css'
-import { Link } from 'react-router-dom';
+import ProfileUpdate from './ProfileUpdate';
 
 
 const Profile = () => {
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useDispatch<AppDispatch>();
   const user = useSelector((state: RootState) => state.user.users); // Получаем информацию о пользователе из Redux
-  const token = useSelector((state: RootState) => state.application.token)
-  const navigate = useNavigate()
-  
+  const token = useSelector((state: RootState) => state.application.token);
+  const navigate = useNavigate();
 
   function parseJWT(token: string) {
     const base64Url = token.split(".")[1];
@@ -25,29 +24,29 @@ const Profile = () => {
         })
         .join("")
     );
-    return JSON.parse(jsonPayload)
+    return JSON.parse(jsonPayload);
   }
-  const userCard = parseJWT(token)
+  const userCard = parseJWT(token);
 
   useEffect(() => {
-    dispatch(oneUser(userCard.userId))
-  }, [])
+    dispatch(oneUser(userCard.userId));
+  }, [dispatch]);
 
   const handleDelete = (id: string) => {
-    dispatch(deleteUser(id))
-    localStorage.removeItem('token')
-    window.location.reload()
-    navigate('/')
-    location.reload()
-  }
+    dispatch(deleteUser(id));
+    localStorage.removeItem("token");
+    window.location.reload();
+    navigate("/");
+    location.reload();
+  };  
 
   return (
     <div className={styles.container}>
       <h2 className={styles.headerText}>Ваш Личный кабинет</h2>
-      <img src={`http://localhost:3333/images/avatar.png`} alt="Ваша аватарка" />
+      <img src={`http://localhost:3333/${user.avatar}`} alt="avatar" className={styles.avatar} />
       <div className={styles.card}>
         <div className={styles.block}>
-          <p className={styles.name}>Никнейм: {user.login}</p>
+          <p className={styles.name}>Никнейм: {user.username}</p>
         </div>
         <div className={styles.block}>
           <p className={styles.name}>Ваш Email: {user.email}</p>
@@ -58,11 +57,21 @@ const Profile = () => {
         <div className={styles.block}>
           <p className={styles.name}>Ваш Опыт: {user.progress}</p>
         </div>
+        <button
+          className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full"
+        >
+          Изменить профиль
+        </button>
         <div>
-          <Link to='/images'><p>Добавить фотографию</p></Link>
         </div>
-        <button onClick={() => handleDelete(user._id)} className={styles.deletedUserButton}>Удалить пользователя</button>
+        <button
+          onClick={() => handleDelete(user._id)}
+          className={styles.deletedUserButton}
+        >
+          Удалить пользователя
+        </button>
       </div>
+      <ProfileUpdate id={user._id} token={token}/>
     </div>
   );
 };
