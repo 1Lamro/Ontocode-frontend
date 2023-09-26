@@ -1,11 +1,13 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState, useRef } from 'react';
 import styles from '../chat.module.css'
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../../app/store';
+import { deleteMessage, getMessage } from '../../../../features/chatSlice';
 
-const body = ({ messages, status, socket }) => {
+const body = ({ status, socket }) => {
 
+    const messages = useSelector((state: RootState) => state.chat.chat)
     const token = useSelector((state: RootState) => state.application.token);
     const user = useSelector((state: RootState) => state.user.users)
     const dispatch = useDispatch()
@@ -39,11 +41,24 @@ const body = ({ messages, status, socket }) => {
         navigate('/')
     }
 
+    const handleDeleteMess = (id) => {
+        dispatch(deleteMessage(id))
+        dispatch(getMessage())
+
+    }
+
+    const messagesRef = useRef(null);
+
     useEffect(() => {
-        if(isLeaving) {
+        dispatch(getMessage())
+        if (isLeaving) {
             socket.emit('leaveChat')
         }
-    },[isLeaving, socket])
+        if (messagesRef.current) {
+            messagesRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+
+    }, [ isLeaving, socket, dispatch])
 
     return (
         <div>
@@ -53,20 +68,22 @@ const body = ({ messages, status, socket }) => {
                 </header>
                 <div className={styles.containerB}>
                     {
-                        messages.map((element: {
+                        messages.messages?.map((element: {
                             [x: string]: ReactNode; name: string | null;
                         }) => {
                             return (
-                                element.name === oneUser[0].username ? (
-                                    <div className={styles.chats} key={element.id}>
+                                element.sender === oneUser[0]?._id ? (
+                                    <div ref={messagesRef} className={styles.chats} key={element._id}  >
                                         <p className={styles.senderName}>Вы</p>
-                                        <div className={styles.messageSender}>
-                                            <p>{element.text}</p>
+                                        <div className={styles.messageSender} >
+                                            <p>{element.text}{
+                                                <button className={styles.deleteI} onClick={() => handleDeleteMess(element._id)}>x</button>
+                                            }</p>
                                         </div>
                                     </div>
                                 ) : (
-                                    <div className={styles.chats} key={element.id}>
-                                        <p>{element.name}</p>
+                                    <div className={styles.chats} key={element._id}>
+                                        <p>{user.map(item => item._id === element.sender ? item.username : null)}</p>
                                         <div className={styles.messageRecipient}>
                                             <p>{element.text}</p>
                                         </div>

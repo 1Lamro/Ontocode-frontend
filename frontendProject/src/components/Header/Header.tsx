@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import styles from './Header.module.css'
@@ -9,8 +9,10 @@ import chat from './chat.svg'
 
 const Header = () => {
   const token = useSelector((state: RootState) => state.application.token);
+  const navigate = useNavigate()
   const removeToken = () => {
     localStorage.removeItem("token");
+    navigate('/')
     window.location.reload();
   };
 
@@ -39,7 +41,7 @@ const Header = () => {
       ) : (
         <div className={styles.loginContainer}>
           <div>
-            <Link to="/chatForm"><img src={chat} alt="" /></Link>
+            <Link to="/chat"><img src={chat} alt="" /></Link>
           </div>
           <img src={search} className={styles.search} />
           <Link to='/SignUp' className={styles.loginButton}><p>Log In</p></Link>
