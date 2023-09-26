@@ -16,6 +16,7 @@ import CompanyPage from './components/pages/CompanyPage/Company'
 import Course from './components/pages/CoursePage/Course'
 import HTML from './components/pages/CoursePage/lang/HTML/HTML'
 import JavaScript from './components/pages/CoursePage/lang/JS/JavaScript'
+import RentForm from './components/pages/payCurs/payCurs'
 
 const socket = socketIO.connect('http://localhost:3333')
 
@@ -46,6 +47,7 @@ function App() {
             <Route path='/courses' element={<Course />} />
             <Route path='/course/:id' element={< HTML/>} />
             <Route path='/course/:id/course' element={< JavaScript/>} />
+            
             {/* <Route path='/video' Component={VideoPlayer}></Route> */}
           </Routes>
         </div>
