@@ -43,7 +43,7 @@
     height: 80vh;
     background-color: #fff;
     padding: 20px;
-    overflow: scroll;
+    overflow-y: auto ;
 }
 
 
