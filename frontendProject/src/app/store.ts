@@ -14,7 +14,8 @@ export const store = configureStore({
         // image: imagesSlice,
         price: priceSlice,
         course: courseSlice,
-        chat: chatSlise
+        chat: chatSlise,
+       
     }
 })
 
