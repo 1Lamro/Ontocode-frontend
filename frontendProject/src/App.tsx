@@ -41,7 +41,7 @@ function App() {
             <Route path='/SignIn' element={<SignIn />} />
             <Route path='/Profile' element={<Profile />} />
             <Route path='/images' element={<Images/>} />
-            {/* <Route path='/courses' element={<Course />} /> */}
+            <Route path='/courses' element={<Course />} />
             {/* <Route path='/video' Component={VideoPlayer}></Route> */}
           </Routes>
         </div>
