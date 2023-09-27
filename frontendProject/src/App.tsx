@@ -7,7 +7,7 @@ import Home from './components/pages/HomePage/Home'
 import SignUp from './components/pages/SignIn&SignUpPage/SignUp'
 import SignIn from './components/pages/SignIn&SignUpPage/SignIn'
 import Profile from './components/pages/ProfilePage/Profile'
-// import Images from './components/pages/imgPage/Images'
+//  import Images from './components/pages/imgPage/Images'
 import socketIO from 'socket.io-client';
 import ChatForm from './components/pages/ChatPage/ChatForm'
 import { useSelector } from 'react-redux'
@@ -44,7 +44,7 @@ function App() {
             <Route path='/SignUp' element={<SignUp />} />
             <Route path='/SignIn' element={<SignIn />} />
             <Route path='/Profile' element={<Profile />} />
-            <Route path='/images' element={<Images/>} />
+            {/* <Route path='/images' element={<Images/>} /> */}
             <Route path='/courses' element={<Course />} />
             <Route path='/course/:id' element={< HTML/>} />
             <Route path='/course/:id/course' element={< JavaScript/>} />
