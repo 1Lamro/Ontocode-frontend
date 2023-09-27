@@ -17,15 +17,17 @@ const Course = () => {
         <div className={styles.container}>
             {courses.map((course: Courses) => {
                 return (
-                    <div className={styles.courseBlock}>
-                        <div>
-                            {course.title}
+                    <Link to={`/course/${course._id}`} className={styles.courseBlock}>
+                        <div className={styles.typeAccess}>Basic</div>
+                        <div className={styles.blockCont}>
+                            <h3>
+                                {course.title}
+                            </h3>
+                            <p>
+                                {course.text}
+                            </p>
                         </div>
-                        <div>
-                            {course.text}
-                        </div>
-                        <Link to={`/course/${course._id}`}>Перейти к блоку</Link>
-                    </div>
+                    </Link>
                 )
             })}
         </div>

@@ -11,7 +11,7 @@
   display: flex;
   align-items: flex-start;
   gap: 32px;
-  width: 65%;
+  width: 100%;
   margin: auto;
 }
 .oneTable {
@@ -192,7 +192,7 @@ align-items: flex-start;
 }
 .mainTwo {
   display: flex;
-  width: 65%;
+  width: 100%;
   margin: auto;
   gap: 32px;
 }
