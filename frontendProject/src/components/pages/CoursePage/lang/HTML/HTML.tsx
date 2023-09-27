@@ -15,6 +15,8 @@ import "ace-builds/src-noconflict/snippets/css";
 import { useState } from 'react'
 import styles from './HTML.module.css'
 import Mustache from 'mustache';
+import { Carousel, CarouselItem } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 
 const HTML = () => {
@@ -41,6 +43,28 @@ const HTML = () => {
 
     return (
         <>
+        <div>
+         <Carousel>
+          <CarouselItem>
+          <iframe
+            title="YouTube Video"
+            width="300"
+            height="300"
+            src='https://www.youtube.com/embed/yxnWxlHy_SU'
+            allowFullScreen
+          ></iframe>
+          </CarouselItem>
+          <CarouselItem>
+          <iframe
+            title="YouTube Video"
+            width="300"
+            height="300"
+            src='https://www.youtube.com/embed/DOEtVdkKwcU'
+            allowFullScreen
+          ></iframe>
+          </CarouselItem>
+        </Carousel>
+        </div>
             <p>
                 Выберите стиль
             </p>

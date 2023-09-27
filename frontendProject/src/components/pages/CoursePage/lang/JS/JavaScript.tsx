@@ -7,7 +7,8 @@ import 'ace-builds/src-noconflict/ext-language_tools';
 
 import { useState } from 'react'
 import styles from './JavaScript.module.css'
-
+import { Carousel, CarouselItem } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const JavaScript = () => {
     const [js, setJs] = useState('')
@@ -19,6 +20,28 @@ const JavaScript = () => {
 
     return (
         <>
+                <div>
+         <Carousel>
+          <CarouselItem>
+          <iframe
+            title="YouTube Video"
+            width="300"
+            height="300"
+            src='https://www.youtube.com/embed/yxnWxlHy_SU'
+            allowFullScreen
+          ></iframe>
+          </CarouselItem>
+          <CarouselItem>
+          <iframe
+            title="YouTube Video"
+            width="300"
+            height="300"
+            src='https://www.youtube.com/embed/DOEtVdkKwcU'
+            allowFullScreen
+          ></iframe>
+          </CarouselItem>
+        </Carousel>
+        </div>
             <div className={styles.editorContainer}>
                 <div className={styles.editorBlock}>
                     <div className={styles.headEditor}>
