@@ -92,8 +92,8 @@ const RentForm = ({
               <div className={styles.successIndicator}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="40"
-                  height="40"
+                  width="70"
+                  height="70"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="#4CAF50"
@@ -151,8 +151,8 @@ const RentForm = ({
                     value={formData.paymentMethod}
                     onChange={handleInputChange()}
                   >
-                    <option value="card">Кредитная карта</option>
                     <option value="cash">Наличные</option>
+                    <option value="card">Кредитная карта</option>
                   </select>
                 </div>
                 <button

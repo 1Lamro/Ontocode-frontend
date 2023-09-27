@@ -15,13 +15,14 @@ interface User {
   basicCourse: boolean;
   plusCourse: boolean;
   proCourse: boolean;
-};
+}
 
 type userInfoState = {
   users: User[];
   error: null | unknown | string;
   token: string | null | number;
   loading: boolean;
+  
 };
 
 const userState: userInfoState = {
