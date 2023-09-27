@@ -21,7 +21,7 @@ const Home = () => {
     return (
         <>
             <div className={styles.firstBlock}>
-                <div><img src={homepage1} alt="" /></div>
+                <div><img src={homepage1} alt="" className={styles.homepage1}/></div>
                 <div>
                     <div>
                         Join the millions learning to code
