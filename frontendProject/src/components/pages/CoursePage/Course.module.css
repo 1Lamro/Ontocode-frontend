@@ -8,17 +8,31 @@
 
 .courseBlock {
   width: 100%;
+  height: 150px;
   display: flex;
   flex-direction: column;
-  padding: 10px 10px;
   box-sizing: border-box;
   color: rgb(0, 0, 0);
-  border: 1px solid black;
+  border: 1px solid rgb(112, 112, 112);
   transition: 0.2s;
+  border-radius: 5px;
+  background-color: #ffffff;
+  text-decoration: none;
 }
 
 .courseBlock:hover {
   transform: translate(5px, -5px);
   box-shadow: -5px 5px;
   transition: 0.2s;
+}
+
+.typeAccess {
+  border-radius: 5px 5px 0 0;
+  background-color: #EAFDC6;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+.blockCont {
+  padding: 0 12px;
 }

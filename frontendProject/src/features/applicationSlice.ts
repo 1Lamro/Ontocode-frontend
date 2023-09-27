@@ -71,7 +71,7 @@ export const authSignIn = createAsyncThunk<string | number, User>(
       localStorage.setItem("token", token.token);
       return token;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.toString());
     }
   }
 );

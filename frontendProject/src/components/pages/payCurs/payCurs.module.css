@@ -30,9 +30,10 @@
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    margin-top: 10px;
+   margin-left: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
+
   }
   
   .butRent:hover {
@@ -42,3 +43,49 @@
   .error {
     border-color: red;
   }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .loadingSpinner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+   
+  }
+  
+  .spinner {
+    border: 4px solid rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid #007bff; /* Цвет вашего спиннера */
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite; 
+  }
+  .spinnerText{
+    font-weight: bold;
+  }
+  .successIndicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 20px 0;
+  
+}
+
+.successText {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.successIcon {
+  width: 40px;
+  height: 40px;
+  fill: #4CAF50; /* Зеленый цвет для галочки */
+  margin-bottom: 10px;
+}

@@ -4,15 +4,20 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../../app/store';
 import { deleteMessage, getMessage } from '../../../../features/chatSlice';
+import Preloader from './Preloader';
+import Chat from '../Chat';
 
 const body = ({ status, socket }) => {
 
     const messages = useSelector((state: RootState) => state.chat.chat)
     const token = useSelector((state: RootState) => state.application.token);
     const user = useSelector((state: RootState) => state.user.users)
-    const dispatch = useDispatch()
+    const loading = useSelector((state: RootState) => state.chat.loading);
+
 
     const [isLeaving, setIsLeaving] = useState(false);
+
+    const dispatch = useDispatch()
     const navigate = useNavigate();
 
     function parseJWT(tokenUser: string | number | null) {
@@ -36,12 +41,12 @@ const body = ({ status, socket }) => {
     const oneUser = user.filter(item => item._id === ownid.userId)
 
     const handleLeave = () => {
-        localStorage.removeItem('user')
         setIsLeaving(true)
         navigate('/')
     }
 
     const handleDeleteMess = (id) => {
+        socket.emit('deleteMessage', id);
         dispatch(deleteMessage(id))
         dispatch(getMessage())
 
@@ -51,14 +56,17 @@ const body = ({ status, socket }) => {
 
     useEffect(() => {
         dispatch(getMessage())
+        handleDeleteMess()
         if (isLeaving) {
             socket.emit('leaveChat')
         }
-        if (messagesRef.current) {
-            messagesRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
+    }, [isLeaving, socket, dispatch])
 
-    }, [ isLeaving, socket, dispatch])
+    useEffect(() => {
+        if (messagesRef.current) {
+            messagesRef.current.scrollIntoView({inline: "start"})
+        }
+    }, [messages])
 
     return (
         <div>
@@ -66,36 +74,41 @@ const body = ({ status, socket }) => {
                 <header className={styles.headerB}>
                     <button className={styles.btn} onClick={handleLeave}>Покинуть чат</button>
                 </header>
-                <div className={styles.containerB}>
-                    {
-                        messages.messages?.map((element: {
-                            [x: string]: ReactNode; name: string | null;
-                        }) => {
-                            return (
-                                element.sender === oneUser[0]?._id ? (
-                                    <div ref={messagesRef} className={styles.chats} key={element._id}  >
-                                        <p className={styles.senderName}>Вы</p>
-                                        <div className={styles.messageSender} >
-                                            <p>{element.text}{
-                                                <button className={styles.deleteI} onClick={() => handleDeleteMess(element._id)}>x</button>
-                                            }</p>
+                {loading ? (
+                    <Preloader />
+                ) : (
+
+                    <div className={styles.containerB}>
+                        {
+                            messages.messages?.map((element: {
+                                [x: string]: ReactNode; name: string | null;
+                            }) => {
+                                return (
+                                    element.sender === oneUser[0]?._id ? (
+                                        <div  ref={messagesRef}  className={styles.chats} key={element._id}  >
+                                            <p className={styles.senderName}>Вы</p>
+                                            <div className={styles.messageSender} >
+                                                <p>{element.text}{
+                                                    <button className={styles.deleteI} onClick={() => handleDeleteMess(element._id)}>x</button>
+                                                }</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                ) : (
-                                    <div className={styles.chats} key={element._id}>
-                                        <p>{user.map(item => item._id === element.sender ? item.username : null)}</p>
-                                        <div className={styles.messageRecipient}>
-                                            <p>{element.text}</p>
+                                    ) : (
+                                        <div  className={styles.chats} key={element._id}>
+                                            <p>{user.map(item => item._id === element.sender ? item.username : null)}</p>
+                                            <div className={styles.messageRecipient}>
+                                                <p >{element.text}</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    )
                                 )
-                            )
-                        })
-                    }
-                    <div className={styles.status}>
-                        <p>{status}</p>
+                            })
+                        }
+                        <div className={styles.status}>
+                            <p>{status}</p>
+                        </div>
                     </div>
-                </div>
+                )}
             </>
         </div>
     );

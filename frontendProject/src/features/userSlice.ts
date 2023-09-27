@@ -3,6 +3,7 @@ import { RootState } from "../app/store";
 //import axios from "axios";
 
 interface User {
+  push(username: string): any;
   _id?: string;
   avatar: string;
   username: string;
@@ -14,13 +15,14 @@ interface User {
   basicCourse: boolean;
   plusCourse: boolean;
   proCourse: boolean;
-};
+}
 
 type userInfoState = {
   users: User[];
   error: null | unknown | string;
   token: string | null | number;
   loading: boolean;
+  
 };
 
 const userState: userInfoState = {
