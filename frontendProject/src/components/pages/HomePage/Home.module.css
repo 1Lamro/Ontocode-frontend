@@ -1,5 +1,7 @@
 .firstBlock {
   display: flex;
+  width: 65%;
+  margin: auto;
 }
 
 .courseBlock {
@@ -46,171 +48,184 @@
 }
 
 .secondBlock {
-    position: sticky;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background-color: #10162F;
- color: white;
-    box-sizing: border-box;
+  left: 0;
+  right: 0;
+  width: 99.9vw;
+  background-color: #10162f;
+  color: white;
+  box-sizing: border-box;
 }
 
 .secondBlockCont {
-    width: 65%;
-    margin: auto;
+  width: 65%;
+  margin: auto;
 }
 
 .thirdBlock {
-    width: 100%;
+  width: 100%;
 }
 
 .thirdBlockCont {
-    display: flex;
-    margin: auto;
-    height: 300px;
-    transition-property: all;
-    transition-duration: 0.5s;
+  display: flex;
+  width: 65%;
+  margin: auto;
+  height: 300px;
+  transition-property: all;
+  transition-duration: 0.5s;
 }
 
 .first,
 .second,
 .third,
 .fourth {
-    width: 25%;
-    height: 100%;
-    background-color: #212121;
-    transition-property: all;
-    transition-duration: 0.5s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 25%;
+  height: 100%;
+  background-color: #10162f;
+  transition-property: all;
+  transition-duration: 0.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .image {
-    height: 50%;
+  height: 50%;
 }
 
 .photo {
-    margin-top: 30px;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background-color: #fff;
-    object-fit: cover;
+  margin-top: 30px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #fff;
+  object-fit: cover;
 }
 
 .adam {
-    object-position: top
+  object-position: top;
 }
 
 .title {
-    padding: 40px;
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #e8e8e8;
+  padding: 40px;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #e8e8e8;
 }
 
 .min {
-    width: 150px;
-    color: #e8e8e8;
-    transition: color 0.5s;
+  width: 150px;
+  color: #e8e8e8;
+  transition: color 0.5s;
 }
 
 .max {
-    width: 100%;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.5s linear, width 0.5s;
-    margin-top: 10px;
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear, width 0.5s;
+  margin-top: 10px;
 }
 
 .first:hover {
-    width: 40%;
-    background-color: #e8e8e8;
+  width: 40%;
+  background-color: #e8e8e8;
 
-    .max {
-        width: 70%;
-        visibility: visible;
-        opacity: 1;
-        color: #212121;
-    }
+  .max {
+    width: 70%;
+    visibility: visible;
+    opacity: 1;
+    color: #10162f;
+  }
 
-    .min {
-        color: #212121;
-    }
+  .min {
+    color: #10162f;
+  }
 }
 
-.first:hover~.second,
-.first:hover~.third,
-.first:hover~.fourth {
-    width: 20%;
+.first:hover ~ .second,
+.first:hover ~ .third,
+.first:hover ~ .fourth {
+  width: 20%;
 }
 
 .second:hover {
-    width: 40%;
-    background-color: #e8e8e8;
+  width: 40%;
+  background-color: #e8e8e8;
 
-    .max {
-        width: 70%;
-        visibility: visible;
-        opacity: 1;
-        color: #212121;
-    }
+  .max {
+    width: 70%;
+    visibility: visible;
+    opacity: 1;
+    color: #10162f;
+  }
 
-    .min {
-        color: #212121;
-    }
+  .min {
+    color: #10162f;
+  }
 }
 
-.second:hover~.first,
-.second:hover~.third,
-.second:hover~.fourth {
-    width: 20%;
+.second:hover ~ .first,
+.second:hover ~ .third,
+.second:hover ~ .fourth {
+  width: 20%;
 }
 
 .third:hover {
-    width: 40%;
-    background-color: #e8e8e8;
+  width: 40%;
+  background-color: #e8e8e8;
 
-    .max {
-        width: 70%;
-        visibility: visible;
-        opacity: 1;
-        color: #212121;
-    }
+  .max {
+    width: 70%;
+    visibility: visible;
+    opacity: 1;
+    color: #10162f;
+  }
 
-    .min {
-        color: #212121;
-    }
+  .min {
+    color: #10162f;
+  }
 }
 
-.third:hover~.first,
-.third:hover~.second,
-.third:hover~.fourth {
-    width: 20%;
+.third:hover ~ .first,
+.third:hover ~ .second,
+.third:hover ~ .fourth {
+  width: 20%;
 }
 
 .fourth:hover {
-    width: 40%;
-    background-color: #e8e8e8;
+  width: 40%;
+  background-color: #e8e8e8;
 
-    .max {
-        width: 70%;
-        visibility: visible;
-        opacity: 1;
-        color: #212121;
-    }
+  .max {
+    width: 70%;
+    visibility: visible;
+    opacity: 1;
+    color: #212121;
+  }
 
-    .min {
-        color: #212121;
-    }
+  .min {
+    color: #212121;
+  }
 }
 
-.fourth:hover~.first,
-.fourth:hover~.second,
-.fourth:hover~.third {
-    width: 20%;
+.fourth:hover ~ .first,
+.fourth:hover ~ .second,
+.fourth:hover ~ .third {
+  width: 20%;
+}
+
+.imageCont {
+  width: 50%;
+}
+
+.homepage1 {
+  width: 100%;
+  object-fit: cover;
+}
+
+.regForm {
+  width: 50%;
 }

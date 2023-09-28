@@ -1,8 +1,5 @@
-.app {
-    width: 100vw;
-}
-
 .body {
-    width: 65%;
     margin: auto;
+    width: 100vw;
+    padding-top: 70px;
 }

@@ -1,45 +1,64 @@
-.headerContainer {
-    min-width: 300px;
-    width: 65%;
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
-    margin-top: 20px;
-    box-sizing: border-box;
+.headerClass {
+  margin-top: 20px;
+  position: fixed;
+  left: 50%;
+  width: 100%;
+  transition: 0.3s ease;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.headerFixed {
+  background: rgb(255, 255, 255);
+  transition: 0.1s ease-out;
+  border-bottom: 1px solid black;
+  z-index: 2;
+}
+
+.header {
+  min-width: 300px;
+  margin: auto;
+  width: 65%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
 }
 
-.navigation p, .zero, .loginButton{
-    text-decoration: none;
-    color: black;
+.navigation p,
+.zero,
+.loginButton {
+  text-decoration: none;
+  color: black;
 }
 
 .logo {
-    height: 40px;
-    width: 100px;
+  height: 40px;
+  width: 100px;
 }
 
 .zero {
-    display: flex;
+  display: flex;
 }
 
 .loginButton {
-    text-align: center;
+  text-align: center;
 }
 
 .loginContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .search {
-    height: 24px;
-    margin-right: 20px;
+  height: 24px;
+  margin-right: 20px;
 }
