@@ -43,7 +43,7 @@ const Profile = () => {
   return (
     <div className={styles.container}>
       <h2 className={styles.headerText}>Ваш Личный кабинет</h2>
-      <img src={`http://localhost:3333/${user.avatar}`} alt="Ваша аватарка" className={styles.avatar} />
+      <img src={`http://localhost:3333/images/${user.avatar}`} alt="Ваша аватарка" className={styles.avatar} />
       <div className={styles.card}>
         <div className={styles.block}>
           <p className={styles.name}>Никнейм: {user.username}</p>

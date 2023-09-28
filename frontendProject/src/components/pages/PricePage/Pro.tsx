@@ -8,13 +8,14 @@ import { oneUser } from "../../../features/userSlice";
 function Pro({
   handleInputChange,
   formData,
-}) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+}: any) {
     const token = useSelector((state: RootState) => state.application.token);
     const user = useSelector((state: RootState) => state.user.users);
     const [active, setActive] = React.useState(false);
     const dispatch = useDispatch()
 
-    function parseJWT(tokenUser) {
+    function parseJWT(tokenUser: unknown) {
         if (typeof tokenUser !== "string") {
           // Обработка ошибки или возврат значения по умолчанию
           return null;

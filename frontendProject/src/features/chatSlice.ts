@@ -1,35 +1,46 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { UnknownAsyncThunkAction, UnknownAsyncThunkRejectedAction, UnknownAsyncThunkRejectedWithValueAction } from "@reduxjs/toolkit/dist/matchers";
+import axios from "axios";
+import { RootState } from "../app/store";
+import { WritableDraft } from "immer/dist/internal.js";
 
 type Chat = {
-    participants: string, // участники чата
-    message: [{
-        sender: string,
-        text: string,
-        timestamp: number | unknown | null
-    }],
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  _id: any;
+  participants: string; // участники чата
+  message: [
+    {
+      sender: string;
+      text: string;
+      timestamp: number | unknown | null;
+    }
+  ]
+  oneUser: string,
+  [0]: string,
 };
 
 type chatForState = {
-    chat: Chat[],
-    error: null | unknown | string;
-    token: string | null | number;
-    loading: boolean;
+  chat: Chat[];
+  error: null | unknown | string;
+  token: string | null | number;
+  loading: boolean;
 };
 
 const chatState: chatForState = {
-    chat: [],
-    error: null,
-    loading: false,
-    token: localStorage.getItem("token"),
+  chat: [],
+  error: null,
+  loading: false,
+  token: localStorage.getItem("token"),
 };
 
-export const getMessage = createAsyncThunk<Chat[], string | number>('chat/getMessage', async () => {
+export const getMessage = createAsyncThunk<Chat[],  string>(
+  "chat/getMessage",
+  async () => {
     try {
         const response = await axios.get(`http://localhost:3333/chat/6513feefd2307f8f5529dd29`);
         return response.data;
     } catch (error) {
-        return error.message
+      return (error as UnknownAsyncThunkAction).message;
     }
 });
 
@@ -97,9 +108,7 @@ export const chatSlise = createSlice({
                 state.loading = false;
             })
     }
+
 });
 
-
 export default chatSlise.reducer;
-
-

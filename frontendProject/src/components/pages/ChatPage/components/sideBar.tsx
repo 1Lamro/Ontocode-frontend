@@ -32,9 +32,6 @@ const sideBar = ({ socket }) => {
     // const ownid = parseJWT(token);
     // const newUser = User.map(item => item.online === true)
     // console.log(newUser);
-    
-
-
 
     useEffect(() => {
         if (token) {

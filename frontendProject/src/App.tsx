@@ -22,13 +22,12 @@ import Footer from './components/Footer/Footer'
 
 const socket = socketIO.connect('http://localhost:3333')
 
-
+const socket: Socket = io('http://localhost:3333')
 function App() {
-
-  const loading = useSelector((state: RootState) => state.application.loading) //взял лоадинг из слайса
+  const loading = useSelector((state: RootState) => state.application.loading); //взял лоадинг из слайса
 
   if (loading) {
-    return 'loading...'
+    return "loading...";
   } // функция для прогрузки лоадинга при пендинге
 
   return (
@@ -37,27 +36,23 @@ function App() {
         <Header socket={socket} />
         <div className={styles.body}>
           <Routes>
-            <Route path='/chat' element={<Chat socket={socket}/>} />
-            <Route path ='/team' element={<CompanyPage />}/>
-            {/* <Route path='/chatForm' element={<ChatForm socket={socket}/>} /> */}
-            <Route path='/' element={<Home />} />
-            <Route path='/Price' element={<PricePage />} />
-            <Route path='/SignUp' element={<SignUp />} />
-            <Route path='/SignIn' element={<SignIn />} />
-            <Route path='/Profile' element={<Profile />} />
-            {/* <Route path='/images' element={<Images/>} /> */}
-            <Route path='/courses' element={<Course />} />
-            <Route path='/course/:id' element={< HTML/>} />
-            <Route path='/course/:id/course' element={< JavaScript/>} />
-            
-            {/* <Route path='/video' Component={VideoPlayer}></Route> */}
-            {/* <Route path='/patch/:id' element={<ProfileUpdate/>}/> */}
+            <Route path="/chat" element={<Chat socket={socket} />} />
+            <Route path="/team" element={<CompanyPage />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/Price" element={<PricePage />} />
+            <Route path="/SignUp" element={<SignUp />} />
+            <Route path="/SignIn" element={<SignIn />} />
+            <Route path="/Profile" element={<Profile />} />
+            <Route path="/courses" element={<Course />} />
+            <Route path="/course/:id" element={<HTML />} />
+            <Route path="/course/:id/course" element={<JavaScript />} />
+            <Route path="/video" Component={VideoPlayer}></Route>
           </Routes>
           <Footer/>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

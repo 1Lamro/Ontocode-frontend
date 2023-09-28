@@ -9,6 +9,7 @@ import search from './search.png'
 import chat from './chat.svg'
 import { joinInChat } from '../../features/userSlice';
 import Chat from '../pages/ChatPage/Chat';
+import { useEffect, useState } from 'react';
 
 const Header = ({socket}) => {
   const [joinChat, setJoinChat] = useState(false)
@@ -16,6 +17,22 @@ const Header = ({socket}) => {
   const dispatch = useDispatch();
   const token = useSelector((state: RootState) => state.application.token);
   const navigate = useNavigate()
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.pageYOffset);
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
+
+  const fixedClass = scrollY > 0 ? styles.headerFixed : null;
+
   const removeToken = () => {
     localStorage.removeItem("token");
     navigate('/')
@@ -74,10 +91,26 @@ const Header = ({socket}) => {
           <div >
             <img src={chat} alt="" />
           </div>
-          <img src={search} className={styles.search} />
-          <Link to='/SignUp' className={styles.loginButton}><p>Log In</p></Link>
-        </div>
-      )}
+          <div>
+            <button onClick={removeToken} className={styles.buttonExit}>
+              ВЫЙТИ
+            </button>
+            <Link to="/Profile">
+              {/* <img src={} alt="profile" className={styles.profile} /> */}
+              <div>Профиль</div>
+            </Link>
+          </div>
+        </>
+        ) : (
+          <div className={styles.loginContainer}>
+            <div>
+              <Link to="/chat"><img src={chat} alt="" /></Link>
+            </div>
+            <img src={search} className={styles.search} />
+            <Link to='/SignUp' className={styles.loginButton}><p>Log In</p></Link>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

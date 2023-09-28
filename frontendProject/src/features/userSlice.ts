@@ -1,9 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../app/store";
+import { WritableDraft } from "immer/dist/internal.js";
 //import axios from "axios";
 
 interface User {
   online: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   push(username: string): any;
   _id?: string;
   avatar: string;
@@ -16,13 +18,15 @@ interface User {
   basicCourse: boolean;
   plusCourse: boolean;
   proCourse: boolean;
-};
+  courseType: string
+}
 
 type userInfoState = {
   users: User[];
   error: null | unknown | string;
   token: string | null | number;
   loading: boolean;
+  
 };
 
 const userState: userInfoState = {
@@ -42,8 +46,11 @@ export const oneUser = createAsyncThunk("user/fetchUser", async (id, thunkAPI) =
   }
 });
 
-export const buyCourse = createAsyncThunk(
-  "user/buyCourse",
+export const buyCourse = createAsyncThunk<
+WritableDraft<User[]>,
+User,
+{ rejectValue: unknown; state: RootState}
+>("user/buyCourse",
   async ({ userId, courseType }, { rejectWithValue, getState }) => {
     try {
       const res = await fetch(`http://localhost:3333/course/${userId}`, {

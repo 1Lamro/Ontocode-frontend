@@ -3,16 +3,18 @@
   flex-direction: column;
   align-items: flex-start;
   background: #10162f;
-  box-sizing: border-box;   
-  /* width: 100vw; */
+  box-sizing: border-box;
+  width: 100vw;
 }
 
 .twoTable {
   display: flex;
+  justify-content: space-between;
   align-items: flex-start;
   gap: 32px;
-  width: 100%;
+  width: 65%;
   margin: auto;
+  margin-top: 30px;
 }
 .oneTable {
   width: 608px;
@@ -30,7 +32,7 @@
 }
 .text {
   color: #fff;
-  font-family: Segoe UI;
+  
   font-size: 22px;
   font-style: normal;
   font-weight: 700;
@@ -39,7 +41,6 @@
 }
 .text1 {
   color: #fff;
-  font-family: Segoe UI;
   font-size: 62px;
   font-style: normal;
   font-weight: 700;
@@ -49,7 +50,6 @@
 }
 .text2 {
   color: #fff;
-  font-family: Segoe UI;
   font-size: 17.6px;
   font-style: normal;
   font-weight: 400;
@@ -80,7 +80,6 @@ align-items: flex-start;
 }
 .text4 {
   color: #fff;
-  font-family: Segoe UI;
   font-size: 42px;
   font-style: normal;
   font-weight: 700;
@@ -88,7 +87,7 @@ align-items: flex-start;
 }
 .text5 {
   color: #fff;
-  font-family: Segoe UI;
+  
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -103,7 +102,6 @@ align-items: flex-start;
 }
 .inputText {
   color: #fff;
-  font-family: Segoe UI;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -142,7 +140,6 @@ align-items: flex-start;
   border: none;
   color: #10162f;
   text-align: center;
-  font-family: Segoe UI;
   font-size: 15px;
   font-style: normal;
   font-weight: 700;
@@ -174,16 +171,13 @@ align-items: flex-start;
 
 .mainText {
   color: #10162f;
-  font-family: Segoe UI;
   font-size: 31px;
   font-style: normal;
   font-weight: 700;
   line-height: 40.8px; /* 131.613% */
-
 }
 .mainText1 {
   color: #10162f;
-  font-family: Segoe UI;
   font-size: 17.6px;
   font-style: normal;
   font-weight: 400;
@@ -192,7 +186,8 @@ align-items: flex-start;
 }
 .mainTwo {
   display: flex;
-  width: 100%;
+  justify-content: space-between;
+  width: 65%;
   margin: auto;
   gap: 32px;
 }
@@ -200,76 +195,70 @@ align-items: flex-start;
   width: 500px;
   margin-top: 28px;
 }
-.mainText2{
-    display: flex;
-padding-right: 0px;
-flex-direction: column;
-align-items: flex-start;
-gap: 15.8px;
-width: 560px;
-margin-left: 263px;
-margin-top: 96px;
+.mainText2 {
+  display: flex;
+  padding-right: 0px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15.8px;
+  margin: auto;
+  width: 65%;
 }
-.text7{
-    color: #10162F;
-font-family: Segoe UI;
-font-size: 32px;
-font-style: normal;
-font-weight: 700;
-line-height: 40.8px; /* 127.5% */
+.text7 {
+  color: #10162f;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 40.8px; /* 127.5% */
 }
-.text8{
-    color: #10162F;
-font-family: Segoe UI;
-font-size: 17.6px;
-font-style: normal;
-font-weight: 400;
-line-height: 28.16px; /* 160% */
-
+.text8 {
+  color: #10162f;
+  
+  font-size: 17.6px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28.16px; /* 160% */
 }
-.carta{
-    width: 288px;
-height: 233.8px;
+.carta {
+  width: 288px;
+  height: 233.8px;
 }
-.table{
-    /* margin-top: 50px; */
-    display: flex;
-    justify-content: space-between;
-    max-width: 1000px;
-    margin: auto;
-    
-
+.table {
+  /* margin-top: 50px; */
+  display: flex;
+  justify-content: space-between;
+  width: 65%;
+  margin: auto;
+  box-sizing: border-box;
+  height: 300pxз-хзх;
 }
-.cartaText{
-    color: #10162F;
-font-family: Segoe UI;
-font-size: 26px;
-font-style: normal;
-font-weight: 700;
-line-height: 33.8px; /* 130% */
-margin-top: 32px;
+.cartaText {
+  color: #10162f;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 33.8px; /* 130% */
+  margin-top: 32px;
 }
-.cartaText1{
-    color: #10162F;
-font-family: Segoe UI;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 24px; /* 150% */
-margin-top: 16px;
+.cartaText1 {
+  color: #10162f;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  margin-top: 16px;
 }
-.cartaText2{
-    color: #3A10E5;
-font-family: Segoe UI;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 24px; /* 150% */
-text-decoration-line: underline;
+.cartaText2 {
+  color: #3a10e5;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  text-decoration-line: underline;
 }
 .logo1 {
-margin-top: 47.28px
+  margin-top: 47.28px;
 }
-.main{
-    border-color: white;
+.main {
+  border-color: white;
 }

@@ -82,47 +82,47 @@ const CompanyPage = () => {
           </div>
         </div>
         <div className={styles.mainBlock2}>
-<div className={styles.mainText2}>
-    <div className={styles.text7}>Build the skills you need</div>
-    <div className={styles.text8}>Created by industry experts, our course catalog covers all of the most sought-after technical skills and languages (like Python, React, and SQL).</div>
-</div>
+          <div className={styles.mainText2}>
+            <div className={styles.text7}>Build the skills you need</div>
+            <div className={styles.text8}>Created by industry experts, our course catalog covers all of the most sought-after technical skills and languages (like Python, React, and SQL).</div>
+          </div>
 
-<div className={styles.table}>
-    <div className={styles.carta}>
-        <div className={styles.logo1}>
-            <img src={logo1}></img>
-        </div>
-        <div className={styles.cartaText}>Computer science</div>
-        <div className={styles.cartaText1}>Improve your onboarding to bring new team members up to speed quicker</div>
-        <a href="" className={styles.cartaText2}>See courses</a>
-    </div>
-    <div className={styles.carta}>
-        <div className={styles.logo1}>
-            <img src={logo2}></img>
-        </div>
-        <div className={styles.cartaText}>Data science</div>
-        <div className={styles.cartaText1}>Develop the skills needed to make better data-driven business decisions</div>
-        <a href="" className={styles.cartaText2}>See courses</a>
-    </div>
-    <div className={styles.carta}>
-        <div className={styles.logo1}>
-            <img src={logo3}></img>
-        </div>
-        <div className={styles.cartaText}>Web development</div>
-        <div className={styles.cartaText1}>Empower teams to build and manage websites and web applications
-</div>
-        <a href="" className={styles.cartaText2}>See courses</a>
-    </div>
-    <div className={styles.carta}>
-        <div className={styles.logo1}>
-            <img src={logo4}></img>
-        </div>
-        <div className={styles.cartaText}>Code foundations
-</div>
-        <div className={styles.cartaText1}>Create a technical baseline and scale digital literacy for your company</div>
-        <a href="" className={styles.cartaText2}>See courses</a>
-    </div>
-</div>
+          <div className={styles.table}>
+            <div className={styles.carta}>
+              <div className={styles.logo1}>
+                <img src={logo1}></img>
+              </div>
+              <div className={styles.cartaText}>Computer science</div>
+              <div className={styles.cartaText1}>Improve your onboarding to bring new team members up to speed quicker</div>
+              <a href="" className={styles.cartaText2}>See courses</a>
+            </div>
+            <div className={styles.carta}>
+              <div className={styles.logo1}>
+                <img src={logo2}></img>
+              </div>
+              <div className={styles.cartaText}>Data science</div>
+              <div className={styles.cartaText1}>Develop the skills needed to make better data-driven business decisions</div>
+              <a href="" className={styles.cartaText2}>See courses</a>
+            </div>
+            <div className={styles.carta}>
+              <div className={styles.logo1}>
+                <img src={logo3}></img>
+              </div>
+              <div className={styles.cartaText}>Web development</div>
+              <div className={styles.cartaText1}>Empower teams to build and manage websites and web applications
+              </div>
+              <a href="" className={styles.cartaText2}>See courses</a>
+            </div>
+            <div className={styles.carta}>
+              <div className={styles.logo1}>
+                <img src={logo4}></img>
+              </div>
+              <div className={styles.cartaText}>Code foundations
+              </div>
+              <div className={styles.cartaText1}>Create a technical baseline and scale digital literacy for your company</div>
+              <a href="" className={styles.cartaText2}>See courses</a>
+            </div>
+          </div>
         </div>
       </div>
     </>
