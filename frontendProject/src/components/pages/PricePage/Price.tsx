@@ -7,7 +7,7 @@ import {
 } from "../../../features/priceSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../app/store";
-import RentForm from "../payCurs/payCurs";
+//import RentForm from "../payCurs/payCurs";
 import Basic from "./Basic";
 import Plus from "./Plus";
 import Pro from "./Pro";
@@ -42,7 +42,7 @@ const PricePage = () => {
     setComment(text);
   };
 
-  function parseJWT(tokenUser) {
+  function parseJWT(tokenUser: unknown) {
     if (typeof tokenUser !== "string") {
       // Обработка ошибки или возврат значения по умолчанию
       return null;
@@ -65,12 +65,19 @@ const PricePage = () => {
     if (!token) {
       alert("Вы не авторизованы");
     } else {
-      dispatch(addComment({ comment, userId: ownid.userId }));
+      dispatch(addComment({
+        comment, userId: ownid.userId,
+        user: undefined,
+        _id: "",
+        text: "",
+        courseId: ""
+      }));
     }
     setComment("");
   };
 
   const handleDeleteComment = (id: string, user: string) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     comments.map((item) => {
       if (ownid.userId === user) {
         dispatch(deletedComment(id));
