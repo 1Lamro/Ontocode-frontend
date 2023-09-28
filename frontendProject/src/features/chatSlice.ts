@@ -68,35 +68,6 @@ export const deleteMessage = createAsyncThunk<Chat[], string | number>(
   }
 );
 
-export const sendMessage = createAsyncThunk<WritableDraft<Chat>[],{ message: string; oneUser: Chat[]}>(
-  "chat/sendMessage",
-  async ({ message, oneUser }, thunkAPI) => {
-    try {
-      const data = await axios.post(
-        `http://localhost:3333/message/650d80f8338de9dad1e9fc04`,
-        { sender: oneUser[0]._id, text: message }
-      );
-      return data.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  }
-);
-
-export const deleteMessage = createAsyncThunk<string | unknown, { rejectValue: unknown; state: RootState }>(
-  "chat/deleteOne",
-  async (id, thunkAPI) => {
-    try {
-      const res = await axios.patch(`http://localhost:3333/message`, {
-        _id: id,
-      });
-      return id;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error);
-    }
-  }
-);
-
 export const chatSlise = createSlice({
   name: "chat",
   initialState: chatState,
