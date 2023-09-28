@@ -37,13 +37,34 @@ export const getMessage = createAsyncThunk<Chat[],  string>(
   "chat/getMessage",
   async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:3333/chat/650d80f8338de9dad1e9fc04`
-      );
-      return response.data;
+        const response = await axios.get(`http://localhost:3333/chat/6513feefd2307f8f5529dd29`);
+        return response.data;
     } catch (error) {
       return (error as UnknownAsyncThunkAction).message;
     }
+});
+
+export const sendMessage = createAsyncThunk<Chat[], string | number>(
+    'chat/sendMessage',
+    async ({ message, oneUser }, thunkAPI) => {
+        try {
+            const data = await axios.post(`http://localhost:3333/message/6513feefd2307f8f5529dd29`, { sender: oneUser[0]._id, text: message });
+            return data.data;
+
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error);
+        }
+    });
+
+export const deleteMessage = createAsyncThunk<Chat[], string | number>(
+    'chat/deleteOne',
+    async (id, thunkAPI) => {
+        try {
+            const res = await axios.patch(`http://localhost:3333/message`, { _id: id });
+            return id;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error)
+        }
   }
 );
 
