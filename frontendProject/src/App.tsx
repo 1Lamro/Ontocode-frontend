@@ -22,7 +22,6 @@ import Footer from './components/Footer/Footer'
 
 const socket = socketIO.connect('http://localhost:3333')
 
-const socket: Socket = io('http://localhost:3333')
 function App() {
   const loading = useSelector((state: RootState) => state.application.loading); //взял лоадинг из слайса
 
@@ -46,7 +45,7 @@ function App() {
             <Route path="/courses" element={<Course />} />
             <Route path="/course/:id" element={<HTML />} />
             <Route path="/course/:id/course" element={<JavaScript />} />
-            <Route path="/video" Component={VideoPlayer}></Route>
+            {/* <Route path="/video" Component={VideoPlayer}></Route> */}
           </Routes>
           <Footer/>
         </div>

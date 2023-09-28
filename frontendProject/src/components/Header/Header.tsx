@@ -1,5 +1,4 @@
 import { Link, useNavigate } from 'react-router-dom'
-import {  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import styles from './Header.module.css'
@@ -87,21 +86,6 @@ const Header = ({socket}) => {
         </div>
       </>
       ) : (
-        <div className={styles.loginContainer}>
-          <div >
-            <img src={chat} alt="" />
-          </div>
-          <div>
-            <button onClick={removeToken} className={styles.buttonExit}>
-              ВЫЙТИ
-            </button>
-            <Link to="/Profile">
-              {/* <img src={} alt="profile" className={styles.profile} /> */}
-              <div>Профиль</div>
-            </Link>
-          </div>
-        </>
-        ) : (
           <div className={styles.loginContainer}>
             <div>
               <Link to="/chat"><img src={chat} alt="" /></Link>
@@ -111,7 +95,7 @@ const Header = ({socket}) => {
           </div>
         )}
       </div>
-    </div>
+
   );
 };
 

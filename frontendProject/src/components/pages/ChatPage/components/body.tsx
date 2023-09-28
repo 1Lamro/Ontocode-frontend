@@ -5,15 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../../app/store';
 import { deleteMessage, getMessage } from '../../../../features/chatSlice';
 import Preloader from './Preloader';
-import { joinInChat } from '../../../../features/userSlice';
+import { exitInChat} from '../../../../features/userSlice';
+
 const body = ({ status, socket }) => {
 
-    const messages = useSelector((state: RootState) => state.chat.chat)
+    const messages = useSelector((state: RootState) => state.chat.chat);
     const token = useSelector((state: RootState) => state.application.token);
-    const user = useSelector((state: RootState) => state.user.users)
+    const user = useSelector((state: RootState) => state.user.users);
     const loading = useSelector((state: RootState) => state.chat.loading);
-    console.log(messages)
-
 
     const [isLeaving, setIsLeaving] = useState(false);
 
@@ -38,11 +37,10 @@ const body = ({ status, socket }) => {
         return JSON.parse(jsonPayload);
     }
     const ownid = parseJWT(token);
-    const oneUser = user.filter(item => item._id === ownid.userId)
+    const oneUser = Array.isArray(user) ? user.filter(item => item._id === ownid.userId) : [];
 
-    const handleLeave = () => {
-        setIsLeaving(true)
-        navigate('/')
+    const handleLeave = (id) => {
+       dispatch(exitInChat(id))
     }
 
     const handleDeleteMess = (id) => {
@@ -53,14 +51,6 @@ const body = ({ status, socket }) => {
     }
 
     const messagesRef = useRef(null);
-
-    // useEffect(() => {
-    //     // dispatch(getMessage())
-    //     handleDeleteMess()
-    //     if (isLeaving) {
-    //         socket.emit('leaveChat')
-    //     }
-    // }, [isLeaving, socket, dispatch])
 
     useEffect(() => {
         if (messagesRef.current) {
@@ -73,7 +63,7 @@ const body = ({ status, socket }) => {
         <div>
             <>
                 <header className={styles.headerB}>
-                    <button className={styles.btn} onClick={handleLeave}>Покинуть чат</button>
+                    <button className={styles.btn} onClick={() => handleLeave(ownid.userId)}>Покинуть чат</button>
                 </header>
                 {loading ? (
                     <Preloader />
@@ -96,7 +86,7 @@ const body = ({ status, socket }) => {
                                         </div>
                                     ) : (
                                         <div  className={styles.chats} key={element._id}>
-                                            <p>{user.map(item => item._id === element.sender ? item.username : null)}</p>
+                                            <p>{Array.isArray(user) && user.map(item => item._id === element.sender ? item.username : null)}</p>
                                             <div className={styles.messageRecipient}>
                                                 <p >{element.text}</p>
                                             </div>
