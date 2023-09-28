@@ -14,7 +14,6 @@ const Home = () => {
     const courses = useSelector((state: RootState) => state.course.course)
     const dispatch = useDispatch()
     const token = useSelector((state: RootState) => state.application.token)
-    console.log(token)
 
     React.useEffect(() => {
         dispatch(fetchCourses());

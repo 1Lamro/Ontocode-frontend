@@ -62,41 +62,36 @@ const Header = ({ socket }) => {
 
   return (
     <div className={styles.headerContainer}>
-      <div className={`${styles.headerClass} ${scrollY > 0 ? styles.headerFixed : ''}`}>
-        <div className={styles.header}>
-          <nav className={styles.navigation}>
-            <Link to='/' ><img src={logo} alt="logo" className={styles.logo} /></Link>
-            <Link to='/courses' className={styles.zero}><p>Courses</p></Link>
-            <Link to='/price' className={styles.zero}><p>Pricing</p></Link>
-            <Link to='/team' className={styles.zero}><p>For Teams</p></Link>
-          </nav>
-          {token ? (
-            <>
-              <div className={styles.sideBarChat}>
-                {joinChat && <Chat socket={socket} />}<img onClick={() => handleJoinToChat(ownid.userId)} src={chat} alt="" />
-              </div>
-              <div>
-                <button onClick={removeToken} className={styles.buttonExit}>
-                  ВЫЙТИ
-                </button>
-                <Link to="/Profile">
-                  {/* <img src={} alt="profile" className={styles.profile} /> */}
-                  <div>Профиль</div>
-                </Link>
-              </div>
-            </>
-          ) : (
-            <div className={styles.loginContainer}>
-              <div>
-                <Link to="/chat"><img src={chat} alt="" /></Link>
-              </div>
-              <img src={search} className={styles.search} />
-              <Link to='/SignUp' className={styles.loginButton}><p>Log In</p></Link>
+      {/* <div >555</div> */}
+      <nav className={styles.navigation}>
+        <Link to='/' ><img src={logo} alt="logo" className={styles.logo} /></Link>
+        <Link to='/courses' className={styles.zero}><p>Courses</p><img src={triangle} alt="" /></Link>
+        <Link to='/price' className={styles.zero}><p>Pricing</p><img src={triangle} alt="" /></Link>
+        <Link to='/team' className={styles.zero}><p>For Teams</p><img src={triangle} alt="" /></Link>
+      </nav>
+      {token ? (<>
+        <div className={styles.sideBarChat}>
+          {joinChat && <Chat socket={socket}/>}<img onClick={() => handleJoinToChat(ownid.userId)} src={chat} alt="" />
+        </div>
+        <div>
+          <button onClick={removeToken} className={styles.buttonExit}>
+            ВЫЙТИ
+          </button>
+          <Link to="/Profile">
+            {/* <img src={} alt="profile" className={styles.profile} /> */}
+            <div>Профиль</div>
+          </Link>
+        </div>
+      </>
+      ) : (
+          <div className={styles.loginContainer}>
+            <div>
+              <Link to="/chat"><img src={chat} alt="" /></Link>
             </div>
           )}
         </div>
       </div>
-    </div>
+
   );
 };
 

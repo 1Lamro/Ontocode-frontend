@@ -31,10 +31,9 @@ const messageBlock = ({ socket }) => {
             return JSON.parse(jsonPayload);
         }
         const ownid = parseJWT(token);
-        const oneUser = user.filter(item => item._id === ownid.userId)
+        const oneUser = Array.isArray(user) ? user.filter(item => item._id === ownid.userId) : [];
         const isTyping = () => socket.emit('typing', `${oneUser[0].username} печатает`)
 
-        
         const handleSend = (e) => {
             e.preventDefault();
 
@@ -50,10 +49,10 @@ const messageBlock = ({ socket }) => {
             setMessage('');
         }
 
-        // useEffect(() => {
-        //     dispatch(getMessage())
-        //     dispatch(allUsers())
-        // }, [dispatch])
+        useEffect(() => {
+            dispatch(getMessage())
+            dispatch(allUsers())
+        }, [dispatch])
 
     return (
         <div className={styles.messageBlock}>

@@ -90,6 +90,28 @@ export const joinInChat = createAsyncThunk(
       return thunkAPI.rejectWithValue(error);
     }
   }
+);
+
+export const exitInChat = createAsyncThunk(
+  "exit/chat",
+  async (userId, thunkAPI) => {
+    try {
+      const res = await fetch(`http://localhost:3333/patch/${userId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          // Authorization: `Bearer ${getState().application.token}`,
+        },
+        body: JSON.stringify({
+          online: false,
+        }),
+      }); 
+      
+      return res.json();
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
 )
 
 export const allUsers = createAsyncThunk(
@@ -98,7 +120,6 @@ export const allUsers = createAsyncThunk(
     try {
       const res = await fetch("http://localhost:3333/users");
       const users = await res.json();
-      console.log(users)
       return users;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -164,7 +185,6 @@ export const userSlice = createSlice({
         state.loading = false;
       })
       .addCase(allUsers.fulfilled, (state, action) => {
-        console.log(action.payload)
         state.error = null;
         state.users = action.payload;
         state.loading = false;
@@ -184,8 +204,20 @@ export const userSlice = createSlice({
       .addCase(joinInChat.fulfilled, (state, action) => {
         state.error = null;
         state.loading = false;
-        state.users.push(action.payload)
-      
+        state.users =action.payload
+      })
+      .addCase(exitInChat.pending, (state) => {
+        state.loading = true;
+        state.error = null
+      })
+      .addCase(exitInChat.rejected, (state, action) => {
+        state.error = action.payload.message;
+        state.loading = false;
+      })
+      .addCase(exitInChat.fulfilled, (state, action) => {
+        state.error = null;
+        state.loading = false;
+        state.users = action.payload
       })
 
   },
