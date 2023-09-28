@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import styles from '../chat.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../../app/store';
-import { allUsers } from '../../../../features/userSlice';
 import { getMessage, sendMessage } from '../../../../features/chatSlice';
+import { allUsers } from '../../../../features/userSlice';
 
 const messageBlock = ({ socket }) => {
 
@@ -37,6 +37,7 @@ const messageBlock = ({ socket }) => {
         
         const handleSend = (e) => {
             e.preventDefault();
+
             if (message.trim() && oneUser[0].username) {
                 dispatch(sendMessage({ oneUser, message }))
                 socket.emit('message', {
@@ -49,10 +50,10 @@ const messageBlock = ({ socket }) => {
             setMessage('');
         }
 
-        useEffect(() => {
-            dispatch(getMessage())
-            dispatch(allUsers())
-        }, [dispatch])
+        // useEffect(() => {
+        //     dispatch(getMessage())
+        //     dispatch(allUsers())
+        // }, [dispatch])
 
     return (
         <div className={styles.messageBlock}>

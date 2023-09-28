@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../../app/store';
 import { deleteMessage, getMessage } from '../../../../features/chatSlice';
 import Preloader from './Preloader';
-import Chat from '../Chat';
+import { joinInChat } from '../../../../features/userSlice';
 
 const body = ({ status, socket }) => {
 
@@ -54,19 +54,20 @@ const body = ({ status, socket }) => {
 
     const messagesRef = useRef(null);
 
-    useEffect(() => {
-        dispatch(getMessage())
-        handleDeleteMess()
-        if (isLeaving) {
-            socket.emit('leaveChat')
-        }
-    }, [isLeaving, socket, dispatch])
+    // useEffect(() => {
+    //     // dispatch(getMessage())
+    //     handleDeleteMess()
+    //     if (isLeaving) {
+    //         socket.emit('leaveChat')
+    //     }
+    // }, [isLeaving, socket, dispatch])
 
     useEffect(() => {
         if (messagesRef.current) {
-            messagesRef.current.scrollIntoView({inline: "start"})
+            messagesRef.current.scrollIntoView({inline: "end"})
         }
     }, [messages])
+    
 
     return (
         <div>

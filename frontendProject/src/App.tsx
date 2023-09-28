@@ -18,6 +18,7 @@ import ProfileUpdate from './components/pages/ProfilePage/ProfileUpdate'
 import HTML from './components/pages/CoursePage/lang/HTML/HTML'
 import JavaScript from './components/pages/CoursePage/lang/JS/JavaScript'
 import RentForm from './components/pages/payCurs/payCurs'
+import Footer from './components/Footer/Footer'
 
 const socket = socketIO.connect('http://localhost:3333')
 
@@ -33,12 +34,12 @@ function App() {
   return (
     <div>
       <div className={styles.app}>
-        <Header />
+        <Header socket={socket} />
         <div className={styles.body}>
           <Routes>
             <Route path='/chat' element={<Chat socket={socket}/>} />
             <Route path ='/team' element={<CompanyPage />}/>
-            <Route path='/chatForm' element={<ChatForm socket={socket}/>} />
+            {/* <Route path='/chatForm' element={<ChatForm socket={socket}/>} /> */}
             <Route path='/' element={<Home />} />
             <Route path='/Price' element={<PricePage />} />
             <Route path='/SignUp' element={<SignUp />} />
@@ -52,6 +53,7 @@ function App() {
             {/* <Route path='/video' Component={VideoPlayer}></Route> */}
             {/* <Route path='/patch/:id' element={<ProfileUpdate/>}/> */}
           </Routes>
+          <Footer/>
         </div>
       </div>
     </div>

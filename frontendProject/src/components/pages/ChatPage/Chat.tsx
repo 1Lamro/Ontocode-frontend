@@ -23,7 +23,7 @@ function Chat({ socket }) {
     socket.on('responseTyping', (data) => {
       setStatus(data)
       setTimeout(() => setStatus(''), 1000)
-    })
+    }, [dispatch])
 
   }, [socket, dispatch])
 
@@ -33,7 +33,6 @@ function Chat({ socket }) {
       <main className={styles.main}>
         <Body status={status} socket={socket} />
         <MessageBlock socket={socket} />
-
       </main>
     </div>
   )

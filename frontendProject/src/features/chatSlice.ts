@@ -26,7 +26,7 @@ const chatState: chatForState = {
 
 export const getMessage = createAsyncThunk<Chat[], string | number>('chat/getMessage', async () => {
     try {
-        const response = await axios.get(`http://localhost:3333/chat/650d80f8338de9dad1e9fc04`);
+        const response = await axios.get(`http://localhost:3333/chat/6513feefd2307f8f5529dd29`);
         return response.data;
     } catch (error) {
         return error.message
@@ -37,7 +37,7 @@ export const sendMessage = createAsyncThunk<Chat[], string | number>(
     'chat/sendMessage',
     async ({ message, oneUser }, thunkAPI) => {
         try {
-            const data = await axios.post(`http://localhost:3333/message/650d80f8338de9dad1e9fc04`, { sender: oneUser[0]._id, text: message });
+            const data = await axios.post(`http://localhost:3333/message/6513feefd2307f8f5529dd29`, { sender: oneUser[0]._id, text: message });
             return data.data;
 
         } catch (error) {
@@ -50,14 +50,12 @@ export const deleteMessage = createAsyncThunk<Chat[], string | number>(
     async (id, thunkAPI) => {
         try {
             const res = await axios.patch(`http://localhost:3333/message`, { _id: id });
-            return id;
+            return res.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error)
         }
 
-    }
-
-)
+    });
 
 export const chatSlise = createSlice({
     name: "chat",
@@ -86,7 +84,7 @@ export const chatSlise = createSlice({
                 state.error = null;
                 state.loading = true;
             })
-             .addCase(sendMessage.rejected, (state, action) => {
+            .addCase(sendMessage.rejected, (state, action) => {
                 state.error = action.payload.message;
                 state.loading = true;
             })
