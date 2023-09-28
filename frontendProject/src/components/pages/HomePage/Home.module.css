@@ -1,5 +1,7 @@
 .firstBlock {
   display: flex;
+  width: 65%;
+  margin: auto;
 }
 
 .courseBlock {
@@ -48,7 +50,7 @@
 .secondBlock {
   left: 0;
   right: 0;
-  width: 100%;
+  width: 99.9vw;
   background-color: #10162f;
   color: white;
   box-sizing: border-box;
@@ -65,6 +67,7 @@
 
 .thirdBlockCont {
   display: flex;
+  width: 65%;
   margin: auto;
   height: 300px;
   transition-property: all;
@@ -77,7 +80,7 @@
 .fourth {
   width: 25%;
   height: 100%;
-  background-color: #212121;
+  background-color: #10162f;
   transition-property: all;
   transition-duration: 0.5s;
   display: flex;
@@ -134,11 +137,11 @@
     width: 70%;
     visibility: visible;
     opacity: 1;
-    color: #212121;
+    color: #10162f;
   }
 
   .min {
-    color: #212121;
+    color: #10162f;
   }
 }
 
@@ -156,11 +159,11 @@
     width: 70%;
     visibility: visible;
     opacity: 1;
-    color: #212121;
+    color: #10162f;
   }
 
   .min {
-    color: #212121;
+    color: #10162f;
   }
 }
 
@@ -178,11 +181,11 @@
     width: 70%;
     visibility: visible;
     opacity: 1;
-    color: #212121;
+    color: #10162f;
   }
 
   .min {
-    color: #212121;
+    color: #10162f;
   }
 }
 
@@ -212,4 +215,17 @@
 .fourth:hover ~ .second,
 .fourth:hover ~ .third {
   width: 20%;
+}
+
+.imageCont {
+  width: 50%;
+}
+
+.homepage1 {
+  width: 100%;
+  object-fit: cover;
+}
+
+.regForm {
+  width: 50%;
 }
