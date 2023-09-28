@@ -63,7 +63,7 @@ function Pro({
       <div className={styles.center1}>
         <div className={styles.centerText}>
           <div className={styles.centerPrice}>
-            $<span>30</span>
+          ₽<span>170 000</span>
           </div>
           <div className={styles.block}>
             <div className={styles.text2}>Billed annually</div>
@@ -87,7 +87,7 @@ function Pro({
       <div className={styles.footerBlock3}>
         <div className={styles.footerBlock4}>
           <div className={styles.footerBlock5}>
-            <button onClick={open}>Try Pro for free</button>
+            <button onClick={open}>Приобретите Pro</button>
             <RentForm
               type={'proCourse'}
               isOpen={active}

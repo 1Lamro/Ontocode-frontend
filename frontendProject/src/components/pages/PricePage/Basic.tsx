@@ -63,13 +63,13 @@ function Basic({
         </div>
         <div className={styles.free}>Always free</div>
         <div className={styles.text}>
-          Start learning something new with basic access
+          Начните изучать что-то
         </div>
       </div>
       <div className={styles.footer}>
-        <button onClick={open}  className={styles.footerText}>
+        {!token ? <button onClick={open}  className={styles.footerText}>
           Sign up
-        </button>
+        </button> : null}
         <RentForm
           type={"basicCourse"}
           isOpen={active}
