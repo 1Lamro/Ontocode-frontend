@@ -1,12 +1,7 @@
 body {
-  margin: auto;
+  margin: 0;
   display: flex;
   justify-content: center;
   background-color: #FFF0E5;
-  min-height: 100vh;
-}
-
-html {
-  margin: 0;
-  margin-top: 0;
+  overflow-x: hidden;
 }

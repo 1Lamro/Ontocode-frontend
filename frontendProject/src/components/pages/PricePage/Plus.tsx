@@ -37,8 +37,6 @@ function Plus({
         dispatch(oneUser(ownid.userId))
       }, [dispatch])
 
-      console.log(user);  
-
     const open = () => {
         if (!token) {
             alert("Сначала авторизируйтесь!");
