@@ -12,6 +12,8 @@
 }
 
 .under{
+    margin: auto;
+    width: 65%;
     display: flex;
     border-top: 1px solid black;
     justify-content: space-between;

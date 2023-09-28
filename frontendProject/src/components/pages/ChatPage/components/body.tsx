@@ -5,15 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../../app/store';
 import { deleteMessage, getMessage } from '../../../../features/chatSlice';
 import Preloader from './Preloader';
-import { joinInChat } from '../../../../features/userSlice';
+// import { joinInChat } from '../../../../features/userSlice';
 const body = ({ status, socket }) => {
 
     const messages = useSelector((state: RootState) => state.chat.chat)
     const token = useSelector((state: RootState) => state.application.token);
     const user = useSelector((state: RootState) => state.user.users)
     const loading = useSelector((state: RootState) => state.chat.loading);
-    console.log(messages)
-
 
     const [isLeaving, setIsLeaving] = useState(false);
 

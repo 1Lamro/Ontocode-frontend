@@ -11,6 +11,7 @@ import { AppDispatch, RootState } from "../../../app/store";
 import Basic from "./Basic";
 import Plus from "./Plus";
 import Pro from "./Pro";
+import Advantages from "./Advantages";
 
 // import { useParams } from "react-router-dom";
 
@@ -89,17 +90,18 @@ const PricePage = () => {
     dispatch(fetchComment());
   }, [dispatch]);
 
-  return (
+  return (<>
+
     <div className={styles.input}>
       <div className={styles.allCards}>
         <div className={styles.accessBlock}>
-        <Basic formData={formData} handleInputChange={handleInputChange} />
+          <Basic formData={formData} handleInputChange={handleInputChange} />
         </div>
         <div className={styles.accessBlock}>
-        <Plus formData={formData} handleInputChange={handleInputChange} />
+          <Plus formData={formData} handleInputChange={handleInputChange} />
         </div>
         <div className={styles.accessBlock}>
-        <Pro formData={formData} handleInputChange={handleInputChange} />
+          <Pro formData={formData} handleInputChange={handleInputChange} />
         </div>
       </div>
       <textarea
@@ -137,7 +139,10 @@ const PricePage = () => {
         })}
       </div>
     </div>
-
+    <div className={styles.table}>
+      <Advantages />
+    </div>
+  </>
   );
 };
 

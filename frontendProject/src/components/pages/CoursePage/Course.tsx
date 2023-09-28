@@ -5,7 +5,6 @@ import { Courses, fetchCourses } from "../../../features/courseSlice";
 import styles from "./Course.module.css";
 import { Link } from "react-router-dom";
 import { oneUser } from "../../../features/userSlice";
-import Advantages from "./Advantages";
 
 const Course = () => {
   const courses = useSelector((state: RootState) => state.course.course);
@@ -108,10 +107,6 @@ const Course = () => {
                 );
               })
               : null}
-      </div>
-
-      <div className={styles.table}>
-        <Advantages />
       </div>
     </div>
   );
