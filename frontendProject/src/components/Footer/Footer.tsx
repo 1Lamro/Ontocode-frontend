@@ -51,7 +51,7 @@ function Footer() {
 
                 <div className={styles.under1}>
                     <div>Made with </div>
-                    <div> in FRCHESTE © 2023 OntoCode</div>
+                    <div>in FRCHESTE © 2023 OntoCode</div>
                 </div>
 
             </div>

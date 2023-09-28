@@ -13,7 +13,7 @@ const Advantages = () => {
                         <td>Pro</td>
                     </tr>
                     <tr>
-                        <td colspan="4">Начни обучаться программированию</td>
+                        <td colSpan="4">Начни обучаться программированию</td>
                     </tr>
                     <tr>
                         <td>Basic&nbsp;access&nbsp;to&nbsp;free&nbsp;courses&nbsp;</td>
@@ -58,7 +58,7 @@ const Advantages = () => {
                         <td><img src={check}/></td>
                     </tr>
                     <tr>
-                        <td colspan="4">Build your skills</td>
+                        <td colSpan="4">Build your skills</td>
                     </tr>
                     <tr>
                         <td>Skill&nbsp;paths&nbsp;</td>
@@ -79,7 +79,7 @@ const Advantages = () => {
                         <td><img src={check}/></td>
                     </tr>
                     <tr>
-                        <td colspan="4">Land a job</td>
+                        <td colSpan="4">Land a job</td>
                     </tr>
                     <tr>
                         <td>Career&nbsp;paths&nbsp;</td>
@@ -118,7 +118,7 @@ const Advantages = () => {
                         <td><img src={check}/></td>
                     </tr>
                     <tr>
-                        <td colspan="4">Additional features</td>
+                        <td colSpan="4">Additional features</td>
                     </tr>
                     <tr>
                         <td>Priority&nbsp;customer&nbsp;support&nbsp;</td>

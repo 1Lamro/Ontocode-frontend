@@ -3,6 +3,13 @@
   margin: auto;
 }
 
+.table {
+  width: 65%;
+  margin: auto;
+  margin-top: 80px;
+}
+
+
 .accessBlock {
   width: 100%;
   height: 50%;

@@ -38,23 +38,18 @@ const Profile = () => {
     window.location.reload();
     navigate("/");
     location.reload();
-  };  
+  };
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.headerText}>Ваш Личный кабинет</h2>
-      <img src={`http://localhost:3333/images/${user.avatar}`} alt="Ваша аватарка" className={styles.avatar} />
-      <div className={styles.card}>
-        <div className={styles.block}>
+      <div className={styles.profile}>
+        <h2 className={styles.headerText}>Ваш Личный кабинет</h2>
+        <img src={`http://localhost:3333/images/${user.avatar}`} alt="Ваша аватарка" className={styles.avatar} />
+        <div className={styles.card}>
           <p className={styles.name}>Никнейм: {user.username}</p>
-        </div>
-        <div className={styles.block}>
           <p className={styles.name}>Ваш Email: {user.email}</p>
-        </div>
-        <div className={styles.block}>
           <p className={styles.name}>Ваша Роль: {user.role}</p>
-        </div>
-        <div className={styles.block}>
+
           <p className={styles.name}>Ваш Опыт: {user.progress}</p>
         </div>
         <button
@@ -63,15 +58,15 @@ const Profile = () => {
           Изменить профиль
         </button>
         <div>
+          <button
+            onClick={() => handleDelete(user._id)}
+            className={styles.deletedUserButton}
+          >
+            Удалить пользователя
+          </button>
         </div>
-        <button
-          onClick={() => handleDelete(user._id)}
-          className={styles.deletedUserButton}
-        >
-          Удалить пользователя
-        </button>
+        <ProfileUpdate id={user._id} token={token} />
       </div>
-      <ProfileUpdate id={user._id} token={token}/>
     </div>
   );
 };
