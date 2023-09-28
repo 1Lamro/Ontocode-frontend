@@ -11,7 +11,7 @@ const SignIn = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const token = useSelector((state: RootState) => state.application.token);
-  const signin = useSelector((state: RootState) => state.application.signingIn);
+  //const signin = useSelector((state: RootState) => state.application.signingIn);
   const error = useSelector((state: RootState) => state.application.error as string)
 
   const dispatch = useDispatch<AppDispatch>();
@@ -19,7 +19,13 @@ const SignIn = () => {
 
   const handleSignIn = (e: React.FormEvent): void => {
     e.preventDefault()
-    dispatch(authSignIn({ _id: "", password, email}));
+    dispatch(authSignIn({
+      _id: "", password, email,
+      username: "",
+      role: "",
+      avatar: "",
+      progress: ""
+    }));
 
   };
 //   if (signin === true) {

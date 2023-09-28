@@ -2,6 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../app/store";
 
 type Comment = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  user: any;
   _id: string;
   text: string;
   userId: string;
@@ -32,7 +34,8 @@ export const fetchComment = createAsyncThunk(
 );
 
 export const addComment = createAsyncThunk<
-  void,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  any,
   Comment,
   { rejectValue: unknown; state: RootState }
 >("task/addComment", async ({ comment, userId }, thunkAPI) => {
@@ -57,7 +60,7 @@ export const addComment = createAsyncThunk<
 });
 
 export const deletedComment = createAsyncThunk<
-  string,
+  unknown,
   string,
   { rejectValue: unknown; state: RootState }
 >("comments/deletedComments", async (id, thunkAPI) => {

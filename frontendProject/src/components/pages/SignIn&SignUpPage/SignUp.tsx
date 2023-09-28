@@ -26,7 +26,12 @@ const SignUp = () => {
 
   const handleSignUp = (e: React.FormEvent): void => {
     e.preventDefault();
-    dispatch(authSignUp({ _id: "", username, password, email }));
+    dispatch(authSignUp({
+      _id: "", username, password, email,
+      role: "",
+      avatar: "",
+      progress: ""
+    }));
     navigate("/SignIn");
   };
 

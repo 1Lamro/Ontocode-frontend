@@ -14,7 +14,7 @@ function Plus({
     const [active, setActive] = React.useState(false);
     const dispatch = useDispatch()
 
-    function parseJWT(tokenUser) {
+    function parseJWT(tokenUser: unknown) {
         if (typeof tokenUser !== "string") {
           // Обработка ошибки или возврат значения по умолчанию
           return null;
@@ -36,8 +36,6 @@ function Plus({
       React.useEffect(() => {
         dispatch(oneUser(ownid.userId))
       }, [dispatch])
-
-      console.log(user);  
 
     const open = () => {
         if (!token) {
