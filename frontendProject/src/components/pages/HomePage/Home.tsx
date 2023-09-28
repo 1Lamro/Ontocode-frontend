@@ -22,7 +22,7 @@ const Home = () => {
     return (
         <>
             <div className={styles.firstBlock}>
-                <div className={styles.imageCont}><img src={homepage1} alt="" className={styles.homepage1} /></div>
+                <div className={styles.imageCont}><img src="" alt="" className={styles.homepage1} /></div>
                 {!token ? <div className={styles.regForm}>
                     <div>
                         Join the millions learning to code

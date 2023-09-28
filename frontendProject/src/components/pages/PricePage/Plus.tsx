@@ -57,7 +57,7 @@ function Plus({
         <div className={styles.header1}>
           <div className={styles.headerText}>Plus</div>
           <div className={styles.text1}>
-            <div className={styles.headerText1}>Learn a skill</div>
+            <div className={styles.headerText1}>Обучение новому</div>
           </div>
         </div>
         <div className={styles.center1}>

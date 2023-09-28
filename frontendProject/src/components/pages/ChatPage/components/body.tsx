@@ -6,7 +6,7 @@ import { RootState } from '../../../../app/store';
 import { deleteMessage, getMessage } from '../../../../features/chatSlice';
 import Preloader from './Preloader';
 import { exitInChat} from '../../../../features/userSlice';
-
+// import { joinInChat } from '../../../../features/userSlice';
 const body = ({ status, socket }) => {
 
     const messages = useSelector((state: RootState) => state.chat.chat);

@@ -1,16 +1,16 @@
 import { Link, useNavigate } from 'react-router-dom'
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
 import styles from './Header.module.css'
 import logo from '../../../public/logo.svg'
-import triangle from './nav_triangle.svg'
 import search from './search.png'
 import chat from './chat.svg'
 import { joinInChat } from '../../features/userSlice';
 import Chat from '../pages/ChatPage/Chat';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
-const Header = ({socket}) => {
+const Header = ({ socket }) => {
   const [joinChat, setJoinChat] = useState(false)
 
   const dispatch = useDispatch();
@@ -29,8 +29,6 @@ const Header = ({socket}) => {
       window.removeEventListener('scroll', handleScroll);
     }
   }, []);
-
-  const fixedClass = scrollY > 0 ? styles.headerFixed : null;
 
   const removeToken = () => {
     localStorage.removeItem("token");
@@ -90,10 +88,8 @@ const Header = ({socket}) => {
             <div>
               <Link to="/chat"><img src={chat} alt="" /></Link>
             </div>
-            <img src={search} className={styles.search} />
-            <Link to='/SignUp' className={styles.loginButton}><p>Log In</p></Link>
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
   );

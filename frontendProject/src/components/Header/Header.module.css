@@ -6,6 +6,13 @@
   transition: 0.3s ease;
   transform: translate(-50%, -50%);
   z-index: 2;
+  display: flex;
+}
+
+.headerContainer {
+  width: 100vw;
+  height: 80px;
+  margin: auto;
 }
 
 .headerFixed {

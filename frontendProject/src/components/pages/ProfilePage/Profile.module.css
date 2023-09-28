@@ -1,3 +1,20 @@
 .avatar {
     width: 100px;
 }
+
+.container {
+    width: 100%;
+}
+
+.profile {
+    width: 65%;
+    margin: auto;
+}
+
+.deletedUserButton {
+    border: none;
+    background-color: rgb(196, 42, 42);
+    border-radius: 5px;
+    color: white;
+    box-shadow: 5px 5px 5px 0.2 black;
+}
