@@ -1,9 +1,5 @@
-.app {
-    width: 100vw;
-}
-
 .body {
     margin: auto;
+    width: 100vw;
     padding-top: 70px;
-    box-sizing: border-box;
 }
