@@ -30,10 +30,6 @@ const sideBar = ({ socket }) => {
         return JSON.parse(jsonPayload);
     }
     const ownid = parseJWT(token);
-    console.log(User);
-    
-
-
 
     useEffect(() => {
         if (token) {
