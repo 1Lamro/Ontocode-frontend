@@ -4,6 +4,7 @@ import { WritableDraft } from "immer/dist/internal.js";
 //import axios from "axios";
 
 interface User {
+  online: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   push(username: string): any;
   _id?: string;
@@ -33,28 +34,13 @@ const userState: userInfoState = {
   error: null,
   loading: false,
   token: localStorage.getItem("token"),
-};
-
-
-// export const addCarToUser = createAsyncThunk(
-//   "user/addCarToUser",
-//   async ({ userId, carId }, { rejectWithValue }) => {
-//     try {
-//       const response = await axios.patch(`/user/${userId}`, {
-//         carId: carId,
-//       });
-//       return response.data; // Если сервер возвращает какие-то данные после успешной операции
-//     } catch (error) {
-//       return rejectWithValue(error.response.data);
-//     }
-//   }
-// );
+}
 
 export const oneUser = createAsyncThunk("user/fetchUser", async (id, thunkAPI) => {
   try {
     const res = await fetch(`http://localhost:3333/profile/${id}`);
     const user = await res.json();
-    return user;  
+    return user;
   } catch (error) {
     return thunkAPI.rejectWithValue(error)
   }
@@ -82,6 +68,28 @@ User,
       return rejectWithValue(err);
     }
   }
+);
+
+export const joinInChat = createAsyncThunk(
+  "join/chat",
+  async (userId, thunkAPI) => {
+    try {
+      const res = await fetch(`http://localhost:3333/patch/${userId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          // Authorization: `Bearer ${getState().application.token}`,
+        },
+        body: JSON.stringify({
+          online: true,
+        }),
+      }); 
+      
+      return res.json();
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
 )
 
 export const allUsers = createAsyncThunk(
@@ -90,24 +98,12 @@ export const allUsers = createAsyncThunk(
     try {
       const res = await fetch("http://localhost:3333/users");
       const users = await res.json();
+      console.log(users)
       return users;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
   })
-
-// export const oneUser = createAsyncThunk(
-//   "user/fetchUser",
-//   async (id, { rejectWithValue }) => {
-//     try {
-//       const res = await fetch(`http://localhost:3333/profile/${id}`);
-//       const user = await res.json();
-//       return user;
-//     } catch (error) {
-//       return rejectWithValue(error.response.data);
-//     }
-//   }
-// );
 
 export const deleteUser = createAsyncThunk(
   "user/delete",
@@ -168,7 +164,7 @@ export const userSlice = createSlice({
         state.loading = false;
       })
       .addCase(allUsers.fulfilled, (state, action) => {
-        // console.log(action.payload)
+        console.log(action.payload)
         state.error = null;
         state.users = action.payload;
         state.loading = false;
@@ -177,15 +173,26 @@ export const userSlice = createSlice({
         // Обновите состояние пользователя после успешной покупки курса
         state.users = action.payload;
       })
-      // .addMatcher(
-      //   (action) =>
-      //     action.type.endsWith("/rejected"),
-      //   (state, action) => {
-      //     state.error = action.payload;
-      //     state.loading = false;
-      //   }
-      // )
+      .addCase(joinInChat.pending, (state) => {
+        state.loading = true;
+        state.error = null
+      })
+      .addCase(joinInChat.rejected, (state, action) => {
+        state.error = action.payload.message;
+        state.loading = false;
+      })
+      .addCase(joinInChat.fulfilled, (state, action) => {
+        state.error = null;
+        state.loading = false;
+        state.users.push(action.payload)
+      
+      })
+
   },
 });
 
 export default userSlice.reducer;
+function getState() {
+  throw new Error("Function not implemented.");
+}
+

@@ -61,54 +61,54 @@ export const deleteMessage = createAsyncThunk<Chat[], string | number>(
     async (id, thunkAPI) => {
         try {
             const res = await axios.patch(`http://localhost:3333/message`, { _id: id });
-            return id;
+            return res.data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error)
         }
-  }
-);
+
+    });
 
 export const chatSlise = createSlice({
-  name: "chat",
-  initialState: chatState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(getMessage.pending, (state) => {
-        state.error = null;
-        state.loading = true;
-      })
-      .addCase(getMessage.rejected, (state, action) => {
-        state.error = (action.payload as UnknownAsyncThunkRejectedAction).message;
-        state.loading = false;
-      })
-      .addCase(getMessage.fulfilled, (state, action) => {
-        state.error = null;
-        state.chat = action.payload;
-        state.loading = false;
-      })
-      .addCase(sendMessage.fulfilled, (state, action) => {
-        state.error = null;
-        state.chat = action.payload;
-        state.loading = false;
-      })
-      .addCase(sendMessage.pending, (state) => {
-        state.error = null;
-        state.loading = true;
-      })
-      .addCase(sendMessage.rejected, (state, action) => {
-        state.error = (action.payload as UnknownAsyncThunkRejectedWithValueAction).message;
-        state.loading = true;
-      })
-      .addCase(deleteMessage.pending, (state) => {
-        state.error = null;
-        state.loading = true;
-      })
-      .addCase(deleteMessage.rejected, (state, action) => {
-        state.error = (action.payload as UnknownAsyncThunkRejectedWithValueAction).message;
-        state.loading = false;
-      });
-  },
+    name: "chat",
+    initialState: chatState,
+    reducers: {},
+    extraReducers: (builder) => {
+        builder.addCase(getMessage.pending, (state) => {
+            state.error = null;
+            state.loading = true;
+        })
+            .addCase(getMessage.rejected, (state, action) => {
+                state.error = action.payload.message;
+                state.loading = false;
+            })
+            .addCase(getMessage.fulfilled, (state, action) => {
+                state.error = null;
+                state.chat = action.payload;
+                state.loading = false;
+            })
+            .addCase(sendMessage.fulfilled, (state, action) => {
+                state.error = null;
+                state.chat = action.payload;
+                state.loading = false;
+            })
+            .addCase(sendMessage.pending, (state) => {
+                state.error = null;
+                state.loading = true;
+            })
+            .addCase(sendMessage.rejected, (state, action) => {
+                state.error = action.payload.message;
+                state.loading = true;
+            })
+            .addCase(deleteMessage.pending, (state) => {
+                state.error = null;
+                state.loading = true;
+            })
+            .addCase(deleteMessage.rejected, (state, action) => {
+                state.error = action.payload.message;
+                state.loading = false;
+            })
+    }
+
 });
 
 export default chatSlise.reducer;

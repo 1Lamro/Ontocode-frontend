@@ -1,0 +1,46 @@
+.footer{
+   width: 100%; 
+   border-top: 1px solid black;
+   margin-top: 50px;
+}
+
+.info {
+    margin: auto;
+    width: 65%;
+    display: flex;
+    justify-content:space-between;
+}
+
+.under{
+    display: flex;
+    border-top: 1px solid black;
+    justify-content: space-between;
+}
+
+
+.under1{
+    display: flex;
+    font-size: 14px;
+}
+
+.under1 div {
+    margin-right: 10px;
+}
+
+.contacts img {
+    margin-top: 110px;
+    width: 20px;
+    margin-right: 5px;
+}
+
+ p{
+    margin-bottom: 5px;
+}
+
+.company img {
+    margin-top: 45px;
+    margin-right: 5px;
+}
+
+
+
