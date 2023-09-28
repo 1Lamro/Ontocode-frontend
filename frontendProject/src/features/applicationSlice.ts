@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-
+import { UnknownAsyncThunkAction } from '@reduxjs/toolkit/dist/matchers';
 type User = {
   _id: string;
   username: string;
@@ -15,7 +15,7 @@ type RegistrState = {
   error: null | unknown | string;
   signingUp: boolean;
   signingIn: boolean;
-  token: string | null | number;
+  token: string | null | number | unknown;
   loading: boolean
 };
 
@@ -53,7 +53,15 @@ export const authSignUp = createAsyncThunk<string | number, User>(
   }
 );
 
-export const authSignIn = createAsyncThunk<string | number, User>(
+export const authSignIn = createAsyncThunk<
+{
+  token:string
+}, 
+User,
+{
+  rejectValue: { error: string };
+}
+>(
   "auth/signin",
   async ({ email, password }, thunkAPI) => {
     try {
@@ -66,12 +74,12 @@ export const authSignIn = createAsyncThunk<string | number, User>(
       });
       const token = await res.json();
       if (token.error) {
-        return thunkAPI.rejectWithValue(token.error);
+        return thunkAPI.rejectWithValue({ error: token.error });
       }
       localStorage.setItem("token", token.token);
-      return token;
+      return { token: token.token };
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.toString());
+      return thunkAPI.rejectWithValue({ error: (error as UnknownAsyncThunkAction).toString() });
     }
   }
 );
@@ -107,8 +115,8 @@ export const applicationSlice = createSlice({
         })
         .addCase(authSignIn.fulfilled, (state, action) => {
           state.signingIn = false;
-          state.error = action.payload
-          state.token = action.payload.token;
+          state.error = action.payload 
+          state.token = action.payload.token 
         });
   },
 })

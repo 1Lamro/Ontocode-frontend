@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
+ 
 type Url = {
   ref: string
 }
@@ -103,7 +103,7 @@ export const courseSlice = createSlice({
         state.loading = false;
       })
       .addCase(fetchCourses.rejected, (state, action) => {
-        state.error = action.payload.message;
+        state.error = (action.payload as Error).message;
         state.loading = false;
       })
       .addCase(fetchCourses.pending, (state) => {
