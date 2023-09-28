@@ -26,6 +26,7 @@
 }
 
 .navigation {
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,6 +36,7 @@
 .navigation p,
 .zero,
 .loginButton {
+  text-align: center;
   text-decoration: none;
   color: black;
 }

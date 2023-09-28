@@ -9,48 +9,48 @@ function Plus({
   handleInputChange,
   formData,
 }) {
-    const token = useSelector((state: RootState) => state.application.token);
-    const user = useSelector((state: RootState) => state.user.users);
-    const [active, setActive] = React.useState(false);
-    const dispatch = useDispatch()
+  const token = useSelector((state: RootState) => state.application.token);
+  const user = useSelector((state: RootState) => state.user.users);
+  const [active, setActive] = React.useState(false);
+  const dispatch = useDispatch()
 
-    function parseJWT(tokenUser: unknown) {
-        if (typeof tokenUser !== "string") {
-          // Обработка ошибки или возврат значения по умолчанию
-          return null;
-        }
-        const base64Url = tokenUser.split(".")[1];
-        const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-        const jsonPayload = decodeURIComponent(
-          atob(base64)
-            .split("")
-            .map(function (c) {
-              return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-            })
-            .join("")
-        );
-        return JSON.parse(jsonPayload);
-      }
-      const ownid = parseJWT(token);
-
-      React.useEffect(() => {
-        dispatch(oneUser(ownid.userId))
-      }, [dispatch])
-
-    const open = () => {
-        if (!token) {
-            alert("Сначала авторизируйтесь!");
-        } else if (user.proCourse || user.plusCourse){
-            alert("Вы уже приобрели этот курс")
-        } else {
-            setActive(true);
-        }
+  function parseJWT(tokenUser: unknown) {
+    if (typeof tokenUser !== "string") {
+      // Обработка ошибки или возврат значения по умолчанию
+      return null;
     }
-    //window.location.reload()
-    const close = () => {
-        setActive(false)
+    const base64Url = tokenUser.split(".")[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split("")
+        .map(function (c) {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
+    return JSON.parse(jsonPayload);
+  }
+  const ownid = parseJWT(token);
+
+  React.useEffect(() => {
+    dispatch(oneUser(ownid.userId))
+  }, [dispatch])
+
+  const open = () => {
+    if (!token) {
+      alert("Сначала авторизируйтесь!");
+    } else if (user.proCourse || user.plusCourse) {
+      alert("Вы уже приобрели этот курс")
+    } else {
+      setActive(true);
     }
-    
+  }
+  //window.location.reload()
+  const close = () => {
+    setActive(false)
+  }
+
   return (
     <>
       <div className={styles.secondCard}>
@@ -63,7 +63,7 @@ function Plus({
         <div className={styles.center1}>
           <div className={styles.centerText}>
             <div className={styles.centerPrice}>
-              $<span>17</span>
+              ₽<span>50 000</span>
             </div>
             <div className={styles.block}>
               <div className={styles.text2}>Billed annually</div>
@@ -87,13 +87,13 @@ function Plus({
         <div className={styles.footerBlock}>
           <div className={styles.footerBlock1}>
             <button onClick={() => open()} className={styles.footerBlock2}>
-              Try Plus for free
+              Приобретите Plus
             </button>
             <RentForm
               type={"plusCourse"}
               isOpen={active}
               closeModal={close}
-              formData={formData}   
+              formData={formData}
               handleInputChange={handleInputChange}
             />
           </div>

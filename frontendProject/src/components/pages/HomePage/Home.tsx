@@ -52,30 +52,6 @@ const Home = () => {
                     : null  }
 
             </div>
-            <div className={styles.secondBlock}>
-                <div className={styles.secondBlockCont}>
-                    <p>Start Learning</p>
-                    <h3>Popular Courses</h3>
-                    <div className={styles.container}>
-                        {courses.map((course: Courses) => {
-                            return (
-                                <Link to={`/course/${course._id}`} className={styles.courseBlock}>
-                                    <div className={styles.typeAccess}>Basic</div>
-                                    <div className={styles.blockCont}>
-                                        <h3>
-                                            {course.title}
-                                        </h3>
-                                        <p>
-                                            {course.text}
-                                        </p>
-                                    </div>
-                                </Link>
-                            )
-                        })}
-                    </div>
-                    <button>Перейти ко всем курсам</button>
-                </div>
-            </div>
 
             <div className={styles.thirdBlock}>
                 <div className={styles.thirdBlockCont}>

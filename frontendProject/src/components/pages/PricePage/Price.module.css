@@ -1,26 +1,28 @@
-* {
-  /* background: #fff0e5; */
-  margin: 0;
-  padding: 0;
+.input {
+  width: 65%;
+  margin: auto;
+}
+
+.accessBlock {
+  width: 100%;
+  height: 50%;
 }
 
 .allCards {
   display: flex;
-  padding: 24px 0px 0px 30px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
-  gap: 24px;
+  gap: 15px;
+  box-sizing: border-box;
 }
 
 .header {
   color: rgba(16, 22, 47, 0.63);
-  font-family: Segoe UI;
   font-size: 26px;
   font-style: normal;
   font-weight: 700;
   line-height: 31.2px; /* 120% */
   display: flex;
-  padding: 8px 310.33px 8.19px 24px;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgba(16, 22, 47, 0.12);
@@ -28,7 +30,6 @@
 }
 .center {
   display: flex;
-  padding: 24px 24px 27.99px 24px;
   flex-direction: column;
   align-items: center;
   gap: 8px;
@@ -37,14 +38,12 @@
 .text {
   color: #10162f;
   text-align: center;
-  font-family: Segoe UI;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 150% */
   display: flex;
   max-width: 235px;
-  padding: 0px 13.405px 0px 13.595px;
   flex-direction: column;
   align-items: center;
   margin-top: 68.2px;
@@ -53,7 +52,7 @@
 .free {
   color: rgba(16, 22, 47, 0.63);
   text-align: center;
-  font-family: Segoe UI;
+
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -62,8 +61,7 @@
 }
 .footer {
   display: flex;
-  min-height: 130.188px;
-  padding: 66.188px 154.4px 24px 154.41px;
+  min-height: 100px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -72,7 +70,7 @@
 }
 .price {
   color: #10162f;
-  font-family: Segoe UI;
+
   font-size: 34px;
   font-style: normal;
   font-weight: 700;
@@ -84,7 +82,7 @@
 
 .price span {
   color: #000;
-  font-family: Segoe UI;
+
   font-size: 64px;
   font-style: normal;
   font-weight: 700;
@@ -95,13 +93,12 @@
   display: flex;
   height: 40px;
   min-width: 40px;
-  padding: 8px 20.52px 8px 18px;
   justify-content: center;
   align-items: center;
   border-radius: 4px;
   border: 2px solid #3a10e5;
   color: #3a10e5;
-  font-family: Segoe UI;
+
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
@@ -111,7 +108,6 @@
 }
 .header1 {
   display: flex;
-  padding: 7px 24px 8.19px 24px;
   justify-content: center;
   align-items: center;
   gap: 164.75px;
@@ -120,7 +116,7 @@
 
 .headerText {
   color: #10162f;
-  font-family: Segoe UI;
+
   font-size: 25px;
   font-style: normal;
   font-weight: 700;
@@ -129,7 +125,7 @@
 }
 .headerText1 {
   color: #10162f;
-  font-family: Segoe UI;
+
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -140,17 +136,17 @@
 .text1 {
   display: flex;
   height: 24px;
-  padding: 2px 54.58px 2px 9px;
   justify-content: center;
   align-items: center;
   border-radius: 40px;
   border: 1px solid #10162f;
   background: #fffae5;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 .center1 {
   display: flex;
-  padding: 24px 24px 28px 24px;
   flex-direction: column;
   align-items: center;
   gap: 8.19px;
@@ -165,7 +161,7 @@
 .centerPrice {
   background-color: white;
   color: #10162f;
-  font-family: Segoe UI;
+
   font-size: 34px;
   font-style: normal;
   font-weight: 700;
@@ -175,13 +171,12 @@
 .text2 {
   color: rgba(16, 22, 47, 0.63);
   text-align: center;
-  font-family: Segoe UI;
+
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 19.2px; /* 120% */
   display: flex;
-  padding: 0px 7.205px 0px 7.405px;
   flex-direction: column;
   align-items: center;
   gap: 6.19px;
@@ -190,7 +185,7 @@
 .centerPrice span {
   background-color: white;
   color: #000;
-  font-family: Segoe UI;
+
   font-size: 48px;
   font-style: normal;
   font-weight: 700;
@@ -198,7 +193,6 @@
 }
 .block {
   display: flex;
-  padding: 0px 7.205px 0px 7.405px;
   flex-direction: column;
   align-items: center;
   gap: 6.19px;
@@ -209,7 +203,7 @@
   background-color: white;
   color: rgba(16, 22, 47, 0.63);
   text-align: center;
-  font-family: Segoe UI;
+
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -217,7 +211,6 @@
 }
 .centerText1 {
   display: flex;
-  padding: 16px 0px 12px 0px;
   flex-direction: column;
   align-items: center;
   gap: 12px;
@@ -225,7 +218,6 @@
 }
 .centerText2 {
   display: flex;
-  padding-left: 0px;
   flex-direction: column;
   align-items: center;
   align-self: stretch;
@@ -234,7 +226,7 @@
 .text4 {
   color: #10162f;
   text-align: center;
-  font-family: Segoe UI;
+
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -247,12 +239,10 @@
   display: flex;
   height: 40px;
   min-width: 40px;
-  padding: 8px 24px 8px 18px;
   justify-content: center;
   align-items: center;
   gap: 10.365px;
   background-color: white;
-  padding-top: 16px;
   flex-direction: column;
   align-items: flex-start;
 }
@@ -260,7 +250,7 @@
 .logoText {
   color: #10162f;
   text-align: center;
-  font-family: Segoe UI;
+
   font-size: 15px;
   font-style: normal;
   font-weight: 700;
@@ -273,7 +263,6 @@
 .footerBlock {
   display: flex;
   min-height: 72px;
-  padding: 8px 123.16px 55px 123.14px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -285,7 +274,6 @@
   display: flex;
   height: 40px;
   min-width: 40px;
-  padding: 8px 18.03px 8px 18px;
   justify-content: center;
   align-items: center;
   border-radius: 4px;
@@ -295,7 +283,7 @@
 }
 .footerBlock2 {
   color: #3a10e5;
-  font-family: Segoe UI;
+
   font-size: 15px;
   font-style: normal;
   font-weight: 700;
@@ -312,7 +300,6 @@
 
 .header2 {
   display: flex;
-  padding: 7px 24px 8.19px 24px;
   justify-content: center;
   align-items: center;
   gap: 164.75px;
@@ -320,7 +307,7 @@
 }
 .headerText2 {
   color: #10162f;
-  font-family: Segoe UI;
+
   font-size: 25px;
   font-style: normal;
   font-weight: 700;
@@ -329,7 +316,7 @@
 }
 .headerText3 {
   color: #10162f;
-  font-family: Segoe UI;
+
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
@@ -340,17 +327,17 @@
 .text5 {
   display: flex;
   height: 24px;
-  padding: 2px 54.58px 2px 9px;
   justify-content: center;
   align-items: center;
   border-radius: 40px;
   border: 1px solid #10162f;
   background: #ffd300;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 .footerBlock3 {
   display: flex;
   min-height: 72px;
-  padding: 8px 123.16px 55px 123.14px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -365,7 +352,6 @@
   display: flex;
   height: 40px;
   min-width: 40px;
-  padding: 8px 18.03px 8px 18px;
   justify-content: center;
   align-items: center;
   border-radius: 4px;
@@ -375,7 +361,7 @@
 }
 .footerBlock5 {
   color: white;
-  font-family: Segoe UI;
+
   font-size: 15px;
   font-style: normal;
   font-weight: 700;
@@ -387,7 +373,7 @@
 
 .footerBlock5 button {
     color: white;
-    font-family: Segoe UI;
+  
     font-size: 15px;
     font-style: normal;
     font-weight: 700;
@@ -401,7 +387,7 @@
 .text6 {
   color: #10162f;
   text-align: center;
-  font-family: Segoe UI;
+
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -413,7 +399,7 @@
 .logoText1 {
   color: #10162f;
   text-align: center;
-  font-family: Segoe UI;
+
   font-size: 15px;
   font-style: normal;
   font-weight: 700;

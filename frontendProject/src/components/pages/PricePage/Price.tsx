@@ -92,9 +92,15 @@ const PricePage = () => {
   return (
     <div className={styles.input}>
       <div className={styles.allCards}>
-          <Basic formData={formData} handleInputChange={handleInputChange}/>
-          <Plus formData={formData} handleInputChange={handleInputChange}/>
-          <Pro formData={formData}  handleInputChange={handleInputChange}/>
+        <div className={styles.accessBlock}>
+        <Basic formData={formData} handleInputChange={handleInputChange} />
+        </div>
+        <div className={styles.accessBlock}>
+        <Plus formData={formData} handleInputChange={handleInputChange} />
+        </div>
+        <div className={styles.accessBlock}>
+        <Pro formData={formData} handleInputChange={handleInputChange} />
+        </div>
       </div>
       <textarea
         name=""
