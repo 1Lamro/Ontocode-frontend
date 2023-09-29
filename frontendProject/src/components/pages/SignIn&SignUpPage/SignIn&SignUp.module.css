@@ -1,0 +1,70 @@
+.author {
+  width: 65%;
+  margin: auto;
+  margin-top: 12vh;
+}
+
+.authorinput {
+  width: 40%;
+  background-color: white;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+.error {
+  color: rgb(255, 115, 115);
+}
+
+.form {
+  width: 80%;
+  margin: auto;
+  background-color: white;
+}
+
+.form input {
+  margin: auto;
+  margin-top: 10px;
+  -webkit-box-shadow: 0px 0px 12px 4px rgba(34, 60, 80, 0.23) inset;
+  -moz-box-shadow: 0px 0px 12px 4px rgba(34, 60, 80, 0.23) inset;
+  box-shadow: 0px 0px 6px 2px rgba(34, 60, 80, 0.23) inset;
+}
+
+#h2 {
+  text-align: center;
+}
+
+.text {
+  width: 80%;
+  font-size: 12px;
+
+}
+
+.but {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.regButton {
+    width: 100%;
+    margin: auto;
+    background-color: #4f69ff;
+    border: 0;
+    color: white;
+    height: 30px;
+    border-radius: 6px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    transition: 0.1s ease;
+    
+}
+
+.regButton:hover {
+    background-color: #263cbc;
+    transition: 0.1s ease;
+}

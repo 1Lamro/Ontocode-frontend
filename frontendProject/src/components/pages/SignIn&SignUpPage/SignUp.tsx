@@ -79,7 +79,7 @@ const SignUp = () => {
           <input
             type="text"
             value={username}
-            placeholder="name"
+            placeholder="Логин..."
             onChange={(e) => setUsername(e.target.value)}
           />
           <input
@@ -87,7 +87,7 @@ const SignUp = () => {
             name="password"
             type="password"
             value={password}
-            placeholder="password"
+            placeholder="Пароль..."
             onChange={(e) => handlePassword(e)}
           />
           {passwordDirty && passwordError && (
@@ -97,25 +97,19 @@ const SignUp = () => {
             onBlur={(e) => handleBlur(e)}
             name="email"
             value={email}
-            placeholder="Enter your email..."
+            placeholder="Введите свою почту..."
             onChange={(e) => handleEmail(e)}
           />
           {emailDirty && emailError && (
             <div className={styles.error}>{emailError}</div>
           )}
-          <button disabled={!formValid} type="submit">
+          <button disabled={!formValid} type="submit" className={styles.regButton}>
             Зарегистрироваться
           </button>
         </form>
-        <div>
+        <div className={styles.text}>
           By signing up for Ontocode, you agree to Ontocode's Terms of Service &
           Privacy Policy.
-        </div>
-        <div>
-          <p>Используйте для входа</p>
-          <img src="" alt="" />
-          <img src="" alt="" />
-          <img src="" alt="" />
         </div>
         <div className={styles.but}>
           Уже есть аккаунт?{" "}
