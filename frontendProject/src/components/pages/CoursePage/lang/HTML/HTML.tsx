@@ -80,7 +80,6 @@ const HTML = () => {
                 <option value="tomorrow_night">Tomorrow Night</option>
                 <option value='tomorrow_night_blue'>Tomorrow Night Blue</option>
                 <option value='github'>GitHub</option>
-
             </select>
             <div className={styles.editorContainer}>
                 <div className={styles.editorBlock}>

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../../app/store";
 import { authSignIn } from "../../../features/applicationSlice";
 import styles from "./SignIn&SignUp.module.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RootState } from "../../../app/store";
 // import Spinner from '../pages/CatalogPage/Spinner';
 
@@ -55,8 +55,15 @@ const SignIn = () => {
             placeholder="Пароль..."
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit">Войти</button>
+          <button type="submit" className={styles.regButton}>Войти</button>
         </form>
+        <div className={styles.but}>
+          Хотите создать аккаунт?{" "}
+          <br />
+          <Link to="/SignUp" className={styles.reg}>
+            Зарегистрироваться
+          </Link>
+        </div>
       </div>
     </div>
   );

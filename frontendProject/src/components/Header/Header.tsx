@@ -112,7 +112,6 @@ const Header = ({ socket }) => {
               <div>
                 <Link to="/chat"><img src={chat} alt="" /></Link>
               </div>
-              <img src={search} className={styles.search} />
               <Link to='/SignUp' className={styles.loginButton}><p>Log In</p></Link>
             </div>
           )}

@@ -10,7 +10,8 @@ const Course = () => {
   const courses = useSelector((state: RootState) => state.course.course);
   const user = useSelector((state: RootState) => state.user.users);
   const token = useSelector((state: RootState) => state.application.token);
-  console.log(user);
+  console.log(courses);
+  
 
   const dispatch = useDispatch();
   function parseJWT(tokenUser) {
@@ -38,7 +39,7 @@ const Course = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={styles.allCont}>
       <div className={styles.container}>
         {user.basicCourse
           ? courses.map((course: Courses) => {
@@ -53,15 +54,15 @@ const Course = () => {
             ) : (
               <div className={styles.courseBlock1}>
                 <div className={styles.typeAccess1}>{course.typeAccess}</div>
-                <div className={styles.text2}>Купите курс PLUS или PRO</div>
                 <div className={styles.blockCont}>
                   <h3>{course.title}</h3>
                   <p>{course.text}</p>
                 </div>
+                <div className={styles.text2}>Купите курс PLUS или PRO</div>
               </div>
             );
           })
-          : user.plusCourse
+          : user.plusCourse  
             ? courses.map((course: Courses) => {
               return course.typeAccess === "Basic" ||
                 course.typeAccess === "Plus" ? (
@@ -74,12 +75,12 @@ const Course = () => {
                 </Link>
               ) : (
                 <div className={styles.courseBlock1}>
-                  <div className={styles.text1}>Купите курс PRO</div>
                   <div className={styles.typeAccess1}>{course.typeAccess}</div>
                   <div className={styles.blockCont}>
                     <h3>{course.title}</h3>
                     <p>{course.text}</p>
                   </div>
+                  <div className={styles.text2}>Купите курс PRO</div>
                 </div>
               );
             })
@@ -104,7 +105,7 @@ const Course = () => {
                       <p>{course.text}</p>
                     </div>
                   </div>
-                );
+                )
               })
               : null}
       </div>
