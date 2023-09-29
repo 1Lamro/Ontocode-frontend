@@ -33,7 +33,6 @@
 }
 
 .navigation {
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -68,11 +67,23 @@
 }
 
 .search {
-    height: 24px;
-    margin-right: 20px;
+  height: 24px;
+  margin-right: 20px;
 }
 
-.sideBarChat{
-    position: relative;
-    
+.sideBarChat {
+  position: relative;
+  bottom: 0;
+  left: 500px;
+  top: 600px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(100%);
+}
+
+.sideBarChat .show {
+  transform: translateY(0);
 }

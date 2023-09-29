@@ -6,11 +6,12 @@ import styles from './Header.module.css'
 import logo from '../../../public/logo.svg'
 import search from './search.png'
 import chat from './chat.svg'
-import { joinInChat } from '../../features/userSlice';
+import { exitInChat, joinInChat } from '../../features/userSlice';
 import Chat from '../pages/ChatPage/Chat';
 import { useEffect } from 'react';
 
 const Header = ({ socket }) => {
+
   const [joinChat, setJoinChat] = useState(false)
 
   const dispatch = useDispatch();
@@ -21,15 +22,25 @@ const Header = ({ socket }) => {
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.pageYOffset);
-    }
-
+    };
     window.addEventListener('scroll', handleScroll);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
     }
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (event: { key: string; }) => {
+      if (event.key === 'Escape') {
+        setJoinChat(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+  
   const removeToken = () => {
     localStorage.removeItem("token");
     navigate('/')
@@ -72,7 +83,7 @@ const Header = ({ socket }) => {
             <Link to='/team' className={styles.zero}><p>For Teams</p></Link>
           </nav>
           {token ? (<>
-            <div className={styles.sideBarChat}>
+            <div  className={`${styles.sideBarChat} ${joinChat ? styles.show : ''}`}>
               {joinChat && <Chat socket={socket} />}<img onClick={() => handleJoinToChat(ownid.userId)} src={chat} alt="" />
             </div>
             <div>
