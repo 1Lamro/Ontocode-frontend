@@ -5,19 +5,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../../app/store';
 import { deleteMessage, getMessage } from '../../../../features/chatSlice';
 import Preloader from './Preloader';
-import { exitInChat} from '../../../../features/userSlice';
-// import { joinInChat } from '../../../../features/userSlice';
-const body = ({ status, socket }) => {
 
-    const messages = useSelector((state: RootState) => state.chat.chat);
+const body = ({ status, socket, messages }) => {
+
+    // const messages = useSelector((state: RootState) => state.chat.chat);
     const token = useSelector((state: RootState) => state.application.token);
     const user = useSelector((state: RootState) => state.user.users);
     const loading = useSelector((state: RootState) => state.chat.loading);
 
-    const [isLeaving, setIsLeaving] = useState(false);
-
     const dispatch = useDispatch()
-    const navigate = useNavigate();
 
     function parseJWT(tokenUser: string | number | null) {
         if (typeof tokenUser !== "string") {
@@ -39,15 +35,11 @@ const body = ({ status, socket }) => {
     const ownid = parseJWT(token);
     const oneUser = Array.isArray(user) ? user.filter(item => item._id === ownid.userId) : [];
 
-    const handleLeave = (id) => {
-       dispatch(exitInChat(id))
-    }
-
     const handleDeleteMess = (id) => {
         socket.emit('deleteMessage', id);
         dispatch(deleteMessage(id))
         dispatch(getMessage())
-
+        console.log('delete');
     }
 
     const messagesRef = useRef(null);
@@ -56,18 +48,18 @@ const body = ({ status, socket }) => {
         if (messagesRef.current) {
             messagesRef.current.scrollIntoView({inline: "end"})
         }
+        console.log('scroll');
+        
     }, [messages])
     
 
     return (
         <div>
             <>
-                <header className={styles.headerB}>
-                    <button className={styles.btn} onClick={() => handleLeave(ownid.userId)}>Покинуть чат</button>
-                </header>
-                {loading ? (
+            {/* <div className={styles.header}></div> */}
+                {/* {loading ? (
                     <Preloader />
-                ) : (
+                ) : ( */}
 
                     <div className={styles.containerB}>
                         {
@@ -99,7 +91,7 @@ const body = ({ status, socket }) => {
                             <p>{status}</p>
                         </div>
                     </div>
-                )}
+                
             </>
         </div>
     );
