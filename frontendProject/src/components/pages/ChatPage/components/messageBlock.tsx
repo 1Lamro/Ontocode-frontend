@@ -8,6 +8,7 @@ import { allUsers } from '../../../../features/userSlice';
 const messageBlock = ({ socket }) => {
 
     const [message, setMessage] = useState('')
+    const [load, setLoad] = useState(false)
 
     const token = useSelector((state: RootState) => state.application.token);
     const user = useSelector((state: RootState) => state.user.users);
@@ -36,7 +37,7 @@ const messageBlock = ({ socket }) => {
 
         const handleSend = (e) => {
             e.preventDefault();
-
+            console.log('send');
             if (message.trim() && oneUser[0].username) {
                 dispatch(sendMessage({ oneUser, message }))
                 socket.emit('message', {
@@ -46,13 +47,15 @@ const messageBlock = ({ socket }) => {
                     socketID: socket.id
                 })
             }
+            setLoad(() => !load)
             setMessage('');
         }
 
         useEffect(() => {
             dispatch(getMessage())
             dispatch(allUsers())
-        }, [dispatch])
+            console.log('messageBlock');
+        }, [dispatch, load])
 
     return (
         <div className={styles.messageBlock}>

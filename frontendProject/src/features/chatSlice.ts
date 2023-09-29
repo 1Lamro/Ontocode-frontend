@@ -88,7 +88,7 @@ export const chatSlise = createSlice({
             })
             .addCase(sendMessage.fulfilled, (state, action) => {
                 state.error = null;
-                state.chat = action.payload;
+                state.chat.chat = action.payload;
                 state.loading = false;
             })
             .addCase(sendMessage.pending, (state) => {

@@ -38,11 +38,8 @@ function Footer() {
                     <li><Link to='https://www.youtube.com/watch?v=wa7knhzVShQ' target='https://www.youtube.com/watch?v=wa7knhzVShQ'><img src={you} alt="youtube" /></Link></li>
                 </div>
                 <div className={styles.lang}><h3>Languages</h3>
-                    <li>Bash <img src={bash} alt="" className={styles.lp}/></li>
-                    <li>C <img src={C} alt="" className={styles.lp}/></li>
                     <li>C++ <img src={CPlus} alt="" className={styles.lp}/></li>
                     <li>C# <img src={CSh} alt="" className={styles.lp}/></li>
-                    <li>Go <img src={Go} alt="" className={styles.lp}/></li>
                     <li>HTML<img src={Html} alt="" className={styles.lp}/></li>
                     <li>CSS <img src={Css} alt="" className={styles.lp}/></li>
                     <li>JavaScrilit <img src={JavaSc} alt="" className={styles.lp}/></li>

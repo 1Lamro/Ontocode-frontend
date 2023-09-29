@@ -77,7 +77,8 @@ const Header = ({ socket }) => {
     setProfile(false)
     navigate('/Profile')
   }
-
+  console.log("header");
+  
   return (
     <div className={styles.headerContainer}>
       <div className={`${styles.headerClass} ${scrollY > 0 ? styles.headerFixed : ''}`}>
