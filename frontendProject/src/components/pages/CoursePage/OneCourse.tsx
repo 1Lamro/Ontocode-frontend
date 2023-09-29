@@ -3,7 +3,7 @@ import { RootState } from "../../../app/store";
 import { useDispatch, useSelector } from "react-redux";
 import { Courses, fetchCourses } from "../../../features/courseSlice";
 import styles from "./Course.module.css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { oneUser } from "../../../features/userSlice";
 
 const OneCourse = () => {
@@ -46,17 +46,13 @@ const OneCourse = () => {
   return (
     <div>
       <div className={styles.container}>
-        1
-        {
-        <>
           <div>
             {courseOne[0].title}
           </div>
           <div>
             {courseOne[0].text}
           </div>
-        </>
-        }
+          <Link to='/tasks/650837df617947cf3f034722'>Пройти задание</Link>
       </div>
     </div>
   );

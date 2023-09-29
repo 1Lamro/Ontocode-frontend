@@ -22,7 +22,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const HTML = () => {
     const [html, setHtml] = useState('')
     const [css, setCss] = useState('')
-    const [theme, setTheme] = useState('tomorrow_night')
+    const [theme, setTheme] = useState('github')
 
     const renderHtml = () => {
         const renderedHtml = Mustache.render(html, { id: 'html-content' });
@@ -51,88 +51,68 @@ const HTML = () => {
 
     return (
         <>
-            <div>
-                <Carousel>
-                    <CarouselItem>
-                        <iframe
-                            title="YouTube Video"
-                            width="300"
-                            height="300"
-                            src='https://www.youtube.com/embed/yxnWxlHy_SU'
-                            allowFullScreen
-                        ></iframe>
-                    </CarouselItem>
-                    <CarouselItem>
-                        <iframe
-                            title="YouTube Video"
-                            width="300"
-                            height="300"
-                            src='https://www.youtube.com/embed/DOEtVdkKwcU'
-                            allowFullScreen
-                        ></iframe>
-                    </CarouselItem>
-                </Carousel>
-            </div>
-            <p>
-                Выберите стиль
-            </p>
             <select onClick={(e) => handleChangeTheme(e)}>
+                <option value='github'>GitHub</option>
                 <option value="tomorrow_night">Tomorrow Night</option>
                 <option value='tomorrow_night_blue'>Tomorrow Night Blue</option>
-                <option value='github'>GitHub</option>
             </select>
-            <div className={styles.editorContainer}>
-                <div className={styles.editorBlock}>
-                    <div className={styles.headEditor}>
-                        Html
+            <div className={styles.container}>
+                <div className={styles.editorContainer}>
+                    <div className={styles.editorBlock}>
+                        <div className={styles.headEditor}>
+                            Html
+                        </div>
+                        <AceEditor
+                            mode="html"
+                            theme={theme}
+                            value={html}
+                            snippets='html'
+                            onChange={setHtml}
+                            name="UNIQUE_ID_OF_DIV"
+                            editorProps={{ $blockScrolling: true }}
+                            enableLiveAutocompletion
+                            enableSnippets={true}
+                            enableBasicAutocompletion={true}
+                            style={{
+                                width: '100%',
+                                height: '50vh',
+                                fontSize: "20px",
+                                borderRadius: '0 0 10px 10px'
+                            }}
+                        />
+                        <button onClick={handleDeleteHtml}>Очистить поле</button>
                     </div>
-                    <AceEditor
-                        mode="html"
-                        theme={theme}
-                        value={html}
-                        snippets='html'
-                        onChange={setHtml}
-                        name="UNIQUE_ID_OF_DIV"
-                        editorProps={{ $blockScrolling: true }}
-                        enableLiveAutocompletion
-                        enableSnippets={true}
-                        enableBasicAutocompletion={true}
-                        style={{
-                            width: '100%',
-                            height: '50vh',
-
-                            borderRadius: '0 0 10px 10px'
-                        }}
-                    />
-                    <button onClick={handleDeleteHtml}>Очистить поле</button>
-                    <button onClick={renderHtml}>Render HTML</button>
-                </div>
-                <div className={styles.editorBlock}>
-                    <div className={styles.headEditor}>
-                        CSS
+                    <div className={styles.editorBlock}>
+                        <div className={styles.headEditor}>
+                            CSS
+                        </div>
+                        <AceEditor
+                            mode="css"
+                            theme={theme}
+                            value={css}
+                            snippets='css'
+                            onChange={setCss}
+                            name="UNIQUE_ID_OF_DIV"
+                            editorProps={{ $blockScrolling: true }}
+                            enableLiveAutocompletion
+                            enableSnippets={true}
+                            enableBasicAutocompletion={true}
+                            style={{
+                                width: '100%',
+                                height: '50vh',
+                                fontSize: "20px",
+                                borderRadius: '0 0 10px 10px'
+                            }}
+                        />
+                        <button onClick={handleDeleteCss}>Очистить поле</button>
                     </div>
-                    <AceEditor
-                        mode="css"
-                        theme={theme}
-                        value={css}
-                        snippets='css'
-                        onChange={setCss}
-                        name="UNIQUE_ID_OF_DIV"
-                        editorProps={{ $blockScrolling: true }}
-                        enableLiveAutocompletion
-                        enableSnippets={true}
-                        enableBasicAutocompletion={true}
-                        style={{
-                            width: '100%',
-                            height: '50vh',
-                            borderRadius: '0 0 10px 10px'
-                        }}
-                    />
-                    <button onClick={handleDeleteCss}>Очистить поле</button>
                 </div>
-            </div>
-            <div className={styles.htmlCode}>
-                {renderHtml()}
+                <div className={styles.renderHtmlThis}>
+                    <p>Ваша собственная страница</p>
+                    <div className={styles.htmlCode}>
+                        {renderHtml()}
+                    </div>
+                </div>
             </div>
         </>
     )
