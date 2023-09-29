@@ -9,10 +9,34 @@
   display: flex;
 }
 
+.sideBarChat {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sideBarChat:hover {
+  -webkit-box-shadow: 1px 0px 10px 6px rgba(34, 60, 80, 0.23);
+  -moz-box-shadow: 1px 0px 10px 6px rgba(34, 60, 80, 0.23);
+  box-shadow:inset 1px 0px 10px 6px rgba(34, 60, 80, 0.23);
+  transition: 0.3s;
+}
+
+
+.sideBarChat img{
+  width: 40px;
+  background-size: 15px 16px;
+  fill: #ffb600;
+}
+
 .headerContainer {
   width: 100vw;
   height: 80px;
   margin: auto;
+  position: relative;
 }
 
 .headerFixed {
