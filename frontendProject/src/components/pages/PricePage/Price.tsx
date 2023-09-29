@@ -104,40 +104,6 @@ const PricePage = () => {
           <Pro formData={formData} handleInputChange={handleInputChange} />
         </div>
       </div>
-      <textarea
-        name=""
-        value={comment}
-        onChange={(e) => handleOnChangeTextArea(e.target.value)}
-        id={styles.textarea}
-        cols="30"
-        rows="5"
-      ></textarea>
-      <button disabled={!comment} onClick={() => handleSendComment(comment)}>
-        add
-      </button>
-      <div>
-        {comments.map((item, index) => {
-          const isCurrentUserComment = item.user?._id === ownid.userId;
-          return (
-            <div key={index}>
-              <div>{item.user?.username}</div>
-              <div>
-                {item.text}
-                {isCurrentUserComment && (
-                  <button
-                    onClick={() => {
-                      handleDeleteComment(item._id, item.user?._id);
-                      console.log(item._id, item.user?._id);
-                    }}
-                  >
-                    x
-                  </button>
-                )}
-              </div>
-            </div>
-          );
-        })}
-      </div>
     </div>
     <div className={styles.table}>
       <Advantages />

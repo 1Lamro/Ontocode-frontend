@@ -1,4 +1,3 @@
-
 .headEditor {
   background-color: #000000;
   color: white;
@@ -14,6 +13,7 @@
 .editorContainer {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
 }
 
 .htmlCode {
@@ -34,11 +34,16 @@
 }
 
 .editorBlock {
-  width: 49%;
+  width: 99%;
+}
+
+.ace_gutter {
+  z-index: 0;
 }
 
 .editorContainer {
   display: flex;
+  width: 50%;
   justify-content: space-between;
 }
 
@@ -50,4 +55,13 @@
   border-radius: 10px;
   padding: 10px;
   box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.renderHtmlThis {
+  width: 100%;
 }

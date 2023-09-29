@@ -9,9 +9,7 @@ import { oneUser } from "../../../features/userSlice";
 const Course = () => {
   const courses = useSelector((state: RootState) => state.course.course);
   const user = useSelector((state: RootState) => state.user.users);
-  const token = useSelector((state: RootState) => state.application.token);
-  console.log(courses);
-  
+  const token = useSelector((state: RootState) => state.application.token);  
 
   const dispatch = useDispatch();
   function parseJWT(tokenUser) {

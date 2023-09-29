@@ -16,6 +16,7 @@ import Course from './components/pages/CoursePage/Course'
 import JavaScript from './components/pages/CoursePage/lang/JS/JavaScript'
 import Footer from './components/Footer/Footer'
 import OneCourse from './components/pages/CoursePage/OneCourse'
+import Task from './components/pages/TaskPage/Task'
 
 const socket = socketIO.connect('http://localhost:3333')
 
@@ -44,7 +45,7 @@ function App() {
             <Route path="/Profile" element={<Profile />} />
             <Route path="/courses" element={<Course />} />
             <Route path="/course/:id" element={<OneCourse />} />
-            {/* <Route path="/course/:id/course" element={<JavaScript />} /> */}
+            <Route path="/tasks/650837df617947cf3f034722" element={<Task />} />
             {/* <Route path="/video" Component={VideoPlayer}></Route> */}
           </Routes>
           {showFooter && <Footer />}
