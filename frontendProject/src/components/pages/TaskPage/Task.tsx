@@ -95,16 +95,23 @@ const Task = () => {
     }, [dispatch]);
 
     return (<div className={styles.container}>
-        <div className={styles.container}>
-            <h3>Тема: {task.title}</h3>
-            <p>Задание: {task.question}</p>
+        <div className={styles.container2}>
+            <h3>Тема: HTML и CSS</h3>
+            <p>Задание: Попробуйте себя в роли начинающего разработчика сайта и попробуйте прописать одни из стандартных  тегов:
+                <br />
+                - div
+                <br />
+                - span
+                <br />
+                - h1
+            </p>
         </div>
         <HTML/>
         <textarea
             name=""
             value={comment}
             onChange={(e) => handleOnChangeTextArea(e.target.value)}
-            id={styles.textarea}
+            id={styles.textarea}    
             cols="30"
             rows="5"
         ></textarea>

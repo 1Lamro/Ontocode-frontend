@@ -5,6 +5,8 @@ import { Courses, fetchCourses } from "../../../features/courseSlice";
 import styles from "./Course.module.css";
 import { Link, useParams } from "react-router-dom";
 import { oneUser } from "../../../features/userSlice";
+import { Carousel, CarouselItem } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const OneCourse = () => {
   const dispatch = useDispatch();
@@ -41,18 +43,40 @@ const OneCourse = () => {
 
 
   console.log(courseOne);
-  
+
 
   return (
     <div>
       <div className={styles.container}>
-          <div>
-            {courseOne[0].title}
-          </div>
-          <div>
-            {courseOne[0].text}
-          </div>
-          <Link to='/tasks/650837df617947cf3f034722'>Пройти задание</Link>
+        <div className={styles.title}>
+          {courseOne[0].title}
+        </div>
+        <div className={styles.text}>
+          {courseOne[0].text}
+        </div>
+        <Link to='/tasks/650837df617947cf3f034722'>Пройти задание</Link>
+      </div>
+      <div className={styles.example}>
+        <Carousel>
+          <CarouselItem>
+            <iframe
+              title="YouTube Video"
+              width="1000"
+              height="600"
+              src='https://www.youtube.com/embed/yxnWxlHy_SU'
+              allowFullScreen
+            ></iframe>
+          </CarouselItem>
+          <CarouselItem>
+            <iframe
+              title="YouTube Video"
+              width="300"
+              height="300"
+              src='https://www.youtube.com/embed/DOEtVdkKwcU'
+              allowFullScreen
+            ></iframe>
+          </CarouselItem>
+        </Carousel>
       </div>
     </div>
   );
