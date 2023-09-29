@@ -7,97 +7,97 @@ const Advantages = () => {
             <table className={styles.table}>
                 <tbody>
                     <tr>
-                        <td>Привилегии</td>
-                        <td>Basic</td>
-                        <td>Plus</td>
-                        <td>Pro</td>
+                        <td className={styles.headerTable1}>Привилегии</td>
+                        <td className={styles.headerTable2}>Basic</td>
+                        <td className={styles.headerTable3}>Plus</td>
+                        <td className={styles.headerTable4}>Pro</td>
                     </tr>
                     <tr>
-                        <td colSpan="4">Начни обучаться программированию</td>
+                        <td colSpan="4" className={styles.headBlock}>Начни обучаться программированию</td>
                     </tr>
                     <tr>
-                        <td className={styles.whiteTd}>Базовый доступ к бесплатным курсам</td>
+                        <td className={styles.whiteTd1}>Базовый доступ к бесплатным курсам</td>
                         <td className={styles.whiteTd}><img src={check}/></td>
                         <td className={styles.whiteTd}><img src={check}/></td>
                         <td className={styles.whiteTd}><img src={check}/></td>
                     </tr>
                     <tr>
-                        <td>Помощь сообщества</td>
-                        <td><img src={check}/></td>
-                        <td><img src={check}/></td>
-                        <td><img src={check}/></td>
+                        <td className={styles.greyTd1}>Помощь сообщества</td>
+                        <td className={styles.greyTd}><img src={check}/></td>
+                        <td className={styles.greyTd}><img src={check}/></td>
+                        <td className={styles.greyTd}><img src={check}/></td>
                     </tr>
                     <tr>
-                        <td className={styles.whiteTd}>Обучающие ресурсы</td>
+                        <td className={styles.whiteTd1}>Обучающие ресурсы</td>
                         <td className={styles.whiteTd}><img src={check}/></td>
                         <td className={styles.whiteTd}><img src={check}/></td>
                         <td className={styles.whiteTd}><img src={check}/></td>
                     </tr>
                     <tr>
-                        <td>Все курсы</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td><img src={check}/></td>
+                        <td className={styles.greyTd1}>Все курсы</td>
+                        <td className={styles.greyTd}>-</td>
+                        <td className={styles.greyTd}>-</td>
+                        <td className={styles.greyTd}><img src={check}/></td>
                     </tr>
                     <tr>
-                        <td colSpan="4">Развитие навыков</td>
+                        <td colSpan="4" className={styles.headBlock}>Развитие навыков</td>
                     </tr>
                     <tr>
-                        <td className={styles.whiteTd}>Skill&nbsp;paths&nbsp;</td>
+                        <td className={styles.whiteTd1}>Skill&nbsp;paths&nbsp;</td>
                         <td className={styles.whiteTd}>-</td>
                         <td className={styles.whiteTd}><img src={check}/></td>
                         <td className={styles.whiteTd}><img src={check}/></td>
                     </tr>
                     <tr>
-                        <td>Real-world&nbsp;projects&nbsp;</td>
-                        <td>-</td>
-                        <td><img src={check}/></td>
-                        <td><img src={check}/></td>
+                        <td className={styles.greyTd1}>Real-world&nbsp;projects&nbsp;</td>
+                        <td className={styles.greyTd}>-</td>
+                        <td className={styles.greyTd}><img src={check}/></td>
+                        <td className={styles.greyTd}><img src={check}/></td>
                     </tr>
                     <tr>
-                        <td className={styles.whiteTd}>Сертификат об окончании</td>
+                        <td className={styles.whiteTd1}>Сертификат об окончании</td>
                         <td className={styles.whiteTd}>-</td>
                         <td className={styles.whiteTd}><img src={check}/></td>
                         <td className={styles.whiteTd}><img src={check}/></td>
                     </tr>
                     <tr>
-                        <td colSpan="4">Устройство на работу</td>
+                        <td colSpan="4" className={styles.headBlock}>Устройство на работу</td>
                     </tr>
                     <tr>
-                        <td className={styles.whiteTd}>Карьерная неделя</td>
+                        <td className={styles.whiteTd1}>Карьерная неделя</td>
                         <td className={styles.whiteTd}>-</td>
                         <td className={styles.whiteTd}>-</td>
                         <td className={styles.whiteTd}><img src={check}/></td>
                     </tr>
                     <tr>
-                        <td>Профессиональная сертификация</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td><img src={check}/></td>
+                        <td className={styles.greyTd1}>Профессиональная сертификация</td>
+                        <td className={styles.greyTd}>-</td>
+                        <td className={styles.greyTd}>-</td>
+                        <td className={styles.greyTd}><img src={check}/></td>
                     </tr>
                     <tr>
-                        <td className={styles.whiteTd}>Technical&nbsp;interview&nbsp;prep&nbsp;</td>
+                        <td className={styles.whiteTd1}>Technical&nbsp;interview&nbsp;prep&nbsp;</td>
                         <td className={styles.whiteTd}>-</td>
                         <td className={styles.whiteTd}>-</td>
                         <td className={styles.whiteTd}><img src={check}/></td>
                     </tr>
                     <tr>
-                        <td>Career&nbsp;services&nbsp;</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td><img src={check}/></td>
+                        <td className={styles.greyTd1}>Career&nbsp;services&nbsp;</td>
+                        <td className={styles.greyTd}>-</td>
+                        <td className={styles.greyTd}>-</td>
+                        <td className={styles.greyTd}><img src={check}/></td>
                     </tr>
                     <tr>
-                        <td className={styles.whiteTd}>Задачи с кодом</td>
+                        <td className={styles.whiteTd1}>Задачи с кодом</td>
                         <td className={styles.whiteTd}>-</td>
                         <td className={styles.whiteTd}>-</td>
                         <td className={styles.whiteTd}><img src={check}/></td>
                     </tr>
                     <tr>
-                        <td>Ассесмент</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td><img src={check}/></td>
+                        <td className={styles.greyTd1}>Ассесмент</td>
+                        <td className={styles.greyTd}>-</td>
+                        <td className={styles.greyTd}>-</td>
+                        <td className={styles.greyTd}><img src={check}/></td>
                     </tr>
                 </tbody>
             </table>

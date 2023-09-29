@@ -13,8 +13,10 @@ import { useEffect } from 'react';
 const Header = ({ socket }) => {
 
   const [joinChat, setJoinChat] = useState(false)
+  const [profile, setProfile] = useState(false)
 
   const dispatch = useDispatch();
+  const users = useSelector((state: RootState) => state.user.users)
   const token = useSelector((state: RootState) => state.application.token);
   const navigate = useNavigate()
   const [scrollY, setScrollY] = useState(0);
@@ -40,7 +42,7 @@ const Header = ({ socket }) => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
-  
+
   const removeToken = () => {
     localStorage.removeItem("token");
     navigate('/')
@@ -71,6 +73,11 @@ const Header = ({ socket }) => {
     setJoinChat(() => !joinChat)
   }
 
+  const handleChangeStateProf = () => {
+    setProfile(false)
+    navigate('/Profile')
+  }
+
   return (
     <div className={styles.headerContainer}>
       <div className={`${styles.headerClass} ${scrollY > 0 ? styles.headerFixed : ''}`}>
@@ -83,17 +90,21 @@ const Header = ({ socket }) => {
             <Link to='/team' className={styles.zero}><p>For Teams</p></Link>
           </nav>
           {token ? (<>
-            <div  className={`${styles.sideBarChat} ${joinChat ? styles.show : ''}`}>
+            <div className={`${styles.sideBarChat} ${joinChat ? styles.show : ''}`}>
               {joinChat && <Chat socket={socket} />}<img onClick={() => handleJoinToChat(ownid.userId)} src={chat} alt="" />
             </div>
             <div>
-              <button onClick={removeToken} className={styles.buttonExit}>
-                ВЫЙТИ
-              </button>
-              <Link to="/Profile">
-                {/* <img src={} alt="profile" className={styles.profile} /> */}
-                <div>Профиль</div>
-              </Link>
+              <div onClick={() => setProfile(!profile)} className={styles.prof} onBlur={handleChangeStateProf}>
+                {users.username}
+                <img src={`http://localhost:3333/images/${users.avatar}`} className={styles.avatar}/>
+              </div>
+
+              <div className={`${styles.modalProfile} ${profile && styles.modalProfileShow}`}>
+                <button onClick={handleChangeStateProf} className={styles.buttonExit}>Личный кабинет</button>
+                <button onClick={removeToken} className={styles.buttonExit}>
+                  Выйти
+                </button>
+              </div>
             </div>
           </>
           ) : (

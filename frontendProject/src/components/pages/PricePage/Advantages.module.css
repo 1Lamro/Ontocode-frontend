@@ -1,7 +1,85 @@
 .table {
-    width: 100%;
+  width: 100%;
 }
 
 .whiteTd {
-    background-color: white;
+  height: 40px;
+  background-color: white;
+  border: 1px solid #070707;
+  text-align: center;
+}
+
+.greyTd {
+  height: 40px;
+  background-color: rgb(229, 229, 229);
+  border: 1px solid #070707;
+  text-align: center;
+}
+
+.whiteTd1 {
+  height: 40px;
+  background-color: white;
+  border: 1px solid #070707;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.greyTd1 {
+  height: 40px;
+  background-color: rgb(229, 229, 229);
+  border: 1px solid #070707;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.headerTable1 {
+  background-color: white;
+  font-size: 25px;
+  font-weight: bold;
+  border: 1px solid #070707;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+.headerTable2 {
+  background-color: white;
+  font-size: 25px;
+  font-weight: bold;
+  border: 1px solid #070707;
+  padding-left: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.headerTable3 {
+  background-color: #fffae5;
+  font-size: 25px;
+  font-weight: bold;
+  border: 1px solid #070707;
+  padding-left: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.headerTable4 {
+  background-color: white;
+  font-size: 25px;
+  font-weight: bold;
+  border: 1px solid #070707;
+  padding-left: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #ffd300;
+}
+
+table {
+  border: 2px solid #070707;
+}
+
+.headBlock {
+  background-color: #f5fcff;
+  border-top: 2px solid black;
+  font-weight: bold;
+  font-size: 20px;
+  padding-left: 10px;
+  height: 50px;
 }
