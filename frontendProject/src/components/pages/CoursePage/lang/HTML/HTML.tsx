@@ -41,30 +41,38 @@ const HTML = () => {
         setTheme(e.target.value)
     }
 
+    const handleDeleteHtml = () => {
+        setHtml('')
+    }
+
+    const handleDeleteCss = () => {
+        setCss('')
+    }
+
     return (
         <>
-        <div>
-         <Carousel>
-          <CarouselItem>
-          <iframe
-            title="YouTube Video"
-            width="300"
-            height="300"
-            src='https://www.youtube.com/embed/yxnWxlHy_SU'
-            allowFullScreen
-          ></iframe>
-          </CarouselItem>
-          <CarouselItem>
-          <iframe
-            title="YouTube Video"
-            width="300"
-            height="300"
-            src='https://www.youtube.com/embed/DOEtVdkKwcU'
-            allowFullScreen
-          ></iframe>
-          </CarouselItem>
-        </Carousel>
-        </div>
+            <div>
+                <Carousel>
+                    <CarouselItem>
+                        <iframe
+                            title="YouTube Video"
+                            width="300"
+                            height="300"
+                            src='https://www.youtube.com/embed/yxnWxlHy_SU'
+                            allowFullScreen
+                        ></iframe>
+                    </CarouselItem>
+                    <CarouselItem>
+                        <iframe
+                            title="YouTube Video"
+                            width="300"
+                            height="300"
+                            src='https://www.youtube.com/embed/DOEtVdkKwcU'
+                            allowFullScreen
+                        ></iframe>
+                    </CarouselItem>
+                </Carousel>
+            </div>
             <p>
                 Выберите стиль
             </p>
@@ -82,6 +90,7 @@ const HTML = () => {
                     <AceEditor
                         mode="html"
                         theme={theme}
+                        value={html}
                         snippets='html'
                         onChange={setHtml}
                         name="UNIQUE_ID_OF_DIV"
@@ -96,6 +105,7 @@ const HTML = () => {
                             borderRadius: '0 0 10px 10px'
                         }}
                     />
+                    <button onClick={handleDeleteHtml}>Очистить поле</button>
                     <button onClick={renderHtml}>Render HTML</button>
                 </div>
                 <div className={styles.editorBlock}>
@@ -105,6 +115,7 @@ const HTML = () => {
                     <AceEditor
                         mode="css"
                         theme={theme}
+                        value={css}
                         snippets='css'
                         onChange={setCss}
                         name="UNIQUE_ID_OF_DIV"
@@ -118,6 +129,7 @@ const HTML = () => {
                             borderRadius: '0 0 10px 10px'
                         }}
                     />
+                    <button onClick={handleDeleteCss}>Очистить поле</button>
                 </div>
             </div>
             <div className={styles.htmlCode}>

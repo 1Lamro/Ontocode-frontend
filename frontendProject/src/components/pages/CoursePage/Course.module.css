@@ -31,11 +31,9 @@
   border: 1px solid rgb(112, 112, 112);
   transition: 0.2s;
   border-radius: 5px;
-  background-color: #ffffff;
   background-color: #333; /* Темный цвет фона */
   color: #fff; /* Белый цвет текста */
   border: 2px solid #666; /* Граничная линия */
-  padding: 20px; /* Отступы вокруг элемента */
   text-align: center; /* Выравнивание текста по центру */
   font-weight: bold; /* Полужирный текст */
   font-size: 16px; /* Размер шрифта */
@@ -59,9 +57,17 @@
 }
 
 .blockCont {
-  padding: 0 12px;
+ padding-left: 10px;
+ text-align: start;
 }
 .typeAccess1{
   background-color: #333; /* Темный цвет фона */
+  text-align: start;
+  padding-left: 10px;
+}
 
+.text2 {
+  text-align: start;
+  padding-left: 10px;
+  color: black;
 }
