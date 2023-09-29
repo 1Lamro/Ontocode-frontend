@@ -32,7 +32,7 @@
   background-color: transparent;
   border: 1px solid black;
   text-align: end;
-  background-color: #aeb8ef;
+  background-color: #fff;
   margin-bottom: 5px;
   border-radius: 8px;
   font-size: 13px;
@@ -44,7 +44,7 @@
   flex-direction: column;
   position: absolute;
   right: 210px;
-  bottom: -50px; 
+  bottom: -60px; 
   transform:translate(-50%);
   transition: 0.3s;
 }

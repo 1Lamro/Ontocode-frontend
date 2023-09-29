@@ -83,8 +83,7 @@ const Home = () => {
                 <div className={styles.imageCont}><img src={homepage1} alt="" className={styles.homepage1} /></div>
                 {!token ? <div className={styles.regForm}>
                     <div>
-                        Join the millions learning to code
-                        with Codecademy for free
+                        Присоединитесь к крупному мировому сообществу на Ontocode бесплатно.
                     </div>
                     <form className={styles.form} onSubmit={handleSignUp}>
                         <h2 id={styles.h2}>Регистрация</h2>
@@ -130,10 +129,22 @@ const Home = () => {
                         </Link>
                     </div>
                 </div>
-                    : null}
-            </div>
+                    : <>
+                        <div className={styles.text5}>
+                            <p>
 
+                            </p>
+                            <p>
+                                Твой путь начинается всегда с Ontocode!
+                            </p>
+                        </div>
+                    </>}
+            </div>
+                            
             <div className={styles.thirdBlock}>
+                <div className={styles.text6}>
+                    Наша команда
+                </div>
                 <div className={styles.thirdBlockCont}>
                     <div className={styles.first}>
                         <div className={styles.image}><img src={ali} alt="" className={styles.photo} /></div>

@@ -2,6 +2,8 @@
   display: flex;
   width: 65%;
   margin: auto;
+  background-color: white;
+  border-radius: 10px 10px 0 0;
 }
 
 .courseBlock {
@@ -286,4 +288,21 @@
 .regButton:hover {
     background-color: #263cbc;
     transition: 0.1s ease;
+}
+
+.text5 {
+  width: 50%;
+  font-size: 50px;
+  vertical-align: center;
+  font-weight: bold;
+}
+.text6 {
+  width: 65%;
+  margin: auto;
+  font-size: 50px;
+  vertical-align: center;
+  font-weight: bold;
+  color: white;
+  background-color: #10162f;
+  text-align: center;
 }
